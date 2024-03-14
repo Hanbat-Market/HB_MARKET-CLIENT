@@ -11,6 +11,11 @@
 		F58916762BA1EABD008EC345 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916752BA1EABD008EC345 /* ContentView.swift */; };
 		F58916782BA1EABF008EC345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58916772BA1EABF008EC345 /* Assets.xcassets */; };
 		F589167B2BA1EABF008EC345 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F589167A2BA1EABF008EC345 /* Preview Assets.xcassets */; };
+		F589169B2BA3063F008EC345 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589169A2BA3063F008EC345 /* LoginView.swift */; };
+		F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589169D2BA3124A008EC345 /* RegisterView.swift */; };
+		F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916A12BA3140D008EC345 /* AuthInput.swift */; };
+		F58916A42BA3164B008EC345 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916A32BA3164B008EC345 /* AuthButton.swift */; };
+		F58916A62BA32597008EC345 /* CompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916A52BA32597008EC345 /* CompletedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		F58916752BA1EABD008EC345 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F58916772BA1EABF008EC345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F589167A2BA1EABF008EC345 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F589169A2BA3063F008EC345 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F589169D2BA3124A008EC345 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		F58916A12BA3140D008EC345 /* AuthInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInput.swift; sourceTree = "<group>"; };
+		F58916A32BA3164B008EC345 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		F58916A52BA32597008EC345 /* CompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,8 @@
 		F58916722BA1EABD008EC345 /* hanbat-market */ = {
 			isa = PBXGroup;
 			children = (
+				F58916A02BA313E4008EC345 /* Components */,
+				F58916992BA3062D008EC345 /* Views */,
 				F58916732BA1EABD008EC345 /* hanbat_marketApp.swift */,
 				F58916752BA1EABD008EC345 /* ContentView.swift */,
 				F58916772BA1EABF008EC345 /* Assets.xcassets */,
@@ -65,6 +77,33 @@
 				F589167A2BA1EABF008EC345 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F58916992BA3062D008EC345 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F589169C2BA311E8008EC345 /* Auth */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F589169C2BA311E8008EC345 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F589169A2BA3063F008EC345 /* LoginView.swift */,
+				F589169D2BA3124A008EC345 /* RegisterView.swift */,
+				F58916A52BA32597008EC345 /* CompletedView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		F58916A02BA313E4008EC345 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F58916A12BA3140D008EC345 /* AuthInput.swift */,
+				F58916A32BA3164B008EC345 /* AuthButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F589169B2BA3063F008EC345 /* LoginView.swift in Sources */,
+				F58916A42BA3164B008EC345 /* AuthButton.swift in Sources */,
+				F58916A62BA32597008EC345 /* CompletedView.swift in Sources */,
+				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
+				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,
 				F58916762BA1EABD008EC345 /* ContentView.swift in Sources */,
 				F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */,
 			);
@@ -280,6 +324,8 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +355,8 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
