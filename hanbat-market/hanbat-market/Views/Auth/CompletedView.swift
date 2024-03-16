@@ -15,6 +15,7 @@ struct CompletedView: View {
             
             Image(systemName: "checkmark")
                 .font(.system(size: 80))
+                .foregroundColor(CommonStyle.MAIN_COLOR)
             
             Spacer().frame(height: 16)
             
@@ -23,7 +24,7 @@ struct CompletedView: View {
                 .fontWeight(.bold)
             Text("가입한 정보로 로그인 해주세요.")
                 .font(.system(size: 16))
-                .foregroundColor(.secondary)
+                .foregroundColor(CommonStyle.GRAY_COLOR)
             
             Spacer()
             

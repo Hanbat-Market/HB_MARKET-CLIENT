@@ -25,7 +25,7 @@ struct AuthButton: View {
             .padding(.horizontal, 30)
             .padding(.vertical, 20)
             .foregroundColor(.white)
-            .background(.black)
+            .background(CommonStyle.MAIN_COLOR)
             .cornerRadius(50)
     }
 }
@@ -42,7 +42,7 @@ struct AuthButtonRectangle: View {
             .padding(.horizontal, 30)
             .padding(.vertical, 20)
             .foregroundColor(.white)
-            .background(.black)
+            .background(CommonStyle.MAIN_COLOR)
             .cornerRadius(50)
             
     }

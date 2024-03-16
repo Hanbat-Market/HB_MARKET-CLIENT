@@ -35,7 +35,7 @@ struct AuthInputModifier: ViewModifier {
             .cornerRadius(50)
             .overlay(
                 RoundedRectangle(cornerRadius: 50)
-                    .stroke(.secondary, lineWidth: 2)
+                    .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
             )
             .autocapitalization(.none)
             .autocorrectionDisabled(true)

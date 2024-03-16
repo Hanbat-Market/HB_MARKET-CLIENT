@@ -32,9 +32,13 @@ struct LoginView: View {
                 }, buttonText: "로그인")
                 
                 NavigationLink(destination: RegisterView()) {
-                    Text("회원가입")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
+                    HStack{
+                        Text("회원가입")
+                            .font(.system(size: 16))
+                            .foregroundColor(.black)
+                        Image(systemName: "link")
+                            .font(.system(size: 12))
+                    }
                 }
                 
                 Spacer()

@@ -24,9 +24,7 @@ struct RegisterView: View {
         
         VStack{
             
-            backButton
-            
-            Spacer().frame(height: 20)
+            authHeader
             
             ScrollView{
                 
@@ -37,7 +35,7 @@ struct RegisterView: View {
                             .fontWeight(.bold)
                         Text("회원이 되시면 많은 기능을 이용할 수 있어요!")
                             .font(.system(size: 15))
-                            .foregroundColor(.secondary)
+                            .foregroundColor(CommonStyle.GRAY_COLOR)
                     }
                     
                     Spacer().frame(height: 50)
@@ -78,7 +76,7 @@ struct RegisterView: View {
         }
     }
     
-    var backButton : some View {
+    var authHeader : some View {
         HStack{
             Spacer().frame(width: 20)
             Button{
@@ -91,6 +89,7 @@ struct RegisterView: View {
             }
             Spacer()
         }
+        .padding(.vertical, 20)
     }
 }
 
