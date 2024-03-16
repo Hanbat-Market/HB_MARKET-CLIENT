@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 final class ApiLogger: EventMonitor {
-    let queue = DispatchQueue(label: "Oauth_alamofire_tutorial_ApiLogger")
+    let queue = DispatchQueue(label: "hanbat-market")
 
     // Event called when any type of Request is resumed.
     func requestDidResume(_ request: Request) {

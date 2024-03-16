@@ -13,13 +13,16 @@ import Combine
 enum AuthApiService {
 //    static func login(email: String, password: String) ->
     
-    static func register(email: String, password: String, phoneNumber: String, nickname: String) -> AnyPublisher<AuthRegisterResponse, AFError> {
+    static func register(email: String, password: String, phoneNumber: String, nickname: String) -> AnyPublisher<AuthRegisterModel, AFError> {
         print("AuthApiService - register() called")
         
         return ApiClient.shared.session
             .request(AuthRouter.register(email: email, password: password, phoneNumber: phoneNumber, nickname: nickname))
             .publishDecodable(type: AuthRegisterResponse.self)
             .value()
+            .map{ receivedValue in
+                receivedValue.data
+            }
             .eraseToAnyPublisher()
     }
 }

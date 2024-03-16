@@ -12,6 +12,7 @@ struct CommonStyle {
     static var GRAY_COLOR = Color(hex: "8C8C8C")
 }
 
+// #이 있으면 제거 후 문자열로 RGB 추출
 extension Color {
     init(hex: String) {
         let scanner = Scanner(string: hex)

@@ -22,5 +22,5 @@ struct AuthRegisterModel: Codable {
 }
 
 struct AuthRegisterResponse: Codable {
-    let data: [String]
+    let data: AuthRegisterModel
 }

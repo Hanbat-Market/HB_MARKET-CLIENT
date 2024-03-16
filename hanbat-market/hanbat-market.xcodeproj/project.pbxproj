@@ -26,6 +26,7 @@
 		F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916BC2BA58B71008EC345 /* AuthApiService.swift */; };
 		F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916BE2BA58B7B008EC345 /* AuthRouter.swift */; };
 		F58916C12BA58E19008EC345 /* CommonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916C02BA58E19008EC345 /* CommonStyle.swift */; };
+		F58916C42BA59357008EC345 /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916C32BA59357008EC345 /* AuthVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		F58916BC2BA58B71008EC345 /* AuthApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApiService.swift; sourceTree = "<group>"; };
 		F58916BE2BA58B7B008EC345 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		F58916C02BA58E19008EC345 /* CommonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStyle.swift; sourceTree = "<group>"; };
+		F58916C32BA59357008EC345 /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				F58916A72BA587A6008EC345 /* Models */,
 				F58916A02BA313E4008EC345 /* Components */,
 				F58916992BA3062D008EC345 /* Views */,
+				F58916C22BA59346008EC345 /* ViewModels */,
 				F58916732BA1EABD008EC345 /* hanbat_marketApp.swift */,
 				F58916752BA1EABD008EC345 /* ContentView.swift */,
 				F58916772BA1EABF008EC345 /* Assets.xcassets */,
@@ -172,6 +175,14 @@
 				F58916BC2BA58B71008EC345 /* AuthApiService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		F58916C22BA59346008EC345 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F58916C32BA59357008EC345 /* AuthVM.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +274,7 @@
 				F58916A92BA58850008EC345 /* AuthModel.swift in Sources */,
 				F58916762BA1EABD008EC345 /* ContentView.swift in Sources */,
 				F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */,
+				F58916C42BA59357008EC345 /* AuthVM.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F58916B92BA58B44008EC345 /* ApiLogger.swift in Sources */,
 				F58916B72BA58B33008EC345 /* ApiClient.swift in Sources */,

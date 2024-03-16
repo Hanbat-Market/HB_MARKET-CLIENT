@@ -12,7 +12,7 @@ import Alamofire
 final class ApiClient {
     static let shared = ApiClient()
     
-    static let BASE_URL = "https://phplaravel-574671-2229990.cloudwaysapps.com"
+    static let BASE_URL = "https://ngrok" // 주소 변경 예정
     
     let interceptors = Interceptor(interceptors: [
         BaseInterceptor() // application/json
