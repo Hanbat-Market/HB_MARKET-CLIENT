@@ -56,6 +56,5 @@ class AuthVM: ObservableObject {
                     }
                 }
             }.store(in: &subscription)
-        
     }
 }

@@ -10,11 +10,10 @@ import SwiftUI
 struct LoginView: View {
     
     @EnvironmentObject var authVM: AuthVM
+    @StateObject var authManager = SessionManager.shared
     
     @State private var email: String = ""
     @State private var password: String = ""
-    
-    @State private var completeLogin: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -36,7 +35,7 @@ struct LoginView: View {
                     authVM.login(email: email, password: password)
                 }, buttonText: "로그인")
                 .onReceive(authVM.loginSuccess, perform: {
-                    completeLogin = true
+                    authManager.isLoggedIn = true
                 })
                 
                 NavigationLink(destination: RegisterView()) {
@@ -54,9 +53,6 @@ struct LoginView: View {
             }
             .padding(.horizontal, 20)
             .toolbar(.hidden, for: .navigationBar)
-            .navigationDestination(isPresented: $completeLogin) {
-                HomeView()
-            }
         }
     }
 }

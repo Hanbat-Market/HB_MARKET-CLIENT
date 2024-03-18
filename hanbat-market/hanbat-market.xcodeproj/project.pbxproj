@@ -29,6 +29,14 @@
 		F58917192BA69782008EC345 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F58917182BA69782008EC345 /* AlamofireDynamic */; };
 		F589171F2BA81F52008EC345 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589171E2BA81F51008EC345 /* HomeView.swift */; };
 		F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917262BA82C7B008EC345 /* SessionManager.swift */; };
+		F589172C2BA85B2E008EC345 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589172B2BA85B2E008EC345 /* HomeRouter.swift */; };
+		F589172E2BA85BC1008EC345 /* HomeApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589172D2BA85BC1008EC345 /* HomeApiService.swift */; };
+		F58917302BA85C15008EC345 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589172F2BA85C15008EC345 /* HomeModel.swift */; };
+		F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917312BA85D6F008EC345 /* HomeVM.swift */; };
+		F58917372BA89756008EC345 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917362BA89756008EC345 /* ChatView.swift */; };
+		F58917392BA8976F008EC345 /* HeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917382BA8976F008EC345 /* HeartView.swift */; };
+		F589173B2BA89779008EC345 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173A2BA89779008EC345 /* ProfileView.swift */; };
+		F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173C2BA8A0BD008EC345 /* CustomTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +61,14 @@
 		F58916C32BA59357008EC345 /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
 		F589171E2BA81F51008EC345 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F58917262BA82C7B008EC345 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		F589172B2BA85B2E008EC345 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		F589172D2BA85BC1008EC345 /* HomeApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApiService.swift; sourceTree = "<group>"; };
+		F589172F2BA85C15008EC345 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		F58917312BA85D6F008EC345 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		F58917362BA89756008EC345 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F58917382BA8976F008EC345 /* HeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartView.swift; sourceTree = "<group>"; };
+		F589173A2BA89779008EC345 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F589173C2BA8A0BD008EC345 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +128,9 @@
 		F58916992BA3062D008EC345 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F58917352BA89745008EC345 /* Profile */,
+				F58917342BA8973A008EC345 /* Heart */,
+				F58917332BA896F9008EC345 /* Chat */,
 				F589171D2BA81F45008EC345 /* Home */,
 				F589169C2BA311E8008EC345 /* Auth */,
 			);
@@ -134,6 +153,7 @@
 				F58916A12BA3140D008EC345 /* AuthInput.swift */,
 				F58916A32BA3164B008EC345 /* AuthButton.swift */,
 				F58916C02BA58E19008EC345 /* CommonStyle.swift */,
+				F589173C2BA8A0BD008EC345 /* CustomTabView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -143,6 +163,7 @@
 			children = (
 				F58916A82BA58850008EC345 /* AuthModel.swift */,
 				F58916AA2BA589B0008EC345 /* CommonModel.swift */,
+				F589172F2BA85C15008EC345 /* HomeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				F58916BE2BA58B7B008EC345 /* AuthRouter.swift */,
+				F589172B2BA85B2E008EC345 /* HomeRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -179,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				F58916BC2BA58B71008EC345 /* AuthApiService.swift */,
+				F589172D2BA85BC1008EC345 /* HomeApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -187,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				F58916C32BA59357008EC345 /* AuthVM.swift */,
+				F58917312BA85D6F008EC345 /* HomeVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -205,6 +229,30 @@
 				F58917262BA82C7B008EC345 /* SessionManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		F58917332BA896F9008EC345 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F58917362BA89756008EC345 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F58917342BA8973A008EC345 /* Heart */ = {
+			isa = PBXGroup;
+			children = (
+				F58917382BA8976F008EC345 /* HeartView.swift */,
+			);
+			path = Heart;
+			sourceTree = "<group>";
+		};
+		F58917352BA89745008EC345 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F589173A2BA89779008EC345 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,11 +333,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */,
+				F58917392BA8976F008EC345 /* HeartView.swift in Sources */,
+				F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */,
+				F58917372BA89756008EC345 /* ChatView.swift in Sources */,
 				F589169B2BA3063F008EC345 /* LoginView.swift in Sources */,
+				F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */,
 				F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */,
 				F58916A42BA3164B008EC345 /* AuthButton.swift in Sources */,
+				F589173B2BA89779008EC345 /* ProfileView.swift in Sources */,
+				F589172C2BA85B2E008EC345 /* HomeRouter.swift in Sources */,
 				F58916C12BA58E19008EC345 /* CommonStyle.swift in Sources */,
 				F58916BB2BA58B52008EC345 /* BaseInterceptor.swift in Sources */,
+				F589172E2BA85BC1008EC345 /* HomeApiService.swift in Sources */,
 				F589171F2BA81F52008EC345 /* HomeView.swift in Sources */,
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,
 				F58916A62BA32597008EC345 /* CompletedView.swift in Sources */,
@@ -299,6 +354,7 @@
 				F58916762BA1EABD008EC345 /* ContentView.swift in Sources */,
 				F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */,
 				F58916C42BA59357008EC345 /* AuthVM.swift in Sources */,
+				F58917302BA85C15008EC345 /* HomeModel.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F58916B92BA58B44008EC345 /* ApiLogger.swift in Sources */,
 				F58916B72BA58B33008EC345 /* ApiClient.swift in Sources */,

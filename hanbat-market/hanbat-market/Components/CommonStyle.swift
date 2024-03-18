@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct CommonStyle {
+    // Common Color
     static var MAIN_COLOR = Color(hex: "6096CB")
+    static var BLACK_COLOR = Color(hex: "000000")
+    static var WHITE_COLOR = Color(hex: "FFFFFF")
     static var GRAY_COLOR = Color(hex: "8C8C8C")
+    
+    
 }
 
 // #이 있으면 제거 후 문자열로 RGB 추출

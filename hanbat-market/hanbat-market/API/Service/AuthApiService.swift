@@ -26,7 +26,7 @@ enum AuthApiService {
     }
     
     static func login(email: String, password: String) -> AnyPublisher<String, AFError> {
-        print("AuthApiService - register() called")
+        print("AuthApiService - login() called")
         
         return ApiClient.shared.session
             .request(AuthRouter.login(email: email, password: password))

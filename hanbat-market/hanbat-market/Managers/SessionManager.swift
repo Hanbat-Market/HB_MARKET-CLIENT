@@ -30,14 +30,11 @@ class SessionManager: ObservableObject {
     }
     
     func checkSessionCookie() {
-        guard let savedData = userDefaults.data(forKey: "sessionCookieData") else {
-            return 
-        }
         
-        if savedData.isEmpty{
-            isLoggedIn = false
-        } else {
+        if loadSessionCookie() != nil{
             isLoggedIn = true
+        } else {
+            isLoggedIn = false
         }
         
         print("login - \(isLoggedIn)")
@@ -49,16 +46,23 @@ class SessionManager: ObservableObject {
             return nil
         }
         
-        // Reconstruct HTTPCookie object from session cookie data
         let cookieProperties: [HTTPCookiePropertyKey: Any] = [
             .name: sessionCookieData.name,
             .value: sessionCookieData.value,
             .domain: sessionCookieData.domain,
             .path: sessionCookieData.path,
             .expires: sessionCookieData.expiresDate ?? Date().addingTimeInterval(3600), // Set default expiration time if not provided
-            .secure: true, // Example, set security policy as needed
+            .secure: true,
         ]
         
+        print(sessionCookieData)
+        
         return HTTPCookie(properties: cookieProperties)
+    }
+    
+    func logout() {
+        UserDefaults.standard.removeObject(forKey: "sessionCookieData")
+        
+        isLoggedIn = false
     }
 }

@@ -9,12 +9,11 @@ import Foundation
 import Alamofire
 
 // 인증 라우터
-// 회원가입, 로그인, 세션 갱신
-enum AuthRouter : URLRequestConvertible {
+// 회원가입, 로그인
+enum AuthRouter: URLRequestConvertible {
     
     case register(email: String, password: String, phoneNumber: String, nickname: String)
     case login(email: String, password: String)
-//    case tokenRefresh
     
     var baseURL: URL {
         return URL(string: ApiClient.BASE_URL)!
@@ -49,11 +48,6 @@ enum AuthRouter : URLRequestConvertible {
             params["phoneNumber"] = phoneNumber
             params["nickname"] = nickname
             return params
-            
-//        case .tokenRefresh:
-//            var params = Parameters()
-//            params["refresh_token"] =
-//            return params
         }
     }
     
