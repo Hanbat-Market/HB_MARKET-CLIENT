@@ -9,8 +9,12 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @EnvironmentObject var authVM: AuthVM
+    
     @State private var email: String = ""
     @State private var password: String = ""
+    
+    @State private var completeLogin: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -29,7 +33,11 @@ struct LoginView: View {
                 
                 AuthButton(buttonAction: { 
                     print("로그인")
+                    authVM.login(email: email, password: password)
                 }, buttonText: "로그인")
+                .onReceive(authVM.loginSuccess, perform: {
+                    completeLogin = true
+                })
                 
                 NavigationLink(destination: RegisterView()) {
                     HStack{
@@ -46,6 +54,9 @@ struct LoginView: View {
             }
             .padding(.horizontal, 20)
             .toolbar(.hidden, for: .navigationBar)
+            .navigationDestination(isPresented: $completeLogin) {
+                HomeView()
+            }
         }
     }
 }

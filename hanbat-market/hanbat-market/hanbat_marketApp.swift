@@ -8,10 +8,16 @@
 import SwiftUI
 
 @main
-struct hanbat_marketApp: App {
+struct hanbat_marketApp: App {    
+    
+    @StateObject var authManager = SessionManager.shared
+    
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            ContentView().environmentObject(AuthVM())
+                .onAppear(){
+                    authManager.checkSessionCookie()
+                }
         }
     }
 }

@@ -22,5 +22,21 @@ struct AuthRegisterModel: Codable {
 }
 
 struct AuthRegisterResponse: Codable {
-    let data: AuthRegisterModel
+    let data: AuthRegisterData
+}
+
+struct AuthRegisterData: Codable {
+    let mail: String
+}
+
+struct AuthLoginResponse: Codable {
+    let data: String
+}
+
+struct AuthCookieData: Codable {
+    let name: String
+    let value: String
+    let domain: String
+    let path: String
+    let expiresDate: Date?
 }

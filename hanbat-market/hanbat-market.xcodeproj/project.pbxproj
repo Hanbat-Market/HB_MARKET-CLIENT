@@ -18,8 +18,6 @@
 		F58916A62BA32597008EC345 /* CompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916A52BA32597008EC345 /* CompletedView.swift */; };
 		F58916A92BA58850008EC345 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916A82BA58850008EC345 /* AuthModel.swift */; };
 		F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916AA2BA589B0008EC345 /* CommonModel.swift */; };
-		F58916AE2BA58A5C008EC345 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F58916AD2BA58A5C008EC345 /* Alamofire */; };
-		F58916B02BA58A5C008EC345 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F58916AF2BA58A5C008EC345 /* AlamofireDynamic */; };
 		F58916B72BA58B33008EC345 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916B62BA58B33008EC345 /* ApiClient.swift */; };
 		F58916B92BA58B44008EC345 /* ApiLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916B82BA58B44008EC345 /* ApiLogger.swift */; };
 		F58916BB2BA58B52008EC345 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916BA2BA58B52008EC345 /* BaseInterceptor.swift */; };
@@ -27,6 +25,10 @@
 		F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916BE2BA58B7B008EC345 /* AuthRouter.swift */; };
 		F58916C12BA58E19008EC345 /* CommonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916C02BA58E19008EC345 /* CommonStyle.swift */; };
 		F58916C42BA59357008EC345 /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916C32BA59357008EC345 /* AuthVM.swift */; };
+		F58917172BA69782008EC345 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F58917162BA69782008EC345 /* Alamofire */; };
+		F58917192BA69782008EC345 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F58917182BA69782008EC345 /* AlamofireDynamic */; };
+		F589171F2BA81F52008EC345 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589171E2BA81F51008EC345 /* HomeView.swift */; };
+		F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917262BA82C7B008EC345 /* SessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		F58916BE2BA58B7B008EC345 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		F58916C02BA58E19008EC345 /* CommonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStyle.swift; sourceTree = "<group>"; };
 		F58916C32BA59357008EC345 /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
+		F589171E2BA81F51008EC345 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F58917262BA82C7B008EC345 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F58916AE2BA58A5C008EC345 /* Alamofire in Frameworks */,
-				F58916B02BA58A5C008EC345 /* AlamofireDynamic in Frameworks */,
+				F58917172BA69782008EC345 /* Alamofire in Frameworks */,
+				F58917192BA69782008EC345 /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,7 @@
 		F58916722BA1EABD008EC345 /* hanbat-market */ = {
 			isa = PBXGroup;
 			children = (
+				F58917252BA82C6B008EC345 /* Managers */,
 				F58916B12BA58AFA008EC345 /* API */,
 				F58916A72BA587A6008EC345 /* Models */,
 				F58916A02BA313E4008EC345 /* Components */,
@@ -107,6 +112,7 @@
 		F58916992BA3062D008EC345 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F589171D2BA81F45008EC345 /* Home */,
 				F589169C2BA311E8008EC345 /* Auth */,
 			);
 			path = Views;
@@ -185,6 +191,22 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		F589171D2BA81F45008EC345 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F589171E2BA81F51008EC345 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F58917252BA82C6B008EC345 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F58917262BA82C7B008EC345 /* SessionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,8 +224,8 @@
 			);
 			name = "hanbat-market";
 			packageProductDependencies = (
-				F58916AD2BA58A5C008EC345 /* Alamofire */,
-				F58916AF2BA58A5C008EC345 /* AlamofireDynamic */,
+				F58917162BA69782008EC345 /* Alamofire */,
+				F58917182BA69782008EC345 /* AlamofireDynamic */,
 			);
 			productName = "hanbat-market";
 			productReference = F58916702BA1EABD008EC345 /* hanbat-market.app */;
@@ -234,7 +256,7 @@
 			);
 			mainGroup = F58916672BA1EABD008EC345;
 			packageReferences = (
-				F58916AC2BA58A5C008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = F58916712BA1EABD008EC345 /* Products */;
 			projectDirPath = "";
@@ -264,9 +286,11 @@
 			files = (
 				F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */,
 				F589169B2BA3063F008EC345 /* LoginView.swift in Sources */,
+				F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */,
 				F58916A42BA3164B008EC345 /* AuthButton.swift in Sources */,
 				F58916C12BA58E19008EC345 /* CommonStyle.swift in Sources */,
 				F58916BB2BA58B52008EC345 /* BaseInterceptor.swift in Sources */,
+				F589171F2BA81F52008EC345 /* HomeView.swift in Sources */,
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,
 				F58916A62BA32597008EC345 /* CompletedView.swift in Sources */,
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
@@ -489,7 +513,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F58916AC2BA58A5C008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -500,14 +524,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F58916AD2BA58A5C008EC345 /* Alamofire */ = {
+		F58917162BA69782008EC345 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F58916AC2BA58A5C008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		F58916AF2BA58A5C008EC345 /* AlamofireDynamic */ = {
+		F58917182BA69782008EC345 /* AlamofireDynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F58916AC2BA58A5C008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */

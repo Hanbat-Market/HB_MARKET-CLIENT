@@ -11,9 +11,11 @@ import SwiftUI
 struct RegisterView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var authVM: AuthVM
     
     @State var nickname: String = ""
     @State var email: String = ""
+    @State var phoneNumber: String = ""
     @State var password: String = ""
     @State var passwordCheck: String = ""
     
@@ -49,6 +51,10 @@ struct RegisterView: View {
                         AuthInput(placeholder: "이메일 주소", textInput: $email, keyboardType: .emailAddress)
                         Spacer().frame(height: 4)
                         
+                        Text("전화번호*")
+                        AuthInput(placeholder: "전화번호", textInput: $phoneNumber, keyboardType: .phonePad)
+                        Spacer().frame(height: 4)
+                        
                         Text("비밀번호*")
                         AuthInput(placeholder: "비밀번호", textInput: $password, isSecureInput: true)
                         AuthInput(placeholder: "비밀번호 확인", textInput: $passwordCheck, isSecureInput: true)
@@ -61,10 +67,11 @@ struct RegisterView: View {
                     
                     AuthButton(buttonAction: {
                         print("가입하기")
-                        completeRegister = true
+                        authVM.register(email: email, password: password, phoneNumber: phoneNumber, nickname: nickname)
                     }, buttonText: "가입하기")
-                    
-                    
+                    .onReceive(authVM.registraionSuccess, perform: {
+                        completeRegister = true
+                    })
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 50)

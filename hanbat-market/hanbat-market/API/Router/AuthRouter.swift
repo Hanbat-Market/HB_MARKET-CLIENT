@@ -22,17 +22,15 @@ enum AuthRouter : URLRequestConvertible {
     
     var endPoint: String {
         switch self {
-        case .register: return "api/members/new"
-        case .login: return "api/login"
-        default: return ""
+        case .register: return "/api/members/new"
+        case .login: return "/api/members/login"
         }
     }
     
     var method: HTTPMethod {
         switch self {
         case .register: return .post
-        case .login: return .get
-        default: return .get
+        case .login: return .post
         }
     }
     
@@ -40,8 +38,8 @@ enum AuthRouter : URLRequestConvertible {
         switch self {
         case let .login(email, password):
             var params = Parameters()
-            params["email"] = email
-            params["password"] = password
+            params["mail"] = email
+            params["passwd"] = password
             return params
             
         case let .register(email, password, phoneNumber, nickname):
