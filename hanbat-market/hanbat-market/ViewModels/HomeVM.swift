@@ -15,12 +15,21 @@ class HomeVM: ObservableObject {
     @Published var homeResponse: HomeResponse? = nil
     
     var responseSuccessHomeData = PassthroughSubject<(), Never>()
+    var responseError = PassthroughSubject<(), Never>()
     
     func loadHome(){
         print("HomeVM: loadHome() called")
         HomeApiService.loadHome()
             .sink { (completion: Subscribers.Completion<AFError>) in
                 print("HomeVM completion: \(completion)")
+                switch completion {
+                case .finished:
+                    print("loadHome request finished")
+                case .failure(let error):
+                    print("loadHome errorCode: \(String(describing: error.responseCode))")
+                    print("loadHome errorDes: \(String(describing: error.localizedDescription))")
+                    self.responseError.send()
+                }
             } receiveValue: { [weak self] receivedData in
                 print("HomeVM receivedUser: \(receivedData)")
                 self?.homeResponse = receivedData

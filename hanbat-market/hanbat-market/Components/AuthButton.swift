@@ -11,6 +11,7 @@ struct AuthButton: View {
     
     var buttonAction: () -> Void
     var buttonText: String
+    var backGroundColor: Color = CommonStyle.MAIN_COLOR
     
     var body: some View {
         Button(action: buttonAction, label: {
@@ -25,7 +26,7 @@ struct AuthButton: View {
             .padding(.horizontal, 30)
             .padding(.vertical, 20)
             .foregroundColor(.white)
-            .background(CommonStyle.MAIN_COLOR)
+            .background(backGroundColor)
             .cornerRadius(50)
     }
 }

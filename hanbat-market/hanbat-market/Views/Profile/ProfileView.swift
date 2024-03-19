@@ -9,7 +9,13 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        Text("프로필 화면 입니다.")
+        VStack{
+            NavigationBar(navTitle: "나의 마켓")
+            
+            ScrollView{
+                Text("나의 마켓 화면 입니다.")
+            }
+        }
     }
 }
 

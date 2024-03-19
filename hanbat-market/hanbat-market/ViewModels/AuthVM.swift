@@ -14,6 +14,7 @@ class AuthVM: ObservableObject {
     
     @Published var loggedInUser: AuthRegisterData? = nil
     @Published var loggedLogInUser: String? = nil
+    @Published var loginFailed: Bool = false
     
     var registraionSuccess = PassthroughSubject<(), Never>()
     var loginSuccess = PassthroughSubject<(), Never>()
@@ -23,6 +24,13 @@ class AuthVM: ObservableObject {
         AuthApiService.register(email: email, password: password, phoneNumber: phoneNumber, nickname: nickname)
             .sink { (completion: Subscribers.Completion<AFError>) in
                 print("AuthVM completion: \(completion)")
+                switch completion {
+                case .finished:
+                    print("register request finished")
+                case .failure(let error):
+                    print("register errorCode: \(String(describing: error.responseCode))")
+                    print("register errorDes: \(String(describing: error.localizedDescription))")
+                }
             } receiveValue: { [weak self] receivedUser in
                 print("AuthVM receivedUser: \(receivedUser)")
                 self?.loggedInUser = receivedUser
@@ -35,12 +43,13 @@ class AuthVM: ObservableObject {
         print("AuthVM: login() called")
         AuthApiService.login(email: email, password: password)
             .sink { (completion: Subscribers.Completion<AFError>) in
-                print("AuthVM completion: \(completion)")
                 switch completion {
                 case .finished:
-                    print("Login request finished")
+                    print("Login request finished: \(completion)")
                 case .failure(let error):
-                    print("Login request failed: \(error)")
+                    print("Login errorCode: \(String(describing: error.responseCode))")
+                    print("Login errorDes: \(String(describing: error.localizedDescription))")
+                    self.loginFailed = true
                 }
             } receiveValue: { [weak self] receivedUser in
                 print("AuthVM receivedUser: \(receivedUser)")

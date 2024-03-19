@@ -37,6 +37,9 @@
 		F58917392BA8976F008EC345 /* HeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917382BA8976F008EC345 /* HeartView.swift */; };
 		F589173B2BA89779008EC345 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173A2BA89779008EC345 /* ProfileView.swift */; };
 		F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173C2BA8A0BD008EC345 /* CustomTabView.swift */; };
+		F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173E2BA9772F008EC345 /* NavigationBar.swift */; };
+		F58917422BA97851008EC345 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917412BA97851008EC345 /* SettingView.swift */; };
+		F58917442BA97875008EC345 /* BackNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917432BA97875008EC345 /* BackNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,9 @@
 		F58917382BA8976F008EC345 /* HeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartView.swift; sourceTree = "<group>"; };
 		F589173A2BA89779008EC345 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F589173C2BA8A0BD008EC345 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		F589173E2BA9772F008EC345 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		F58917412BA97851008EC345 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		F58917432BA97875008EC345 /* BackNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,7 @@
 		F58916992BA3062D008EC345 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F58917402BA97844008EC345 /* Setting */,
 				F58917352BA89745008EC345 /* Profile */,
 				F58917342BA8973A008EC345 /* Heart */,
 				F58917332BA896F9008EC345 /* Chat */,
@@ -154,6 +161,8 @@
 				F58916A32BA3164B008EC345 /* AuthButton.swift */,
 				F58916C02BA58E19008EC345 /* CommonStyle.swift */,
 				F589173C2BA8A0BD008EC345 /* CustomTabView.swift */,
+				F589173E2BA9772F008EC345 /* NavigationBar.swift */,
+				F58917432BA97875008EC345 /* BackNavigationBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -255,6 +264,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		F58917402BA97844008EC345 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F58917412BA97851008EC345 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */,
+				F58917442BA97875008EC345 /* BackNavigationBar.swift in Sources */,
 				F58917392BA8976F008EC345 /* HeartView.swift in Sources */,
 				F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */,
 				F58917372BA89756008EC345 /* ChatView.swift in Sources */,
@@ -349,12 +367,14 @@
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,
 				F58916A62BA32597008EC345 /* CompletedView.swift in Sources */,
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
+				F58917422BA97851008EC345 /* SettingView.swift in Sources */,
 				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,
 				F58916A92BA58850008EC345 /* AuthModel.swift in Sources */,
 				F58916762BA1EABD008EC345 /* ContentView.swift in Sources */,
 				F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */,
 				F58916C42BA59357008EC345 /* AuthVM.swift in Sources */,
 				F58917302BA85C15008EC345 /* HomeModel.swift in Sources */,
+				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F58916B92BA58B44008EC345 /* ApiLogger.swift in Sources */,
 				F58916B72BA58B33008EC345 /* ApiClient.swift in Sources */,

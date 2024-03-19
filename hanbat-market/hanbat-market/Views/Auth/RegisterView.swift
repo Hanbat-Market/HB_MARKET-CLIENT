@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-
 struct RegisterView: View {
     
-    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var authVM: AuthVM
     
     @State var nickname: String = ""
@@ -26,7 +24,7 @@ struct RegisterView: View {
         
         VStack{
             
-            authHeader
+            BackNavigationBar()
             
             ScrollView{
                 
@@ -81,22 +79,6 @@ struct RegisterView: View {
                 }
             }
         }
-    }
-    
-    var authHeader : some View {
-        HStack{
-            Spacer().frame(width: 20)
-            Button{
-                self.dismiss()
-            } label: {
-                Image(systemName: "chevron.left")
-                    .font(.system(size: 20))
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.black)
-            }
-            Spacer()
-        }
-        .padding(.vertical, 20)
     }
 }
 

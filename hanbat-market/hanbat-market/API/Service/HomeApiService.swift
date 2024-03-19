@@ -17,6 +17,7 @@ enum HomeApiService {
         
         return ApiClient.shared.session
             .request(HomeRouter.loadHome)
+            .validate(statusCode: 200..<300)
             .publishDecodable(type: HomeResponse.self)
             .value()
             .map{ receivedValue in

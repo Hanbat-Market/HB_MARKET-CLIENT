@@ -13,7 +13,7 @@ struct CommonStyle {
     static var BLACK_COLOR = Color(hex: "000000")
     static var WHITE_COLOR = Color(hex: "FFFFFF")
     static var GRAY_COLOR = Color(hex: "8C8C8C")
-    
+    static var DIVIDER_COLOR = Color(hex: "D9D9D9")
     
 }
 

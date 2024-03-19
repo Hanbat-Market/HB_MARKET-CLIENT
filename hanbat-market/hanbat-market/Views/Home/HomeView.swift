@@ -10,21 +10,22 @@ import SwiftUI
 struct HomeView: View {
     
     @StateObject var homeVM = HomeVM()
+    @StateObject var authManager = SessionManager.shared
     
-    @State var isLogout = false
+    @State var isSessionOut: Bool = false
     
     var body: some View {
         
         VStack{
             
-            authHeader
+            NavigationBar(navTitle: "홈")
             
             ScrollView{
                 
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 90))], spacing: 4) {
                     ForEach(homeVM.homeResponse?.data.articles ?? [], id: \.id) { item in
                         VStack(alignment:.leading, spacing: 8){
-                            AsyncImage(url: URL(string: item.fileName ?? "https://cdn.pixabay.com/photo/2023/08/05/14/24/twilight-8171206_1280.jpg"), content: { Image in
+                            AsyncImage(url: URL(string: item.filePaths.first ?? "https://cdn.pixabay.com/photo/2023/08/05/14/24/twilight-8171206_1280.jpg"), content: { Image in
                                 Image.resizable()
                             }, placeholder: {
                                 ProgressView()
@@ -52,45 +53,20 @@ struct HomeView: View {
                 }
                 .padding(.vertical, 16)
                 .padding(.horizontal, 12)
-                
-                Button(action: {
-                    isLogout.toggle()
-                    SessionManager.shared.logout()
-                }, label: {
-                    Text("로그아웃")
-                })
             }
             .toolbar(.hidden, for: .navigationBar)
             .onAppear{
                 homeVM.loadHome()
             }
-        }.navigationDestination(isPresented: $isLogout, destination: {
-            LoginView()
-        })
-    }
-    
-    var authHeader : some View {
-        HStack{
-            Text("홈")
-                
-
-            Spacer()
-            Button(action: {}) {
-                Image(systemName: "magnifyingglass")
-            }
-            
-            Spacer().frame(width: 16)
-            
-            Button(action: {}, label: {
-                Image(systemName: "gearshape")
+            .onReceive(homeVM.responseError, perform: {
+                isSessionOut = true
+            })
+            .alert(isPresented: $isSessionOut, content: {
+                Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
+                    authManager.isLoggedIn = false
+                }))
             })
         }
-        .font(.system(size: 20))
-        .fontWeight(.bold)
-        .padding(.vertical, 14)
-        .padding(.horizontal, 24)
-        .foregroundStyle(CommonStyle.WHITE_COLOR)
-        .background(CommonStyle.MAIN_COLOR)
     }
 }
 

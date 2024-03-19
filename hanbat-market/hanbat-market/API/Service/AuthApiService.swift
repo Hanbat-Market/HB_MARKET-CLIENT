@@ -17,6 +17,7 @@ enum AuthApiService {
         
         return ApiClient.shared.session
             .request(AuthRouter.register(email: email, password: password, phoneNumber: phoneNumber, nickname: nickname))
+            .validate(statusCode: 200..<300)
             .publishDecodable(type: AuthRegisterResponse.self)
             .value()
             .map{ receivedValue in
@@ -30,6 +31,7 @@ enum AuthApiService {
         
         return ApiClient.shared.session
             .request(AuthRouter.login(email: email, password: password))
+            .validate(statusCode: 200..<300)
             .publishDecodable(type: AuthLoginResponse.self)
             .value()
             .map{ receivedValue in

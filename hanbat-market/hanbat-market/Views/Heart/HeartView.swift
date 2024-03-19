@@ -9,7 +9,13 @@ import SwiftUI
 
 struct HeartView: View {
     var body: some View {
-        Text("찜 화면 입니다.")
+        VStack{
+            NavigationBar(navTitle: "찜")
+            
+            ScrollView{
+                Text("찜 화면 입니다.")
+            }
+        }
     }
 }
 
