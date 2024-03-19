@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingView: View {
     
+    @EnvironmentObject var authVM: AuthVM
     @State var isLogout = false
     
     var body: some View {
@@ -43,7 +44,9 @@ struct SettingView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         Button(action: {
                             isLogout.toggle()
-                            SessionManager.shared.logout()
+                            SessionManager.shared.isLoggedIn = false
+                            authVM.logout()
+//                            SessionManager.shared.logout()
                         }, label: {
                             Text("로그아웃")
                         })

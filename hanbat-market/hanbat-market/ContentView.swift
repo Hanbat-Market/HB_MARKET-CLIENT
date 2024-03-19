@@ -52,7 +52,6 @@ struct ContentView: View {
                         }
                         .tag(3)
                 }
-                
                 .padding(.bottom, 8)
                 .accentColor(CommonStyle.MAIN_COLOR)
                 .onAppear{
@@ -60,6 +59,7 @@ struct ContentView: View {
                     appearance.shadowImage = image
                     
                     UITabBar.appearance().standardAppearance = appearance
+                    UITabBar.appearance().backgroundColor = .white
                 }
             }
         } else {

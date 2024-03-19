@@ -23,7 +23,7 @@ class AuthVM: ObservableObject {
         print("AuthVM: register() called")
         AuthApiService.register(email: email, password: password, phoneNumber: phoneNumber, nickname: nickname)
             .sink { (completion: Subscribers.Completion<AFError>) in
-                print("AuthVM completion: \(completion)")
+                print("register completion: \(completion)")
                 switch completion {
                 case .finished:
                     print("register request finished")
@@ -32,7 +32,7 @@ class AuthVM: ObservableObject {
                     print("register errorDes: \(String(describing: error.localizedDescription))")
                 }
             } receiveValue: { [weak self] receivedUser in
-                print("AuthVM receivedUser: \(receivedUser)")
+                print("register receivedUser: \(receivedUser)")
                 self?.loggedInUser = receivedUser
                 self?.registraionSuccess.send()
             }.store(in: &subscription)
@@ -52,17 +52,36 @@ class AuthVM: ObservableObject {
                     self.loginFailed = true
                 }
             } receiveValue: { [weak self] receivedUser in
-                print("AuthVM receivedUser: \(receivedUser)")
+                print("Login receivedUser: \(receivedUser)")
                 self?.loggedLogInUser = receivedUser
                 self?.loginSuccess.send()
                 
-                print("ok?:", receivedUser == "ok")
-                
                 if receivedUser == "ok"{
                     if let sessionCookie = HTTPCookieStorage.shared.cookies?.first(where: { $0.name == "JSESSIONID" }) {
-                        print(sessionCookie)
+                        print("쿠키 저장: ", sessionCookie)
                         SessionManager.shared.saveSessionCookie(cookie: sessionCookie)
                     }
+                }
+            }.store(in: &subscription)
+    }
+    
+    func logout(){
+        print("AuthVM: logout() called")
+        AuthApiService.logout()
+            .sink { (completion: Subscribers.Completion<AFError>) in
+                switch completion {
+                case .finished:
+                    print("logout request finished: \(completion)")
+                case .failure(let error):
+                    print("logout errorCode: \(String(describing: error.responseCode))")
+                    print("logout errorDes: \(String(describing: error.localizedDescription))")
+                    self.loginFailed = true
+                }
+            } receiveValue: { receivedUser in
+                print("logout receivedUser: \(receivedUser)")
+                
+                if receivedUser == "ok"{
+                    SessionManager.shared.logout()
                 }
             }.store(in: &subscription)
     }

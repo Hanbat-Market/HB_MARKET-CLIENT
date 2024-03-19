@@ -14,6 +14,7 @@ enum AuthRouter: URLRequestConvertible {
     
     case register(email: String, password: String, phoneNumber: String, nickname: String)
     case login(email: String, password: String)
+    case logout
     
     var baseURL: URL {
         return URL(string: ApiClient.BASE_URL)!
@@ -23,6 +24,7 @@ enum AuthRouter: URLRequestConvertible {
         switch self {
         case .register: return "/api/members/new"
         case .login: return "/api/members/login"
+        case .logout: return "/api/members/logout"
         }
     }
     
@@ -30,6 +32,7 @@ enum AuthRouter: URLRequestConvertible {
         switch self {
         case .register: return .post
         case .login: return .post
+        case .logout: return .post
         }
     }
     
@@ -48,6 +51,9 @@ enum AuthRouter: URLRequestConvertible {
             params["phoneNumber"] = phoneNumber
             params["nickname"] = nickname
             return params
+            
+        case .logout:
+            return Parameters()
         }
     }
     

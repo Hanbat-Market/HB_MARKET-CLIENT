@@ -40,6 +40,8 @@
 		F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173E2BA9772F008EC345 /* NavigationBar.swift */; };
 		F58917422BA97851008EC345 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917412BA97851008EC345 /* SettingView.swift */; };
 		F58917442BA97875008EC345 /* BackNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917432BA97875008EC345 /* BackNavigationBar.swift */; };
+		F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917492BA9B59E008EC345 /* SaleView.swift */; };
+		F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589174B2BA9C422008EC345 /* SaleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		F589173E2BA9772F008EC345 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		F58917412BA97851008EC345 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		F58917432BA97875008EC345 /* BackNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationBar.swift; sourceTree = "<group>"; };
+		F58917492BA9B59E008EC345 /* SaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleView.swift; sourceTree = "<group>"; };
+		F589174B2BA9C422008EC345 /* SaleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,7 @@
 				F58916A82BA58850008EC345 /* AuthModel.swift */,
 				F58916AA2BA589B0008EC345 /* CommonModel.swift */,
 				F589172F2BA85C15008EC345 /* HomeModel.swift */,
+				F589174B2BA9C422008EC345 /* SaleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				F589171E2BA81F51008EC345 /* HomeView.swift */,
+				F58917492BA9B59E008EC345 /* SaleView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,
 				F58916A62BA32597008EC345 /* CompletedView.swift in Sources */,
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
+				F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */,
 				F58917422BA97851008EC345 /* SettingView.swift in Sources */,
 				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,
 				F58916A92BA58850008EC345 /* AuthModel.swift in Sources */,
@@ -376,6 +383,7 @@
 				F58917302BA85C15008EC345 /* HomeModel.swift in Sources */,
 				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
+				F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */,
 				F58916B92BA58B44008EC345 /* ApiLogger.swift in Sources */,
 				F58916B72BA58B33008EC345 /* ApiClient.swift in Sources */,
 			);
@@ -514,13 +522,14 @@
 				DEVELOPMENT_TEAM = LBF339CHR8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -545,13 +554,14 @@
 				DEVELOPMENT_TEAM = LBF339CHR8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
