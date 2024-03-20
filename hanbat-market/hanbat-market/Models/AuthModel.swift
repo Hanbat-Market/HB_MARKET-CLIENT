@@ -10,13 +10,11 @@ import Foundation
 struct AuthRegisterModel: Codable {
     let email: String
     let password: String
-    let phoneNumber: String
     let nickname: String
     
     private enum CodingKeys: String, CodingKey {
         case email = "mail"
         case password = "passwd"
-        case phoneNumber
         case nickname
     }
 }

@@ -19,3 +19,13 @@ struct SaleModel: Codable {
     let description: String
     let tradingPlace: String
 }
+
+struct SaleResponse: Codable {
+    let data: SaleResponseModel
+}
+
+struct SaleResponseModel: Codable {
+    let title: String
+    let itemName: String
+    let filePaths: [String]
+}

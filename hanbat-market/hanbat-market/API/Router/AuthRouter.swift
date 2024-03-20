@@ -12,7 +12,7 @@ import Alamofire
 // 회원가입, 로그인
 enum AuthRouter: URLRequestConvertible {
     
-    case register(email: String, password: String, phoneNumber: String, nickname: String)
+    case register(email: String, password: String, nickname: String)
     case login(email: String, password: String)
     case logout
     
@@ -44,11 +44,10 @@ enum AuthRouter: URLRequestConvertible {
             params["passwd"] = password
             return params
             
-        case let .register(email, password, phoneNumber, nickname):
+        case let .register(email, password, nickname):
             var params = Parameters()
             params["mail"] = email
             params["passwd"] = password
-            params["phoneNumber"] = phoneNumber
             params["nickname"] = nickname
             return params
             

@@ -19,9 +19,9 @@ class AuthVM: ObservableObject {
     var registraionSuccess = PassthroughSubject<(), Never>()
     var loginSuccess = PassthroughSubject<(), Never>()
     
-    func register(email: String, password: String, phoneNumber: String, nickname: String){
+    func register(email: String, password: String, nickname: String){
         print("AuthVM: register() called")
-        AuthApiService.register(email: email, password: password, phoneNumber: phoneNumber, nickname: nickname)
+        AuthApiService.register(email: email, password: password, nickname: nickname)
             .sink { (completion: Subscribers.Completion<AFError>) in
                 print("register completion: \(completion)")
                 switch completion {

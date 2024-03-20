@@ -12,11 +12,11 @@ import Combine
 // 인증 관련 api 호출
 enum AuthApiService {
     
-    static func register(email: String, password: String, phoneNumber: String, nickname: String) -> AnyPublisher<AuthRegisterData, AFError> {
+    static func register(email: String, password: String, nickname: String) -> AnyPublisher<AuthRegisterData, AFError> {
         print("AuthApiService - register() called")
         
         return ApiClient.shared.session
-            .request(AuthRouter.register(email: email, password: password, phoneNumber: phoneNumber, nickname: nickname))
+            .request(AuthRouter.register(email: email, password: password, nickname: nickname))
             .validate(statusCode: 200..<300)
             .publishDecodable(type: AuthRegisterResponse.self)
             .value()

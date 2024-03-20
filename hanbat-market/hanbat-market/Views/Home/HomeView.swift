@@ -28,7 +28,7 @@ struct HomeView: View {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 90))], spacing: 4) {
                         ForEach(homeVM.homeResponse?.data.articles ?? [], id: \.id) { item in
                             VStack(alignment:.leading, spacing: 8){
-                                AsyncImage(url: URL(string: item.filePaths.first ?? "https://cdn.pixabay.com/photo/2023/08/05/14/24/twilight-8171206_1280.jpg"), content: { Image in
+                                AsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
                                     Image.resizable()
                                 }, placeholder: {
                                     ProgressView()
@@ -74,21 +74,21 @@ struct HomeView: View {
                 .padding(.bottom, 12)
                 .padding(.trailing, 16)
             }
-            .toolbar(.hidden, for: .navigationBar)
-            .onAppear{
-                homeVM.loadHome()
-            }
-            .onReceive(homeVM.responseError, perform: {
-                isSessionOut = true
-            })
-            .alert(isPresented: $isSessionOut, content: {
-                Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
-                    authManager.isLoggedIn = false
-                }))
-            })
-            .navigationDestination(isPresented: $moveToSaleView) {
-                SaleView()
-            }
+        }
+        .toolbar(.hidden, for: .navigationBar)
+        .onAppear{
+            homeVM.loadHome()
+        }
+        .onReceive(homeVM.responseError, perform: {
+            isSessionOut = true
+        })
+        .alert(isPresented: $isSessionOut, content: {
+            Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
+                authManager.isLoggedIn = false
+            }))
+        })
+        .navigationDestination(isPresented: $moveToSaleView) {
+            SaleView()
         }
     }
 }

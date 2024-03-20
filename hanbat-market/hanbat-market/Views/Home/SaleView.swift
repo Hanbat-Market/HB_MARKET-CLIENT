@@ -7,14 +7,19 @@
 
 import SwiftUI
 import PhotosUI
+import MapKit
 
 let INIT_DESCRIPTION = "상품에 대한 설명을 작성해주세요.\n설명을 자세히 적을수록 구매자가 신뢰할 수 있는 게시글이 완성돼요."
 
 struct SaleView: View {
     
-    @State private var productName: String = ""
-    @State private var productPrice: String = ""
+    @StateObject var saleVM = SaleVM()
+    
+    @State private var title: String = ""
+    @State private var itemName: String = ""
+    @State private var price: String = ""
     @State private var description: String = INIT_DESCRIPTION
+    @State private var tradingPlace: String = ""
     
     @State private var images: [UIImage] = []
     @State private var photosPickerItems: [PhotosPickerItem] = []
@@ -22,14 +27,26 @@ struct SaleView: View {
     var body: some View {
         VStack {
             
-            BackNavigationBar(navTitle: "상품 판매하기")
+            BackNavigationBar(navTitle: "상품 판매하기", customButtonAction: {
+                print("완료")
+                saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
+            }, customButtonText: "완료")
             
             ScrollView {
                 
                 VStack(alignment:.leading, spacing: 16){
+                    Text("제목")
+                        .padding(.leading, 6)
+                    AuthInput(placeholder: "제목을 입력해주세요.", textInput: $title, keyboardType: .default)
+                }
+                .padding(.horizontal, 16)
+                
+                Spacer().frame(height: 30)
+                
+                VStack(alignment:.leading, spacing: 16){
                     Text("상품명")
                         .padding(.leading, 6)
-                    AuthInput(placeholder: "상품명을 입력해주세요.", textInput: $productName, keyboardType: .default)
+                    AuthInput(placeholder: "상품명을 입력해주세요.", textInput: $itemName, keyboardType: .default)
                 }
                 .padding(.horizontal, 16)
                 
@@ -39,7 +56,18 @@ struct SaleView: View {
                     Text("가격 (원)")
                         .padding(.leading, 6)
                     // TODO: 가격을 INT로 형변환해서 전송하기
-                    AuthInput(placeholder: "가격을 입력해주세요.", textInput: $productPrice, keyboardType: .numberPad)
+                    AuthInput(placeholder: "가격을 입력해주세요.", textInput: $price, keyboardType: .numberPad)
+                }
+                .padding(.horizontal, 16)
+                
+                Spacer().frame(height: 30)
+                
+                VStack(alignment:.leading, spacing: 16){
+                    Text("희망 거래 장소")
+                        .padding(.leading, 6)
+                    
+                    AuthInput(placeholder: "만날 장소를 입력해주세요.", textInput: $tradingPlace, keyboardType: .default)
+                    
                 }
                 .padding(.horizontal, 16)
                 
@@ -70,7 +98,7 @@ struct SaleView: View {
                 VStack(alignment:.leading, spacing: 16){
                     Text("사진 등록")
                         .padding(.leading, 6)
-
+                    
                     ScrollView(.horizontal) {
                         HStack(spacing: 16) {
                             
@@ -97,16 +125,11 @@ struct SaleView: View {
                     }
                 }
                 .padding(.horizontal, 16)
-                
             }
-            .padding(.vertical, 10)
-            
         }
         .toolbar(.hidden, for: .navigationBar)
         .onChange(of: photosPickerItems) { _, _ in
             Task {
-                print("images", images)
-                print("photosPickerItems", photosPickerItems)
                 if !images.isEmpty {
                     images.removeAll()
                 }
@@ -115,7 +138,7 @@ struct SaleView: View {
         }
     }
     
-    func addPhotoItems() async {
+    private func addPhotoItems() async {
         for item in photosPickerItems {
             if let data = try? await item.loadTransferable(type: Data.self) {
                 if let image = UIImage(data: data) {
@@ -123,6 +146,7 @@ struct SaleView: View {
                 }
             }
         }
+        print("images", images)
     }
 }
 

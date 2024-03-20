@@ -28,7 +28,11 @@ class HomeVM: ObservableObject {
                 case .failure(let error):
                     print("loadHome errorCode: \(String(describing: error.responseCode))")
                     print("loadHome errorDes: \(String(describing: error.localizedDescription))")
-                    self.responseError.send()
+                    if let errorCode = error.responseCode {
+                        if errorCode == 401{
+                            self.responseError.send()
+                        }
+                    }
                 }
             } receiveValue: { [weak self] receivedData in
                 print("HomeVM receivedUser: \(receivedData)")

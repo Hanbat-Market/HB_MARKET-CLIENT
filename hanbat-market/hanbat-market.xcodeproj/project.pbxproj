@@ -42,6 +42,9 @@
 		F58917442BA97875008EC345 /* BackNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917432BA97875008EC345 /* BackNavigationBar.swift */; };
 		F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917492BA9B59E008EC345 /* SaleView.swift */; };
 		F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589174B2BA9C422008EC345 /* SaleModel.swift */; };
+		F589174E2BAAA551008EC345 /* SaleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589174D2BAAA551008EC345 /* SaleRouter.swift */; };
+		F58917502BAABB8A008EC345 /* SaleApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589174F2BAABB8A008EC345 /* SaleApiService.swift */; };
+		F58917522BAABC4C008EC345 /* SaleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917512BAABC4C008EC345 /* SaleVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +82,9 @@
 		F58917432BA97875008EC345 /* BackNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationBar.swift; sourceTree = "<group>"; };
 		F58917492BA9B59E008EC345 /* SaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleView.swift; sourceTree = "<group>"; };
 		F589174B2BA9C422008EC345 /* SaleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleModel.swift; sourceTree = "<group>"; };
+		F589174D2BAAA551008EC345 /* SaleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleRouter.swift; sourceTree = "<group>"; };
+		F589174F2BAABB8A008EC345 /* SaleApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleApiService.swift; sourceTree = "<group>"; };
+		F58917512BAABC4C008EC345 /* SaleVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +205,7 @@
 			children = (
 				F58916BE2BA58B7B008EC345 /* AuthRouter.swift */,
 				F589172B2BA85B2E008EC345 /* HomeRouter.swift */,
+				F589174D2BAAA551008EC345 /* SaleRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -216,6 +223,7 @@
 			children = (
 				F58916BC2BA58B71008EC345 /* AuthApiService.swift */,
 				F589172D2BA85BC1008EC345 /* HomeApiService.swift */,
+				F589174F2BAABB8A008EC345 /* SaleApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 			children = (
 				F58916C32BA59357008EC345 /* AuthVM.swift */,
 				F58917312BA85D6F008EC345 /* HomeVM.swift */,
+				F58917512BAABC4C008EC345 /* SaleVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -371,7 +380,9 @@
 				F589172E2BA85BC1008EC345 /* HomeApiService.swift in Sources */,
 				F589171F2BA81F52008EC345 /* HomeView.swift in Sources */,
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,
+				F58917502BAABB8A008EC345 /* SaleApiService.swift in Sources */,
 				F58916A62BA32597008EC345 /* CompletedView.swift in Sources */,
+				F589174E2BAAA551008EC345 /* SaleRouter.swift in Sources */,
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
 				F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */,
 				F58917422BA97851008EC345 /* SettingView.swift in Sources */,
@@ -384,6 +395,7 @@
 				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */,
+				F58917522BAABC4C008EC345 /* SaleVM.swift in Sources */,
 				F58916B92BA58B44008EC345 /* ApiLogger.swift in Sources */,
 				F58916B72BA58B33008EC345 /* ApiClient.swift in Sources */,
 			);
@@ -522,7 +534,8 @@
 				DEVELOPMENT_TEAM = LBF339CHR8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한을 허용해주세요.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 위치 권한이 필요해요.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한이 필요해요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -554,7 +567,8 @@
 				DEVELOPMENT_TEAM = LBF339CHR8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한을 허용해주세요.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 위치 권한이 필요해요.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한이 필요해요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

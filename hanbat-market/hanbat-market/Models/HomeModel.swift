@@ -26,6 +26,6 @@ struct HomeArticleModel: Codable {
     let itemName: String
     let price: Int
     let memberNickname: String
-    let filePaths: [String]
+    let thumbnailFilePath: String
     let createdAt: String
 }

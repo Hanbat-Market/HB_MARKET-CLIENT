@@ -12,6 +12,8 @@ struct BackNavigationBar: View {
     @Environment(\.dismiss) var dismiss
     
     var navTitle: String = ""
+    var customButtonAction: () -> Void = {}
+    var customButtonText: String = ""
     
     var body: some View {
         HStack(spacing: 0){
@@ -27,10 +29,22 @@ struct BackNavigationBar: View {
             Text(navTitle)
                 .font(.system(size: 18))
                 .fontWeight(.bold)
-                .padding(.trailing, 20)
+                .padding(.horizontal, 20)
             Spacer()
+            
+            if !customButtonText.isEmpty {
+                Button(action: customButtonAction) {
+                    Text(customButtonText)
+                }
+                .foregroundStyle(CommonStyle.GRAY_COLOR)
+                .padding(.trailing, 20)
+            }
         }
         .padding(.top, 20)
         .padding(.bottom, 12)
     }
+}
+
+#Preview {
+    BackNavigationBar(navTitle: "판매하기", customButtonText: "완료")
 }
