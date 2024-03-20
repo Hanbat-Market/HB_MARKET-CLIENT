@@ -45,6 +45,9 @@
 		F589174E2BAAA551008EC345 /* SaleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589174D2BAAA551008EC345 /* SaleRouter.swift */; };
 		F58917502BAABB8A008EC345 /* SaleApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589174F2BAABB8A008EC345 /* SaleApiService.swift */; };
 		F58917522BAABC4C008EC345 /* SaleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917512BAABC4C008EC345 /* SaleVM.swift */; };
+		F58917542BAB147E008EC345 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917532BAB147E008EC345 /* ArticleModel.swift */; };
+		F58917562BAB15A0008EC345 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917552BAB15A0008EC345 /* ArticleView.swift */; };
+		F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917582BAB30FD008EC345 /* DateUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +88,9 @@
 		F589174D2BAAA551008EC345 /* SaleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleRouter.swift; sourceTree = "<group>"; };
 		F589174F2BAABB8A008EC345 /* SaleApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleApiService.swift; sourceTree = "<group>"; };
 		F58917512BAABC4C008EC345 /* SaleVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleVM.swift; sourceTree = "<group>"; };
+		F58917532BAB147E008EC345 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		F58917552BAB15A0008EC345 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		F58917582BAB30FD008EC345 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,7 @@
 		F58916722BA1EABD008EC345 /* hanbat-market */ = {
 			isa = PBXGroup;
 			children = (
+				F58917572BAB30EE008EC345 /* Utils */,
 				F58917252BA82C6B008EC345 /* Managers */,
 				F58916B12BA58AFA008EC345 /* API */,
 				F58916A72BA587A6008EC345 /* Models */,
@@ -184,6 +191,7 @@
 				F58916AA2BA589B0008EC345 /* CommonModel.swift */,
 				F589172F2BA85C15008EC345 /* HomeModel.swift */,
 				F589174B2BA9C422008EC345 /* SaleModel.swift */,
+				F58917532BAB147E008EC345 /* ArticleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,6 +251,7 @@
 			children = (
 				F589171E2BA81F51008EC345 /* HomeView.swift */,
 				F58917492BA9B59E008EC345 /* SaleView.swift */,
+				F58917552BAB15A0008EC345 /* ArticleView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -285,6 +294,14 @@
 				F58917412BA97851008EC345 /* SettingView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		F58917572BAB30EE008EC345 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F58917582BAB30FD008EC345 /* DateUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +388,7 @@
 				F58917372BA89756008EC345 /* ChatView.swift in Sources */,
 				F589169B2BA3063F008EC345 /* LoginView.swift in Sources */,
 				F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */,
+				F58917562BAB15A0008EC345 /* ArticleView.swift in Sources */,
 				F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */,
 				F58916A42BA3164B008EC345 /* AuthButton.swift in Sources */,
 				F589173B2BA89779008EC345 /* ProfileView.swift in Sources */,
@@ -386,6 +404,7 @@
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
 				F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */,
 				F58917422BA97851008EC345 /* SettingView.swift in Sources */,
+				F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */,
 				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,
 				F58916A92BA58850008EC345 /* AuthModel.swift in Sources */,
 				F58916762BA1EABD008EC345 /* ContentView.swift in Sources */,
@@ -395,6 +414,7 @@
 				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */,
+				F58917542BAB147E008EC345 /* ArticleModel.swift in Sources */,
 				F58917522BAABC4C008EC345 /* SaleVM.swift in Sources */,
 				F58916B92BA58B44008EC345 /* ApiLogger.swift in Sources */,
 				F58916B72BA58B33008EC345 /* ApiClient.swift in Sources */,

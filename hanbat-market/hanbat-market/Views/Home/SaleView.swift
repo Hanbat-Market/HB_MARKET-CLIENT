@@ -14,6 +14,7 @@ let INIT_DESCRIPTION = "상품에 대한 설명을 작성해주세요.\n설명�
 struct SaleView: View {
     
     @StateObject var saleVM = SaleVM()
+    @Environment(\.dismiss) private var dismiss
     
     @State private var title: String = ""
     @State private var itemName: String = ""
@@ -23,14 +24,18 @@ struct SaleView: View {
     
     @State private var images: [UIImage] = []
     @State private var photosPickerItems: [PhotosPickerItem] = []
+    @State private var isSuccessUpload: Bool = false
     
     var body: some View {
         VStack {
             
             BackNavigationBar(navTitle: "상품 판매하기", customButtonAction: {
                 print("완료")
-                saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
+                if !isSuccessUpload {
+                    saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
+                }
             }, customButtonText: "완료")
+            .disabled(isSuccessUpload)
             
             ScrollView {
                 
@@ -122,11 +127,16 @@ struct SaleView: View {
                                     )
                             }
                         }
-                    }
+                    }.scrollIndicators(.hidden)
                 }
                 .padding(.horizontal, 16)
             }
         }
+        .padding(.bottom, 16)
+        .ignoresSafeArea(edges: .bottom)
+        .alert(isPresented: $saleVM.registerFailed, content: {
+            Alert(title: Text("업로드 실패"), message: Text("작성 내용을 확인해주세요."), dismissButton: .default(Text("확인")))
+        })
         .toolbar(.hidden, for: .navigationBar)
         .onChange(of: photosPickerItems) { _, _ in
             Task {
@@ -136,6 +146,10 @@ struct SaleView: View {
                 await addPhotoItems()
             }
         }
+        .onReceive(saleVM.registraionSuccess, perform: {
+            self.dismiss()
+            isSuccessUpload = true
+        })
     }
     
     private func addPhotoItems() async {

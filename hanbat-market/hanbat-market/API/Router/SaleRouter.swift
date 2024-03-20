@@ -14,6 +14,7 @@ import Alamofire
 enum SaleRouter: URLRequestConvertible {
     
     case register(title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage])
+    case fetchArticle(articleId: Int)
     
     var baseURL: URL {
         return URL(string: ApiClient.BASE_URL)!
@@ -22,12 +23,14 @@ enum SaleRouter: URLRequestConvertible {
     var endPoint: String {
         switch self {
         case .register: return "/api/articles/new"
+        case .fetchArticle(let articleId): return "/api/articles/\(articleId)"
         }
     }
     
     var method: HTTPMethod {
         switch self {
         case .register: return .post
+        case .fetchArticle: return .get
         }
     }
     
@@ -48,6 +51,8 @@ enum SaleRouter: URLRequestConvertible {
             
             params["articleCreateRequestDto"] = SaleModel(title: title, price: price, itemName: itemName, description: description, tradingPlace: tradingPlace)
             return params
+            
+        case .fetchArticle: return [:]
         }
     }
     
@@ -57,9 +62,10 @@ enum SaleRouter: URLRequestConvertible {
         var request = URLRequest(url: url)
         
         request.method = method
-        request.headers.add(.contentType("multipart/form-data"))
         
-        request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+        if method == .post {
+            request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+        }
         
         return request
     }

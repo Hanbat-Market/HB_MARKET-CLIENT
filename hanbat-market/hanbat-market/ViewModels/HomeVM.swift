@@ -39,7 +39,6 @@ class HomeVM: ObservableObject {
                 self?.homeResponse = receivedData
                 self?.responseSuccessHomeData.send()
             }.store(in: &subscription)
-        
     }
 }
 
