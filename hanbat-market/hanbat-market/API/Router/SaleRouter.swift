@@ -15,6 +15,8 @@ enum SaleRouter: URLRequestConvertible {
     
     case register(title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage])
     case fetchArticle(articleId: Int)
+    case fetchSalesHistory
+    case fetchPurchaseHistory
     
     var baseURL: URL {
         return URL(string: ApiClient.BASE_URL)!
@@ -24,6 +26,8 @@ enum SaleRouter: URLRequestConvertible {
         switch self {
         case .register: return "/api/articles/new"
         case .fetchArticle(let articleId): return "/api/articles/\(articleId)"
+        case .fetchSalesHistory: return "/api/salesHistory"
+        case .fetchPurchaseHistory: return "/api/purchaseHistory"
         }
     }
     
@@ -31,6 +35,8 @@ enum SaleRouter: URLRequestConvertible {
         switch self {
         case .register: return .post
         case .fetchArticle: return .get
+        case .fetchSalesHistory: return .get
+        case .fetchPurchaseHistory: return .get
         }
     }
     
@@ -53,6 +59,8 @@ enum SaleRouter: URLRequestConvertible {
             return params
             
         case .fetchArticle: return [:]
+        case .fetchSalesHistory: return [:]
+        case .fetchPurchaseHistory: return [:]
         }
     }
     

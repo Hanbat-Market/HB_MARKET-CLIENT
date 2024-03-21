@@ -79,5 +79,59 @@ class SaleVM: ObservableObject {
             }
             .store(in: &subscription)
     }
+    
+    @Published var salesHistory: SalesHistoryResponse? = nil
+    
+    var salesHistoryItems: [SaleHistory] {
+        guard let sales = salesHistory?.data.salesDtos,
+              let reserved = salesHistory?.data.reservedDtos,
+              let completed = salesHistory?.data.completedDtos else { return [] }
+        
+        
+        return sales + reserved + completed
+    }
+    
+    func fetchSalesHistory() {
+        SaleApiService.fetchSalesHistroy()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("fetchSalesHistroy request finished")
+                case .failure(let error):
+                    print("fetchSalesHistroy request errorCode \(String(describing: error.responseCode))" )
+                    print("fetchSalesHistroy request errorDes", error.localizedDescription)
+                }
+            } receiveValue: { [weak self] salesHistory in
+                print("Received fetchSalesHistroy: \(salesHistory)")
+                self?.salesHistory = salesHistory
+            }
+            .store(in: &subscription)
+    }
+    
+    @Published var purchaseHistory: PurchaseHistoryResponse? = nil
+    
+    var purchaseHistoryItems: [SaleHistory] {
+        guard let reserved = purchaseHistory?.data.reservedDtos,
+              let completed = purchaseHistory?.data.completedDtos else { return [] }
+        
+        return reserved + completed
+    }
+    
+    func fetchPurchaseHistory() {
+        SaleApiService.fetchPurchaseHistory()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("fetchPurchaseHistory request finished")
+                case .failure(let error):
+                    print("fetchPurchaseHistory request errorCode \(String(describing: error.responseCode))" )
+                    print("fetchPurchaseHistory request errorDes", error.localizedDescription)
+                }
+            } receiveValue: { [weak self] purchaseHistory in
+                print("Received fetchPurchaseHistory: \(purchaseHistory)")
+                self?.purchaseHistory = purchaseHistory
+            }
+            .store(in: &subscription)
+    }
 }
 

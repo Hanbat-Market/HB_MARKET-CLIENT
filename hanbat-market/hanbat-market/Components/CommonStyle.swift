@@ -16,6 +16,9 @@ struct CommonStyle {
     static var DIVIDER_COLOR = Color(hex: "D9D9D9")
     static var PLACEHOLDER_COLOR = Color(hex: "CCCCCC")
     
+    // Assets Color
+    static var HEART_COLOR = Color(hex: "FF4F59")
+    
 }
 
 // #이 있으면 제거 후 문자열로 RGB 추출

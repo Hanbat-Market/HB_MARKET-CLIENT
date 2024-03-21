@@ -19,7 +19,7 @@ struct ArticleView: View {
             if let article = saleVM.article {
                 VStack {
                     
-                    BackNavigationBar(navTitle: "\(article.nickname)님의 게시글")
+                    BackNavigationIconBar(navTitle: "\(article.nickname)님의 게시글",customButtonAction: {}, customButtonIcomImage: "heart", customButtonIconColor: CommonStyle.HEART_COLOR)
                     
                     ScrollView{
                         
@@ -76,41 +76,44 @@ struct ArticleView: View {
                             }
                             
                             
-                            Spacer().frame(height: 10)
+                            Spacer().frame(height: 16)
                             
                             Divider()
                                 .background(CommonStyle.DIVIDER_COLOR)
                             
-                            Spacer().frame(height: 20)
+                            Spacer().frame(height: 16)
                             
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(article.title)
-                                    .font(.system(size: 28))
+                                    .font(.system(size: 30))
                                     .fontWeight(.bold)
-                                Text(DateUtils.relativeTimeString(from: article.createdAt))
+                                Text("\(DateUtils.relativeTimeString(from: article.createdAt)) · 관심 \(article.preemptionItemSize)")
+                                    .font(.system(size: 16))
+                                    .foregroundStyle(CommonStyle.GRAY_COLOR)
                             }
                             
                             Spacer().frame(height: 16)
                             
                             VStack(alignment: .leading, spacing: 16) {
                                 Text(article.description)
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 20))
                                     .multilineTextAlignment(.leading)
                                 
                                 Spacer().frame(height: 10)
                                 
                                 Text("거래 희망 장소")
-                                    .font(.system(size: 20))
+                                    .font(.system(size: 24))
                                     .fontWeight(.bold)
                                 Text(article.tradingPlace)
+                                    .font(.system(size: 20))
                                 
                                 Spacer().frame(height: 10)
                                 
                                 Text("판매 상태")
-                                    .font(.system(size: 20))
+                                    .font(.system(size: 24))
                                     .fontWeight(.bold)
                                 Text(article.articleStatus == "OPEN" ? "판매 중": "판매 완료")
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 20))
                                     .fontWeight(.medium)
                             }
                             
@@ -120,7 +123,7 @@ struct ArticleView: View {
                 .onAppear {
                     currentImage = 0
                 }
-                .padding(.bottom, 16)
+                .padding(.bottom, 30)
                 .ignoresSafeArea(edges: .bottom)
             }
             else {

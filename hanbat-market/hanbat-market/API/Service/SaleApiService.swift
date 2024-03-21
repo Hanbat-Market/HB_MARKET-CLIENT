@@ -68,4 +68,22 @@ enum SaleApiService {
             }
             .eraseToAnyPublisher()
     }
+    
+    static func fetchSalesHistroy() -> AnyPublisher<SalesHistoryResponse, AFError> {
+        return ApiClient.shared.session
+            .request(SaleRouter.fetchSalesHistory)
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: SalesHistoryResponse.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
+    
+    static func fetchPurchaseHistory() -> AnyPublisher<PurchaseHistoryResponse, AFError> {
+        return ApiClient.shared.session
+            .request(SaleRouter.fetchPurchaseHistory)
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: PurchaseHistoryResponse.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
 }

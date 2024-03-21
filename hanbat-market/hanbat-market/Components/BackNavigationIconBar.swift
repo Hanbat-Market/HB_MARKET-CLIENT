@@ -1,19 +1,20 @@
 //
-//  BackNavigationBar.swift
+//  BackNavigationIconBar.swift
 //  hanbat-market
 //
-//  Created by dongs on 3/19/24.
+//  Created by dongs on 3/21/24.
 //
 
 import SwiftUI
 
-struct BackNavigationBar: View {
+struct BackNavigationIconBar: View {
     
     @Environment(\.dismiss) var dismiss
     
     var navTitle: String = ""
     var customButtonAction: () -> Void = {}
-    var customButtonText: String = ""
+    var customButtonIcomImage: String = ""
+    var customButtonIconColor: Color = Color.white
     
     var body: some View {
         HStack(spacing: 0){
@@ -32,11 +33,11 @@ struct BackNavigationBar: View {
                 .padding(.horizontal, 20)
             Spacer()
             
-            if !customButtonText.isEmpty {
+            if !customButtonIcomImage.isEmpty {
                 Button(action: customButtonAction) {
-                    if !customButtonText.isEmpty{
-                        Text(customButtonText)
-                    }
+                    Image(systemName: customButtonIcomImage)
+                        .font(.system(size: 18))
+                        .foregroundStyle(customButtonIconColor)
                 }
                 .foregroundStyle(CommonStyle.GRAY_COLOR)
                 .padding(.trailing, 20)

@@ -9,7 +9,6 @@ import Foundation
 
 struct DateUtils {
     static func relativeTimeString(from dateString: String) -> String {
-        print("[날짜]", dateString)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
