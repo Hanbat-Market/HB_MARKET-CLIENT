@@ -44,9 +44,6 @@ struct SettingView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         Button(action: {
                             isLogout.toggle()
-                            SessionManager.shared.isLoggedIn = false
-                            authVM.logout()
-//                            SessionManager.shared.logout()
                         }, label: {
                             Text("로그아웃")
                         })
@@ -59,11 +56,16 @@ struct SettingView: View {
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
         }
+        .alert(isPresented: $isLogout, content: {
+            Alert(title: Text("로그아웃"), message: Text("정말 로그아웃 하시겠습니까?"), primaryButton: .destructive(Text("취소"), action: {
+                isLogout = false
+            }), secondaryButton: .cancel(Text("확인"), action: {
+                authVM.logout()
+                SessionManager.shared.isLoggedIn = false
+            }))
+        })
         .toolbar(.hidden, for: .navigationBar)
         .toolbar(.hidden, for: .tabBar)
-        .navigationDestination(isPresented: $isLogout, destination: {
-            LoginView()
-        })
     }
 }
 

@@ -36,8 +36,13 @@ struct CompletedView: View {
         }
         .padding(.horizontal, 20)
         .toolbar(.hidden, for: .navigationBar)
+        .gesture(DragGesture()
+            .onChanged{_ in}
+            .onEnded{_ in}
+        )
     }
 }
+
 #Preview {
     CompletedView()
 }

@@ -65,6 +65,7 @@ struct RegisterView: View {
                     .onReceive(authVM.registraionSuccess, perform: {
                         completeRegister = true
                     })
+                    .disabled(completeRegister)
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 50)

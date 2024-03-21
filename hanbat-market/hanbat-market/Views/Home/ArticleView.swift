@@ -32,24 +32,23 @@ struct ArticleView: View {
                                         
                                         ZStack(alignment: .bottom){
                                             AsyncImage(url: URL(string: article.filePaths[index]), content: { Image in
-                                                withAnimation {
-                                                    Image.resizable()
-                                                }
+                                                
+                                                Image
+                                                    .resizable()
+                                                
                                                 
                                             }, placeholder: {
                                                 ProgressView()
                                             })
-                                            .frame(width: UIScreen.main.bounds.width, height: 280)
                                             .aspectRatio(contentMode: .fill)
+                                            .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+                                            .frame(height: 320)
                                             
                                             HStack {
                                                 ForEach(0..<article.filePaths.count, id: \.self) { cIndex in
-                                                    withAnimation {
-                                                        Circle()
-                                                            .frame(width: 10, height: 10)
-                                                            .foregroundColor(cIndex == index ? .white : .gray)
-                                                    }
-                                                    
+                                                    Circle()
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(cIndex == index ? CommonStyle.WHITE_COLOR : CommonStyle.PLACEHOLDER_COLOR)
                                                 }
                                             }
                                             .padding(.vertical, 10)
@@ -59,66 +58,66 @@ struct ArticleView: View {
                                 }
                             }
                         }
-                    }
-                    .scrollIndicators(.hidden)
-                    
-                    Spacer().frame(height: 10)
-                    
-                    VStack(alignment: .leading){
-                        
-                        
-                        HStack{
-                            Image(systemName: "person.crop.circle.fill")
-                                .font(.system(size: 20))
-                            
-                            Text(article.nickname)
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                        }
-                        
-                        
-                        Spacer().frame(height: 10)
-                        
-                        Divider()
-                            .background(CommonStyle.DIVIDER_COLOR)
+                        .scrollIndicators(.hidden)
+                        .scrollTargetBehavior(.paging)
                         
                         Spacer().frame(height: 20)
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(article.title)
-                                .font(.system(size: 28))
-                                .fontWeight(.bold)
-                            Text(DateUtils.relativeTimeString(from: article.createdAt))
-                        }
-                        
-                        Spacer().frame(height: 16)
-                        
-                        VStack(alignment: .leading, spacing: 16) {
-                            Text(article.description)
-                                .font(.system(size: 16))
-                                .multilineTextAlignment(.leading)
+                        VStack(alignment: .leading){
+                            
+                            
+                            HStack{
+                                Image(systemName: "person.crop.circle.fill")
+                                    .font(.system(size: 20))
+                                
+                                Text(article.nickname)
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                            }
+                            
                             
                             Spacer().frame(height: 10)
                             
-                            Text("거래 희망 장소")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                            Text(article.tradingPlace)
+                            Divider()
+                                .background(CommonStyle.DIVIDER_COLOR)
                             
-                            Spacer().frame(height: 10)
+                            Spacer().frame(height: 20)
                             
-                            Text("판매 상태")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                            Text(article.articleStatus == "OPEN" ? "판매 중": "판매 완료")
-                                .font(.system(size: 16))
-                                .fontWeight(.medium)
-                        }
-                        
-                    }.padding(.horizontal, 26)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(article.title)
+                                    .font(.system(size: 28))
+                                    .fontWeight(.bold)
+                                Text(DateUtils.relativeTimeString(from: article.createdAt))
+                            }
+                            
+                            Spacer().frame(height: 16)
+                            
+                            VStack(alignment: .leading, spacing: 16) {
+                                Text(article.description)
+                                    .font(.system(size: 16))
+                                    .multilineTextAlignment(.leading)
+                                
+                                Spacer().frame(height: 10)
+                                
+                                Text("거래 희망 장소")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                Text(article.tradingPlace)
+                                
+                                Spacer().frame(height: 10)
+                                
+                                Text("판매 상태")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                Text(article.articleStatus == "OPEN" ? "판매 중": "판매 완료")
+                                    .font(.system(size: 16))
+                                    .fontWeight(.medium)
+                            }
+                            
+                        }.padding(.horizontal, 26)
+                    }
                 }
                 .onAppear {
-                    // 스크롤 뷰가 나타날 때 현재 페이지 설정
                     currentImage = 0
                 }
                 .padding(.bottom, 16)
@@ -135,6 +134,14 @@ struct ArticleView: View {
         .onDisappear {
             saleVM.subscription.removeAll()
         }
+    }
+}
+
+struct PageWidthKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
 
