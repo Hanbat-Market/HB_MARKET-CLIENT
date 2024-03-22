@@ -199,5 +199,24 @@ class SaleVM: ObservableObject {
             }
         }
     }
+    
+     var successDeletingArticle = PassthroughSubject<(), Never>()
+    
+    func deleteArticle(articleId: Int) {
+        SaleApiService.deleteArticle(articleId: articleId)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("deleteArticle request finished")
+                case .failure(let error):
+                    print("deleteArticle request errorCode \(String(describing: error.responseCode))" )
+                    print("deleteArticle request errorDes", error.localizedDescription)
+                }
+            } receiveValue: { [weak self] article in
+                print("Received deleteArticle: \(article)")
+                self?.successDeletingArticle.send()
+            }
+            .store(in: &subscription)
+    }
 }
 

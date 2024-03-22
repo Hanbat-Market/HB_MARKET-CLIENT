@@ -16,6 +16,7 @@ enum SaleRouter: URLRequestConvertible {
     case register(title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage])
     case fetchArticle(articleId: Int)
     case editArticle(articleId: Int, title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage])
+    case deleteArticle(articleId: Int)
     case fetchSalesHistory
     case fetchPurchaseHistory
     case postPreemption(itemId: Int)
@@ -29,6 +30,7 @@ enum SaleRouter: URLRequestConvertible {
         case .register: return "/api/articles/new"
         case .fetchArticle(let articleId): return "/api/articles/\(articleId)"
         case let .editArticle(articleId, _, _, _, _, _, _): return "/api/articles/edit/\(articleId)"
+        case .deleteArticle(let articleId): return "/api/articles/delete/\(articleId)"
         case .fetchSalesHistory: return "/api/salesHistory"
         case .fetchPurchaseHistory: return "/api/purchaseHistory"
         case .postPreemption(let itemId): return "/api/preemption/\(itemId)"
@@ -40,6 +42,7 @@ enum SaleRouter: URLRequestConvertible {
         case .register: return .post
         case .fetchArticle: return .get
         case .editArticle: return .put
+        case .deleteArticle: return .delete
         case .fetchSalesHistory: return .get
         case .fetchPurchaseHistory: return .get
         case .postPreemption: return .post
@@ -81,6 +84,7 @@ enum SaleRouter: URLRequestConvertible {
             params["articleCreateRequestDto"] = SaleModel(title: title, price: price, itemName: itemName, description: description, tradingPlace: tradingPlace)
             return params
             
+        case .deleteArticle: return [:]
         case .fetchSalesHistory: return [:]
         case .fetchPurchaseHistory: return [:]
         case let .postPreemption(itemId):

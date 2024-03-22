@@ -18,3 +18,7 @@ struct CommonModel: Codable {
         case errorMessage = "message"
     }
 }
+
+struct CommonArticleModel: Codable {
+    let data: String
+}

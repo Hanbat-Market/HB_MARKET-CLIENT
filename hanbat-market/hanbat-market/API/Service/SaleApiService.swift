@@ -140,4 +140,16 @@ enum SaleApiService {
             }
         }
     }
+    
+    static func deleteArticle(articleId: Int) -> AnyPublisher<String, AFError> {
+        return ApiClient.shared.session
+            .request(SaleRouter.deleteArticle(articleId: articleId))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: CommonArticleModel.self)
+            .value()
+            .map{ receivedValue in
+                receivedValue.data
+            }
+            .eraseToAnyPublisher()
+    }
 }

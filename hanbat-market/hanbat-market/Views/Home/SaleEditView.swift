@@ -27,17 +27,54 @@ struct SaleEditView: View {
     @State private var isSuccessUpload: Bool = false
     
     @State private var isLoading = true
+    @State private var isDeleting = false
     
     var body: some View {
         VStack {
             
-            BackNavigationBar(navTitle: "상품 수정하기", customButtonAction: {
-                print("완료")
-                if !isSuccessUpload && !isLoading {
-                    saleVM.editArticle(articleId: articleId, title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
+            HStack(spacing: 0){
+                Button{
+                    self.dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 20))
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(.black)
+                }.padding(.leading, 20)
+                
+                Spacer()
+                Spacer()
+                Text("상품 수정하기")
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
+                    .padding(.horizontal, 20)
+                
+                Spacer()
+                
+                HStack(spacing:0){
+                
+                    Button(action: {
+                        if !isSuccessUpload && !isLoading {
+                            saleVM.editArticle(articleId: articleId, title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
+                        }})  {
+                            Text("수정")
+                                .foregroundStyle(CommonStyle.MAIN_COLOR)
+                                .padding(.trailing, 16)
+                            
+                        }
+                    
+                    Button(action: {
+                        isDeleting.toggle()
+                    })  {
+                        Text("삭제")
+                            .foregroundStyle(.red)
+                            .padding(.trailing, 20)
+                        
+                    }
                 }
-            }, customButtonText: "완료")
-            .disabled(isSuccessUpload)
+                .padding(.vertical, 12)
+            }
+            
             
             if isLoading {
                 ScrollView{
@@ -175,12 +212,23 @@ struct SaleEditView: View {
                 await addPhotoItems()
             }
         }
+        .alert(isPresented: $isDeleting, content: {
+            Alert(title: Text("로그아웃"), message: Text("정말 로그아웃 하시겠습니까?"), primaryButton: .destructive(Text("취소"), action: {
+                isDeleting = false
+            }), secondaryButton: .cancel(Text("확인"), action: {
+                saleVM.deleteArticle(articleId: articleId)
+            }))
+        })
         .onReceive(saleVM.editSuccess, perform: {
             self.dismiss()
             isSuccessUpload = true
         })
-        
+        .onReceive(saleVM.successDeletingArticle, perform: { _ in
+            self.dismiss()
+        })
     }
+    
+    
     
     private func addPhotoItems() async {
         for item in photosPickerItems {
