@@ -25,6 +25,18 @@ struct HomeView: View {
                 
                 ScrollView{
                     
+                    if ((homeVM.homeResponse?.data.articles.isEmpty) == nil) {
+                        VStack{
+                            Spacer().frame(height: 50)
+                            Image(systemName: "house.fill")
+                                .font(.system(size: 38))
+                                .foregroundStyle(CommonStyle.MAIN_COLOR)
+                                .padding(.bottom, 10)
+                            Text("메인에 올라온 상품이 아직 없어요!")
+                            Text("제일 먼저 상품을 판매해보세요 :)")
+                        }.fontWeight(.medium)
+                    }
+                    
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 90))], spacing: 4) {
                         ForEach(homeVM.homeResponse?.data.articles ?? [], id: \.id) { item in
                             NavigationLink {
@@ -33,6 +45,7 @@ struct HomeView: View {
                                 VStack(alignment:.leading, spacing: 8){
                                     AsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
                                         Image.resizable()
+                                            .scaledToFill()
                                     }, placeholder: {
                                         ProgressView()
                                     })
@@ -69,9 +82,9 @@ struct HomeView: View {
                     moveToSaleView.toggle()
                 }, label: {
                     Text("판매하기")
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .font(.system(size: 14))
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .font(.system(size: 15))
                         .fontWeight(.medium)
                         .foregroundStyle(CommonStyle.WHITE_COLOR)
                         .background(CommonStyle.MAIN_COLOR)
@@ -79,7 +92,7 @@ struct HomeView: View {
                         .shadow(radius: 2)
                 })
                 .padding(.bottom, 12)
-                .padding(.trailing, 16)
+                .padding(.trailing, 12)
             }
         }
         .toolbar(.hidden, for: .navigationBar)

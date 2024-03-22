@@ -12,7 +12,6 @@ struct HomeResponse: Codable {
 }
 
 struct HomeArticleResponse: Codable {
-    let memberPreemptionSize: Int
     let articlesCount: Int
     let articles: [HomeArticleModel]
 }
@@ -28,4 +27,6 @@ struct HomeArticleModel: Codable {
     let memberNickname: String
     let thumbnailFilePath: String
     let createdAt: String
+    let preemptionSize: Int
+    let itemStatus: String
 }

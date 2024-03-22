@@ -10,7 +10,9 @@ import SwiftUI
 struct ArticleView: View {
     
     @StateObject var saleVM = SaleVM()
+    
     @State private var currentImage: Int = 0
+    @State private var isImageExpanded = false
     
     let articleId: Int
     
@@ -31,18 +33,35 @@ struct ArticleView: View {
                                     ForEach(0..<article.filePaths.count, id: \.self) { index in
                                         
                                         ZStack(alignment: .bottom){
-                                            AsyncImage(url: URL(string: article.filePaths[index]), content: { Image in
+                                            
+                                            ZStack(alignment: .topTrailing){
+                                                AsyncImage(url: URL(string: article.filePaths[index]), content: { Image in
+                                                    
+                                                    Image
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                        .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+                                                    
+                                                }, placeholder: {
+                                                    ProgressView()
+                                                })
+                                                .frame(height: 320)
                                                 
-                                                Image
-                                                    .resizable()
-                                                
-                                                
-                                            }, placeholder: {
-                                                ProgressView()
-                                            })
-                                            .aspectRatio(contentMode: .fill)
-                                            .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
-                                            .frame(height: 320)
+                                                Button(action: {
+                                                    currentImage = index
+                                                    isImageExpanded = true
+                                                }) {
+                                                    Image(systemName: "plus.circle.fill")
+                                                        .font(.system(size: 18))
+                                                        .frame(width: 12, height: 12)
+                                                        .foregroundColor(.white)
+                                                        .padding()
+                                                        .background(Color.black.opacity(0.3))
+                                                        .clipShape(Circle())
+                                                        .padding(8)
+                                                }
+                                            }
+                                            
                                             
                                             HStack {
                                                 ForEach(0..<article.filePaths.count, id: \.self) { cIndex in
@@ -53,6 +72,7 @@ struct ArticleView: View {
                                             }
                                             .padding(.vertical, 10)
                                         }
+                                        .frame(width: UIScreen.main.bounds.width)
                                     }
                                     
                                 }
@@ -60,6 +80,9 @@ struct ArticleView: View {
                         }
                         .scrollIndicators(.hidden)
                         .scrollTargetBehavior(.paging)
+                        .sheet(isPresented: $isImageExpanded) {
+                            ImageViewer(imageUrl: article.filePaths[currentImage])
+                        }
                         
                         Spacer().frame(height: 20)
                         
@@ -137,14 +160,6 @@ struct ArticleView: View {
         .onDisappear {
             saleVM.subscription.removeAll()
         }
-    }
-}
-
-struct PageWidthKey: PreferenceKey {
-    static var defaultValue: CGFloat = 0
-    
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
     }
 }
 

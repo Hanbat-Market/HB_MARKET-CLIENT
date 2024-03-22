@@ -66,6 +66,8 @@ struct SaleHistory: Codable {
     let thumbnailFilePath: String
     let createdAt: String
     let reservedDate: String?
+    let itemStatus: String?
+    let preemptionSize: Int?
 }
 
 struct SalesHistory: Codable {

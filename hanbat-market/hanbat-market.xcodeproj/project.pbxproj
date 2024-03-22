@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F52CC6442BAC7AF400F591AE /* BackNavigationIconBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6432BAC7AF400F591AE /* BackNavigationIconBar.swift */; };
+		F52CC6462BAD392100F591AE /* SaleEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6452BAD392100F591AE /* SaleEditView.swift */; };
+		F52CC6482BAD509D00F591AE /* KeyboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6472BAD509D00F591AE /* KeyboardUtils.swift */; };
+		F52CC64A2BAD628B00F591AE /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6492BAD628B00F591AE /* ImageViewer.swift */; };
 		F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916732BA1EABD008EC345 /* hanbat_marketApp.swift */; };
 		F58916762BA1EABD008EC345 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916752BA1EABD008EC345 /* ContentView.swift */; };
 		F58916782BA1EABF008EC345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58916772BA1EABF008EC345 /* Assets.xcassets */; };
@@ -53,6 +56,9 @@
 
 /* Begin PBXFileReference section */
 		F52CC6432BAC7AF400F591AE /* BackNavigationIconBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationIconBar.swift; sourceTree = "<group>"; };
+		F52CC6452BAD392100F591AE /* SaleEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleEditView.swift; sourceTree = "<group>"; };
+		F52CC6472BAD509D00F591AE /* KeyboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardUtils.swift; sourceTree = "<group>"; };
+		F52CC6492BAD628B00F591AE /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
 		F58916702BA1EABD008EC345 /* hanbat-market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hanbat-market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58916732BA1EABD008EC345 /* hanbat_marketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hanbat_marketApp.swift; sourceTree = "<group>"; };
 		F58916752BA1EABD008EC345 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 				F589173E2BA9772F008EC345 /* NavigationBar.swift */,
 				F58917432BA97875008EC345 /* BackNavigationBar.swift */,
 				F52CC6432BAC7AF400F591AE /* BackNavigationIconBar.swift */,
+				F52CC6492BAD628B00F591AE /* ImageViewer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -254,6 +261,7 @@
 			children = (
 				F589171E2BA81F51008EC345 /* HomeView.swift */,
 				F58917492BA9B59E008EC345 /* SaleView.swift */,
+				F52CC6452BAD392100F591AE /* SaleEditView.swift */,
 				F58917552BAB15A0008EC345 /* ArticleView.swift */,
 			);
 			path = Home;
@@ -303,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				F58917582BAB30FD008EC345 /* DateUtils.swift */,
+				F52CC6472BAD509D00F591AE /* KeyboardUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -400,6 +409,7 @@
 				F52CC6442BAC7AF400F591AE /* BackNavigationIconBar.swift in Sources */,
 				F58916BB2BA58B52008EC345 /* BaseInterceptor.swift in Sources */,
 				F589172E2BA85BC1008EC345 /* HomeApiService.swift in Sources */,
+				F52CC64A2BAD628B00F591AE /* ImageViewer.swift in Sources */,
 				F589171F2BA81F52008EC345 /* HomeView.swift in Sources */,
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,
 				F58917502BAABB8A008EC345 /* SaleApiService.swift in Sources */,
@@ -407,6 +417,8 @@
 				F589174E2BAAA551008EC345 /* SaleRouter.swift in Sources */,
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
 				F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */,
+				F52CC6462BAD392100F591AE /* SaleEditView.swift in Sources */,
+				F52CC6482BAD509D00F591AE /* KeyboardUtils.swift in Sources */,
 				F58917422BA97851008EC345 /* SettingView.swift in Sources */,
 				F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */,
 				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,

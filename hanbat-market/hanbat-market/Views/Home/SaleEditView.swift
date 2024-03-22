@@ -1,21 +1,19 @@
 //
-//  SaleView.swift
+//  SaleEditView.swift
 //  hanbat-market
 //
-//  Created by dongs on 3/19/24.
+//  Created by dongs on 3/22/24.
 //
 
 import SwiftUI
 import PhotosUI
-import Combine
 
-let INIT_DESCRIPTION = "상품에 대한 설명을 작성해주세요.\n설명을 자세히 적을수록 구매자가 신뢰할 수 있는 게시글이 완성돼요."
-
-struct SaleView: View {
+struct SaleEditView: View {
     
-    @StateObject private var keyboardHandler = KeyboardUtils()
+    let articleId: Int
     
     @StateObject var saleVM = SaleVM()
+    @StateObject private var keyboardHandler = KeyboardUtils()
     @Environment(\.dismiss) private var dismiss
     
     @State private var title: String = ""
@@ -28,18 +26,32 @@ struct SaleView: View {
     @State private var photosPickerItems: [PhotosPickerItem] = []
     @State private var isSuccessUpload: Bool = false
     
+    @State private var isLoading = true
+    
     var body: some View {
         VStack {
             
-            BackNavigationBar(navTitle: "상품 판매하기", customButtonAction: {
+            BackNavigationBar(navTitle: "상품 수정하기", customButtonAction: {
                 print("완료")
-                if !isSuccessUpload {
-                    saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
+                if !isSuccessUpload && !isLoading {
+                    saleVM.editArticle(articleId: articleId, title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
                 }
             }, customButtonText: "완료")
             .disabled(isSuccessUpload)
             
-
+            if isLoading {
+                ScrollView{
+                    VStack{
+                        Spacer().frame(height: 50)
+                        ProgressView()
+                            .controlSize(.large)
+                            .padding(.bottom, 20)
+                        Text("상품을 불러오는 중입니다...")
+                            .fontWeight(.medium)
+                    }
+                    
+                }
+            } else{
                 ScrollView {
                     
                     VStack(alignment:.leading, spacing: 16){
@@ -141,9 +153,17 @@ struct SaleView: View {
                 .onTapGesture {
                     keyboardHandler.hideKeyboard()
                 }
+            }
         }
+        .onAppear{
+            saleVM.fetchArticle(articleId: articleId)
+            
+        }
+        .onReceive(saleVM.successFetchingArticle, perform: {
+            fillContent(with: saleVM.article)
+        })
         .ignoresSafeArea(edges: .bottom)
-        .alert(isPresented: $saleVM.registerFailed, content: {
+        .alert(isPresented: $saleVM.editArticleFailed, content: {
             Alert(title: Text("업로드 실패"), message: Text("작성 내용을 확인해주세요."), dismissButton: .default(Text("확인")))
         })
         .toolbar(.hidden, for: .navigationBar)
@@ -155,10 +175,11 @@ struct SaleView: View {
                 await addPhotoItems()
             }
         }
-        .onReceive(saleVM.registraionSuccess, perform: {
+        .onReceive(saleVM.editSuccess, perform: {
             self.dismiss()
             isSuccessUpload = true
         })
+        
     }
     
     private func addPhotoItems() async {
@@ -171,8 +192,42 @@ struct SaleView: View {
         }
         print("images", images)
     }
+    
+    private func fillContent(with article: ArticleModel?)   {
+        guard let article = article else { return }
+        Task {
+            title = article.title
+            itemName = article.itemName
+            price = "\(article.price)"
+            description = article.description
+            tradingPlace = article.tradingPlace
+            
+            var loadedImages: [UIImage] = []
+            
+            for imagePath in article.filePaths {
+                if let imageURL = URL(string: imagePath) {
+                    do {
+                        let (data, _) = try await URLSession.shared.data(from: imageURL)
+                        if let image = UIImage(data: data) {
+                            loadedImages.append(image)
+                        }
+                    } catch {
+                        print("Error loading image: \(error)")
+                    }
+                }
+            }
+            
+            DispatchQueue.main.async {
+                images = loadedImages
+                isLoading = false
+            }
+        }
+        
+    }
 }
 
+
 #Preview {
-    SaleView()
+    SaleEditView(articleId: 5)
 }
+

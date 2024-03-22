@@ -38,7 +38,7 @@ struct BackNavigationBar: View {
                         Text(customButtonText)
                     }
                 }
-                .foregroundStyle(CommonStyle.GRAY_COLOR)
+                .foregroundStyle(CommonStyle.MAIN_COLOR)
                 .padding(.trailing, 20)
             }
         }

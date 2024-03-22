@@ -23,3 +23,7 @@ struct ArticleModel: Codable {
     let createdAt: String
     let preemptionItemSize: Int
 }
+
+struct ArticlePreemptionResponse: Codable {
+    let data: String
+}

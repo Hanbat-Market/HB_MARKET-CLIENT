@@ -24,7 +24,6 @@ class SaleVM: ObservableObject {
             // 이미지 파일 추가
             for (index, image) in selectedImages.enumerated() {
                 if let imageData = image.jpegData(compressionQuality: 0.5) {
-                    print("[ImageData]", imageData)
                     multipartFormData.append(imageData, withName: "imageFiles", fileName: "image\(index).png", mimeType: "image/png")
                 }
             }
@@ -62,6 +61,7 @@ class SaleVM: ObservableObject {
     }
     
     @Published var article: ArticleModel? = nil
+     var successFetchingArticle = PassthroughSubject<(), Never>()
     
     func fetchArticle(articleId: Int) {
         SaleApiService.fetchArticle(articleId: articleId)
@@ -76,6 +76,7 @@ class SaleVM: ObservableObject {
             } receiveValue: { [weak self] article in
                 print("Received article: \(article)")
                 self?.article = article
+                self?.successFetchingArticle.send()
             }
             .store(in: &subscription)
     }
@@ -132,6 +133,71 @@ class SaleVM: ObservableObject {
                 self?.purchaseHistory = purchaseHistory
             }
             .store(in: &subscription)
+    }
+    
+    @Published var preemption: ArticlePreemptionResponse? = nil
+    
+    func postPreemption(itemId: Int) {
+        SaleApiService.postPreemption(itemId: itemId)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("postPreemption request finished")
+                case .failure(let error):
+                    print("postPreemption request errorCode \(String(describing: error.responseCode))" )
+                    print("postPreemption request errorDes", error.localizedDescription)
+                }
+            } receiveValue: { [weak self] preemption in
+                print("Received postPreemption: \(preemption)")
+                self?.preemption = preemption
+            }
+            .store(in: &subscription)
+    }
+    
+    @Published var editArticleFailed: Bool = false
+    var editSuccess = PassthroughSubject<(), Never>()
+    
+    func editArticle(articleId: Int, title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage]){
+        
+        let url = "\(ApiClient.BASE_URL)/api/articles/edit/\(articleId)"
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            for (index, image) in selectedImages.enumerated() {
+                if let imageData = image.jpegData(compressionQuality: 0.5) {
+                    multipartFormData.append(imageData, withName: "imageFiles", fileName: "image\(index).png", mimeType: "image/png")
+                }
+            }
+            
+            let articleCreateRequestDto: [String: Any] = [
+                "title": title,
+                "price": price,
+                "itemName": itemName,
+                "description": description,
+                "tradingPlace": tradingPlace
+            ]
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: articleCreateRequestDto, options: [])
+                multipartFormData.append(jsonData, withName: "articleUpdateRequestDto", mimeType: "application/json")
+            } catch {
+                print("Error serializing articleCreateRequestDto: \(error)")
+            }
+            
+            print(multipartFormData)
+        }, to: url, method: .put, headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"])
+        .validate(statusCode: 200..<300)
+        .response { response in
+            // 응답 처리
+            switch response.result {
+            case .success:
+                print("File upload success")
+                self.editSuccess.send()
+            case .failure(let error):
+                print("File upload errorCode \(String(describing: error.responseCode))" )
+                print("File upload errorDes", error.localizedDescription)
+                self.editArticleFailed = true
+            }
+        }
     }
 }
 
