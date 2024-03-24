@@ -39,7 +39,7 @@ struct ContentView: View {
                         }
                         .tag(1)
                     
-                    HeartView()
+                    PreemptionView()
                         .tabItem {
                             Image(systemName: "heart")
                             Text("찜")

@@ -27,6 +27,7 @@ struct SaleView: View {
     @State private var images: [UIImage] = []
     @State private var photosPickerItems: [PhotosPickerItem] = []
     @State private var isSuccessUpload: Bool = false
+    @State private var isLoading: Bool = false
     
     var body: some View {
         VStack {
@@ -34,11 +35,15 @@ struct SaleView: View {
             BackNavigationBar(navTitle: "상품 판매하기", customButtonAction: {
                 print("완료")
                 if !isSuccessUpload {
+                    isLoading = true
                     saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
+                    isSuccessUpload = true
                 }
             }, customButtonText: "완료")
-            .disabled(isSuccessUpload)
-            
+            if isLoading {
+                ProgressView()
+                    .controlSize(.large)
+            }
 
                 ScrollView {
                     

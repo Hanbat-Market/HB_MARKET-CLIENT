@@ -21,6 +21,7 @@ struct ArticleModel: Codable {
     let nickname: String
     let filePaths: [String]
     let createdAt: String
+    let preemptionItemStatus: String
     let preemptionItemSize: Int
 }
 

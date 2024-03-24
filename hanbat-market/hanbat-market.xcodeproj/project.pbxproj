@@ -38,7 +38,7 @@
 		F58917302BA85C15008EC345 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589172F2BA85C15008EC345 /* HomeModel.swift */; };
 		F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917312BA85D6F008EC345 /* HomeVM.swift */; };
 		F58917372BA89756008EC345 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917362BA89756008EC345 /* ChatView.swift */; };
-		F58917392BA8976F008EC345 /* HeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917382BA8976F008EC345 /* HeartView.swift */; };
+		F58917392BA8976F008EC345 /* PreemptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917382BA8976F008EC345 /* PreemptionView.swift */; };
 		F589173B2BA89779008EC345 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173A2BA89779008EC345 /* ProfileView.swift */; };
 		F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173C2BA8A0BD008EC345 /* CustomTabView.swift */; };
 		F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589173E2BA9772F008EC345 /* NavigationBar.swift */; };
@@ -52,6 +52,10 @@
 		F58917542BAB147E008EC345 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917532BAB147E008EC345 /* ArticleModel.swift */; };
 		F58917562BAB15A0008EC345 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917552BAB15A0008EC345 /* ArticleView.swift */; };
 		F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917582BAB30FD008EC345 /* DateUtils.swift */; };
+		F5ADCFFD2BAFF94E005C93C0 /* PreemptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */; };
+		F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */; };
+		F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */; };
+		F5ADD0032BAFFADA005C93C0 /* PreemptionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0022BAFFADA005C93C0 /* PreemptionVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,7 +89,7 @@
 		F589172F2BA85C15008EC345 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		F58917312BA85D6F008EC345 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		F58917362BA89756008EC345 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		F58917382BA8976F008EC345 /* HeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartView.swift; sourceTree = "<group>"; };
+		F58917382BA8976F008EC345 /* PreemptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionView.swift; sourceTree = "<group>"; };
 		F589173A2BA89779008EC345 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F589173C2BA8A0BD008EC345 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F589173E2BA9772F008EC345 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -99,6 +103,10 @@
 		F58917532BAB147E008EC345 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		F58917552BAB15A0008EC345 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		F58917582BAB30FD008EC345 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionModel.swift; sourceTree = "<group>"; };
+		F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionRouter.swift; sourceTree = "<group>"; };
+		F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionApiService.swift; sourceTree = "<group>"; };
+		F5ADD0022BAFFADA005C93C0 /* PreemptionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +169,7 @@
 			children = (
 				F58917402BA97844008EC345 /* Setting */,
 				F58917352BA89745008EC345 /* Profile */,
-				F58917342BA8973A008EC345 /* Heart */,
+				F58917342BA8973A008EC345 /* Preemption */,
 				F58917332BA896F9008EC345 /* Chat */,
 				F589171D2BA81F45008EC345 /* Home */,
 				F589169C2BA311E8008EC345 /* Auth */,
@@ -202,6 +210,7 @@
 				F589172F2BA85C15008EC345 /* HomeModel.swift */,
 				F589174B2BA9C422008EC345 /* SaleModel.swift */,
 				F58917532BAB147E008EC345 /* ArticleModel.swift */,
+				F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +233,7 @@
 				F58916BE2BA58B7B008EC345 /* AuthRouter.swift */,
 				F589172B2BA85B2E008EC345 /* HomeRouter.swift */,
 				F589174D2BAAA551008EC345 /* SaleRouter.swift */,
+				F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -242,6 +252,7 @@
 				F58916BC2BA58B71008EC345 /* AuthApiService.swift */,
 				F589172D2BA85BC1008EC345 /* HomeApiService.swift */,
 				F589174F2BAABB8A008EC345 /* SaleApiService.swift */,
+				F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -252,6 +263,7 @@
 				F58916C32BA59357008EC345 /* AuthVM.swift */,
 				F58917312BA85D6F008EC345 /* HomeVM.swift */,
 				F58917512BAABC4C008EC345 /* SaleVM.swift */,
+				F5ADD0022BAFFADA005C93C0 /* PreemptionVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -283,12 +295,12 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		F58917342BA8973A008EC345 /* Heart */ = {
+		F58917342BA8973A008EC345 /* Preemption */ = {
 			isa = PBXGroup;
 			children = (
-				F58917382BA8976F008EC345 /* HeartView.swift */,
+				F58917382BA8976F008EC345 /* PreemptionView.swift */,
 			);
-			path = Heart;
+			path = Preemption;
 			sourceTree = "<group>";
 		};
 		F58917352BA89745008EC345 /* Profile */ = {
@@ -395,10 +407,12 @@
 			files = (
 				F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */,
 				F58917442BA97875008EC345 /* BackNavigationBar.swift in Sources */,
-				F58917392BA8976F008EC345 /* HeartView.swift in Sources */,
+				F58917392BA8976F008EC345 /* PreemptionView.swift in Sources */,
 				F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */,
 				F58917372BA89756008EC345 /* ChatView.swift in Sources */,
 				F589169B2BA3063F008EC345 /* LoginView.swift in Sources */,
+				F5ADCFFD2BAFF94E005C93C0 /* PreemptionModel.swift in Sources */,
+				F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */,
 				F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */,
 				F58917562BAB15A0008EC345 /* ArticleView.swift in Sources */,
 				F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */,
@@ -407,6 +421,7 @@
 				F589172C2BA85B2E008EC345 /* HomeRouter.swift in Sources */,
 				F58916C12BA58E19008EC345 /* CommonStyle.swift in Sources */,
 				F52CC6442BAC7AF400F591AE /* BackNavigationIconBar.swift in Sources */,
+				F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */,
 				F58916BB2BA58B52008EC345 /* BaseInterceptor.swift in Sources */,
 				F589172E2BA85BC1008EC345 /* HomeApiService.swift in Sources */,
 				F52CC64A2BAD628B00F591AE /* ImageViewer.swift in Sources */,
@@ -431,6 +446,7 @@
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */,
 				F58917542BAB147E008EC345 /* ArticleModel.swift in Sources */,
+				F5ADD0032BAFFADA005C93C0 /* PreemptionVM.swift in Sources */,
 				F58917522BAABC4C008EC345 /* SaleVM.swift in Sources */,
 				F58916B92BA58B44008EC345 /* ApiLogger.swift in Sources */,
 				F58916B72BA58B33008EC345 /* ApiClient.swift in Sources */,

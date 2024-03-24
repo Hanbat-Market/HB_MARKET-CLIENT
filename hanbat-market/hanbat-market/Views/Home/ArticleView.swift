@@ -10,9 +10,7 @@ import SwiftUI
 struct ArticleView: View {
     
     @StateObject var saleVM = SaleVM()
-    
-    @State private var currentImage: Int = 0
-    @State private var isImageExpanded = false
+    @State private var isPreemption: Bool = false
     
     let articleId: Int
     
@@ -21,7 +19,10 @@ struct ArticleView: View {
             if let article = saleVM.article {
                 VStack {
                     
-                    BackNavigationIconBar(navTitle: "\(article.nickname)님의 게시글",customButtonAction: {}, customButtonIcomImage: "heart", customButtonIconColor: CommonStyle.HEART_COLOR)
+                    BackNavigationIconBar(navTitle: "\(article.nickname)님의 게시글",customButtonAction: {
+                        isPreemption.toggle()
+                        saleVM.postPreemption(itemId: articleId)
+                    }, customButtonIcomImage: isPreemption ? "heart.fill" : "heart", customButtonIconColor: CommonStyle.HEART_COLOR)
                     
                     ScrollView{
                         
@@ -34,7 +35,10 @@ struct ArticleView: View {
                                         
                                         ZStack(alignment: .bottom){
                                             
-                                            ZStack(alignment: .topTrailing){
+                                            
+                                            NavigationLink {
+                                                ImageViewer(imageUrl: article.filePaths[index])
+                                            } label: {
                                                 AsyncImage(url: URL(string: article.filePaths[index]), content: { Image in
                                                     
                                                     Image
@@ -46,21 +50,8 @@ struct ArticleView: View {
                                                     ProgressView()
                                                 })
                                                 .frame(height: 320)
-                                                
-                                                Button(action: {
-                                                    currentImage = index
-                                                    isImageExpanded = true
-                                                }) {
-                                                    Image(systemName: "plus.circle.fill")
-                                                        .font(.system(size: 18))
-                                                        .frame(width: 12, height: 12)
-                                                        .foregroundColor(.white)
-                                                        .padding()
-                                                        .background(Color.black.opacity(0.3))
-                                                        .clipShape(Circle())
-                                                        .padding(8)
-                                                }
                                             }
+                                            
                                             
                                             
                                             HStack {
@@ -80,9 +71,7 @@ struct ArticleView: View {
                         }
                         .scrollIndicators(.hidden)
                         .scrollTargetBehavior(.paging)
-                        .sheet(isPresented: $isImageExpanded) {
-                            ImageViewer(imageUrl: article.filePaths[currentImage])
-                        }
+                        
                         
                         Spacer().frame(height: 20)
                         
@@ -143,12 +132,17 @@ struct ArticleView: View {
                         }.padding(.horizontal, 26)
                     }
                 }
-                .onAppear {
-                    currentImage = 0
-                }
                 .padding(.bottom, 30)
                 .ignoresSafeArea(edges: .bottom)
+                .onAppear{
+                    if article.preemptionItemStatus == "PREEMPTION" {
+                        isPreemption = true
+                    } else {
+                        isPreemption = false
+                    }
+                }
             }
+                
             else {
                 ProgressView()
                     .onAppear {

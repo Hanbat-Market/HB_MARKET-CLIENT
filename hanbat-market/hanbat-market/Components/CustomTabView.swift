@@ -22,7 +22,7 @@ struct MyCustomTapView : View {
         case .chat:
             return ChatView()
         case .heart:
-            return HeartView()
+            return PreemptionView()
         case .profile:
             return ProfileView()
         }
@@ -36,7 +36,7 @@ struct MyCustomTapView : View {
                 switch tabIndex {
                 case .home: HomeView()
                 case .chat: ChatView()
-                case .heart: HeartView()
+                case .heart: PreemptionView()
                 case .profile:  ProfileView()
                 }
                 

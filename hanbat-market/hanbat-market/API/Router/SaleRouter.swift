@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 import Alamofire
 
-// 인증 라우터
-// 회원가입, 로그인
 enum SaleRouter: URLRequestConvertible {
     
     case register(title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage])

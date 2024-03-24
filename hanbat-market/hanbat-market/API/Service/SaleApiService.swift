@@ -9,7 +9,6 @@ import SwiftUI
 import Alamofire
 import Combine
 
-// 인증 관련 api 호출
 enum SaleApiService {
     
     static func register(title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage]){
