@@ -27,7 +27,7 @@ struct LoginView: View {
                     
                     Image("hb_logo")
                         .resizable()
-                        .frame(width: 157, height: 54)
+                        .frame(width: 162, height: 45)
                     
                     Spacer().frame(height: 20)
                     
@@ -60,14 +60,18 @@ struct LoginView: View {
                     Spacer()
                     
                 }
+                
+                
                 .padding(.horizontal, 20)
             }
+            .background(CommonStyle.LOGINBG_COLOR)
             .alert(isPresented: $authVM.loginFailed, content: {
                 Alert(title: Text("로그인 실패"), message: Text("아이디 또는 비밀번호를 다시 확인해주세요."), dismissButton: .default(Text("확인")))
             })
             .toolbar(.hidden, for: .navigationBar)
             .ignoresSafeArea(.all)
         }
+        
     }
 }
 

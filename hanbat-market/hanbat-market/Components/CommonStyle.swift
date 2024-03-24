@@ -18,6 +18,7 @@ struct CommonStyle {
     
     // Assets Color
     static var HEART_COLOR = Color(hex: "FF4F59")
+    static var LOGINBG_COLOR = Color(hex: "F0F6FC")
     
 }
 

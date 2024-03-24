@@ -28,6 +28,7 @@ struct SaleView: View {
     @State private var photosPickerItems: [PhotosPickerItem] = []
     @State private var isSuccessUpload: Bool = false
     @State private var isLoading: Bool = false
+    @State private var isSessionOut: Bool = false
     
     var body: some View {
         VStack {
@@ -163,6 +164,14 @@ struct SaleView: View {
         .onReceive(saleVM.registraionSuccess, perform: {
             self.dismiss()
             isSuccessUpload = true
+        })
+        .onReceive(saleVM.authError, perform: {
+            isSessionOut = true
+        })
+        .alert(isPresented: $isSessionOut, content: {
+            Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
+                SessionManager.shared.isLoggedIn = false
+            }))
         })
     }
     

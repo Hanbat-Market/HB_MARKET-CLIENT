@@ -15,6 +15,7 @@ class AuthVM: ObservableObject {
     @Published var loggedInUser: AuthRegisterData? = nil
     @Published var loggedLogInUser: String? = nil
     @Published var loginFailed: Bool = false
+    @Published var registerFailed: Bool = false
     
     var registraionSuccess = PassthroughSubject<(), Never>()
     var loginSuccess = PassthroughSubject<(), Never>()
@@ -30,6 +31,7 @@ class AuthVM: ObservableObject {
                 case .failure(let error):
                     print("register errorCode: \(String(describing: error.responseCode))")
                     print("register errorDes: \(String(describing: error.localizedDescription))")
+                    self.registerFailed = true
                 }
             } receiveValue: { [weak self] receivedUser in
                 print("register receivedUser: \(receivedUser)")

@@ -14,6 +14,7 @@ class PreemptionVM: ObservableObject {
     
     @Published var preemptionItems: PreemptionModel? = nil
      var successFetchPreemptionItems = PassthroughSubject<(), Never>()
+    var authError = PassthroughSubject<(), Never>()
     
     func fetchPreemptionItems() {
         PreemptionApiService.fetchPreemptionItems()
@@ -24,6 +25,11 @@ class PreemptionVM: ObservableObject {
                 case .failure(let error):
                     print("fetchPreemptionItems request errorCode \(String(describing: error.responseCode))" )
                     print("fetchPreemptionItems request errorDes", error.localizedDescription)
+                    if let errorCode = error.responseCode {
+                        if errorCode == 401{
+                            self.authError.send()
+                        }
+                    }
                 }
             } receiveValue: { [weak self] preemptionItems in
                 print("Received fetchPreemptionItems: \(preemptionItems)")

@@ -17,7 +17,8 @@ struct ProfileView: View {
     @StateObject var saleVM = SaleVM()
     
     @State private var selection: ProfileTab = .buy
-    @State var moveToSaleView: Bool = false
+    @State private var moveToSaleView: Bool = false
+    @State private var isSessionOut: Bool = false
     
     var body: some View {
         VStack{
@@ -229,6 +230,15 @@ struct ProfileView: View {
         .navigationDestination(isPresented: $moveToSaleView) {
             SaleView()
         }
+        .onReceive(saleVM.authError, perform: {
+            isSessionOut = true
+        })
+        .alert(isPresented: $isSessionOut, content: {
+            Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
+                SessionManager.shared.isLoggedIn = false
+            }))
+        })
+        
     }
 }
 

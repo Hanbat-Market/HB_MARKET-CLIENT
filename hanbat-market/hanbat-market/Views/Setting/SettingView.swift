@@ -57,11 +57,11 @@ struct SettingView: View {
             .padding(.horizontal, 20)
         }
         .alert(isPresented: $isLogout, content: {
-            Alert(title: Text("로그아웃"), message: Text("정말 로그아웃 하시겠습니까?"), primaryButton: .destructive(Text("취소"), action: {
-                isLogout = false
-            }), secondaryButton: .cancel(Text("확인"), action: {
+            Alert(title: Text("로그아웃"), message: Text("정말 로그아웃 하시겠습니까?"), primaryButton: .cancel(Text("확인"), action: {
                 authVM.logout()
                 SessionManager.shared.isLoggedIn = false
+            }), secondaryButton: .destructive(Text("취소"), action: {
+                isLogout = false
             }))
         })
         .toolbar(.hidden, for: .navigationBar)

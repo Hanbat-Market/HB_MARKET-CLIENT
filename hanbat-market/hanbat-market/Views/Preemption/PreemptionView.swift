@@ -10,6 +10,8 @@ import SwiftUI
 struct PreemptionView: View {
     @StateObject var preemptionVM = PreemptionVM()
     
+    @State private var isSessionOut: Bool = false
+    
     var body: some View {
         
         VStack{
@@ -76,6 +78,14 @@ struct PreemptionView: View {
         .onAppear{
             preemptionVM.fetchPreemptionItems()
         }
+        .onReceive(preemptionVM.authError, perform: {
+            isSessionOut = true
+        })
+        .alert(isPresented: $isSessionOut, content: {
+            Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
+                SessionManager.shared.isLoggedIn = false
+            }))
+        })
     }
 }
 

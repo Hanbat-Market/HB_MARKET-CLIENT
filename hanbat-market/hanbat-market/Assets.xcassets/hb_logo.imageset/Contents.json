@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "hb_logo.png",
+      "filename" : "한밭ㅁㅋ 2.png",
       "idiom" : "iphone",
       "scale" : "1x"
     },
     {
-      "filename" : "hb_logo@2x.png",
+      "filename" : "한밭ㅁㅋ 2@2x.png",
       "idiom" : "iphone",
       "scale" : "2x"
     },
     {
-      "filename" : "hb_logo@3x.png",
+      "filename" : "한밭ㅁㅋ 2@3x.png",
       "idiom" : "iphone",
       "scale" : "3x"
     }

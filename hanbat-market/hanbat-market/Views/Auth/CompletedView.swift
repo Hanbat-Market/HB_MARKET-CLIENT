@@ -13,6 +13,12 @@ struct CompletedView: View {
         VStack(spacing: 10){
             Spacer()
             
+            Image("hb_logo")
+                .resizable()
+                .frame(width: 162, height: 45)
+            
+            Spacer().frame(height: 50)
+            
             Image(systemName: "checkmark")
                 .font(.system(size: 80))
                 .foregroundColor(CommonStyle.MAIN_COLOR)

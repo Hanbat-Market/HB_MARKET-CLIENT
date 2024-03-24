@@ -67,6 +67,9 @@ struct RegisterView: View {
                     })
                     .disabled(completeRegister)
                 }
+                .alert(isPresented: $authVM.registerFailed, content: {
+                    Alert(title: Text("회원가입 실패"), message: Text("입력하신 내용을 다시 확인해주세요."), dismissButton: .default(Text("확인")))
+                })
                 .padding(.horizontal, 20)
                 .padding(.bottom, 50)
                 .navigationBarBackButtonHidden(true)

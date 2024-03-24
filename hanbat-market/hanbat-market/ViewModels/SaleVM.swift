@@ -62,6 +62,7 @@ class SaleVM: ObservableObject {
     
     @Published var article: ArticleModel? = nil
      var successFetchingArticle = PassthroughSubject<(), Never>()
+    var authError = PassthroughSubject<(), Never>()
     
     func fetchArticle(articleId: Int) {
         SaleApiService.fetchArticle(articleId: articleId)
@@ -72,6 +73,11 @@ class SaleVM: ObservableObject {
                 case .failure(let error):
                     print("Article request errorCode \(String(describing: error.responseCode))" )
                     print("Article request errorDes", error.localizedDescription)
+                    if let errorCode = error.responseCode {
+                        if errorCode == 401{
+                            self.authError.send()
+                        }
+                    }
                 }
             } receiveValue: { [weak self] article in
                 print("Received article: \(article)")
@@ -101,6 +107,11 @@ class SaleVM: ObservableObject {
                 case .failure(let error):
                     print("fetchSalesHistroy request errorCode \(String(describing: error.responseCode))" )
                     print("fetchSalesHistroy request errorDes", error.localizedDescription)
+                    if let errorCode = error.responseCode {
+                        if errorCode == 401{
+                            self.authError.send()
+                        }
+                    }
                 }
             } receiveValue: { [weak self] salesHistory in
                 print("Received fetchSalesHistroy: \(salesHistory)")
@@ -127,6 +138,11 @@ class SaleVM: ObservableObject {
                 case .failure(let error):
                     print("fetchPurchaseHistory request errorCode \(String(describing: error.responseCode))" )
                     print("fetchPurchaseHistory request errorDes", error.localizedDescription)
+                    if let errorCode = error.responseCode {
+                        if errorCode == 401{
+                            self.authError.send()
+                        }
+                    }
                 }
             } receiveValue: { [weak self] purchaseHistory in
                 print("Received fetchPurchaseHistory: \(purchaseHistory)")

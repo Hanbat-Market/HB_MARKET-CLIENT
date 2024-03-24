@@ -32,11 +32,12 @@ struct AuthInputModifier: ViewModifier {
         content
             .padding(.horizontal, 26)
             .padding(.vertical, 14)
-            .cornerRadius(50)
+            .background(CommonStyle.WHITE_COLOR)
             .overlay(
                 RoundedRectangle(cornerRadius: 50)
                     .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
             )
+            .cornerRadius(50)
             .autocapitalization(.none)
             .autocorrectionDisabled(true)
     }
