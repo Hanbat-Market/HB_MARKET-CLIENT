@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             NavigationBar(navTitle: "채팅")
             
             ScrollView{

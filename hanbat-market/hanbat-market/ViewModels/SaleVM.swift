@@ -89,7 +89,7 @@ class SaleVM: ObservableObject {
     
     @Published var salesHistory: SalesHistoryResponse? = nil
     
-    var salesHistoryItems: [SaleHistory] {
+    var salesHistoryItems: [SaleHistory]? {
         guard let sales = salesHistory?.data.salesDtos,
               let reserved = salesHistory?.data.reservedDtos,
               let completed = salesHistory?.data.completedDtos else { return [] }
@@ -122,7 +122,7 @@ class SaleVM: ObservableObject {
     
     @Published var purchaseHistory: PurchaseHistoryResponse? = nil
     
-    var purchaseHistoryItems: [SaleHistory] {
+    var purchaseHistoryItems: [SaleHistory]? {
         guard let reserved = purchaseHistory?.data.reservedDtos,
               let completed = purchaseHistory?.data.completedDtos else { return [] }
         

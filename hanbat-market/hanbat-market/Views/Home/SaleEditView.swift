@@ -185,6 +185,7 @@ struct SaleEditView: View {
                         }.scrollIndicators(.hidden)
                     }
                     .padding(.horizontal, 16)
+                    .padding(.bottom, 30)
                 }
                 .padding(.bottom, keyboardHandler.keyboardHeight)
                 .onTapGesture {

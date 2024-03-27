@@ -30,6 +30,7 @@ struct BackNavigationBar: View {
                 .font(.system(size: 16))
                 .fontWeight(.bold)
                 .padding(.horizontal, 20)
+                .padding(.trailing, !customButtonText.isEmpty ? 0: 20)
             Spacer()
             
             if !customButtonText.isEmpty {

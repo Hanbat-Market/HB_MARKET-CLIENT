@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct HomeView: View {
     
@@ -17,7 +18,7 @@ struct HomeView: View {
     
     var body: some View {
         
-        VStack{
+        VStack(spacing: 0){
             
             NavigationBar(navTitle: "홈")
             
@@ -25,7 +26,16 @@ struct HomeView: View {
                 
                 ScrollView{
                     
-                    if ((homeVM.homeResponse?.data.articles.isEmpty) == nil) {
+                    if homeVM.homeResponse?.data.articles == nil {
+                        VStack{
+                            Spacer().frame(height: 50)
+                            ProgressView()
+                                .controlSize(.large)
+                                .progressViewStyle(CircularProgressViewStyle(tint: CommonStyle.MAIN_COLOR))
+                            Spacer().frame(height: 30)
+                            Text("홈 상품을 불러오는 중이에요!")
+                        }.fontWeight(.medium)
+                    } else if homeVM.homeResponse!.data.articles.isEmpty{
                         VStack{
                             Spacer().frame(height: 50)
                             Image(systemName: "house.fill")
@@ -43,7 +53,7 @@ struct HomeView: View {
                                 ArticleView(articleId: item.id)
                             } label: {
                                 VStack(alignment:.leading, spacing: 8){
-                                    AsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
+                                    CachedAsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
                                         Image.resizable()
                                             .scaledToFill()
                                     }, placeholder: {

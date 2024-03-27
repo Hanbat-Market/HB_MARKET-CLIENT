@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct PreemptionView: View {
     @StateObject var preemptionVM = PreemptionVM()
@@ -14,14 +15,23 @@ struct PreemptionView: View {
     
     var body: some View {
         
-        VStack{
+        VStack(spacing: 0){
             
             NavigationBar(navTitle: "찜")
             
             
             ScrollView{
                 
-                if ((preemptionVM.preemptionItems?.preemptionItemDtos.isEmpty) == nil) {
+                if preemptionVM.preemptionItems?.preemptionItemDtos == nil {
+                    VStack{
+                        Spacer().frame(height: 50)
+                        ProgressView()
+                            .controlSize(.large)
+                            .progressViewStyle(CircularProgressViewStyle(tint: CommonStyle.MAIN_COLOR))
+                        Spacer().frame(height: 30)
+                        Text("찜한 상품을 불러오는 중이에요!")
+                    }.fontWeight(.medium)
+                }else if preemptionVM.preemptionItems!.preemptionItemDtos.isEmpty {
                     VStack{
                         Spacer().frame(height: 50)
                         Image(systemName: "heart.fill")
@@ -39,7 +49,7 @@ struct PreemptionView: View {
                             ArticleView(articleId: item.id)
                         } label: {
                             VStack(alignment:.leading, spacing: 8){
-                                AsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
+                                CachedAsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
                                     Image.resizable()
                                         .scaledToFill()
                                 }, placeholder: {

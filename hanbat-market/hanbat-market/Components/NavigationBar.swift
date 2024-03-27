@@ -11,21 +11,23 @@ struct NavigationBar: View {
     
     var navTitle: String
     
-    @State var moveToSettingView: Bool = false
+    @State private var moveToSettingView: Bool = false
+    @State private var moveToSearchView: Bool = false
     
     var body: some View {
         HStack{
             Text(navTitle)
 
             Spacer()
-            Button(action: {}) {
+            Button(action: {
+                moveToSearchView.toggle()
+            }) {
                 Image(systemName: "magnifyingglass")
             }
             
             Spacer().frame(width: 16)
             
             Button(action: {
-                print("설정화면으로")
                 moveToSettingView.toggle()
             }, label: {
                 Image(systemName: "gearshape")
@@ -39,6 +41,9 @@ struct NavigationBar: View {
         .background(CommonStyle.MAIN_COLOR)
         .navigationDestination(isPresented: $moveToSettingView) {
             SettingView()
+        }
+        .navigationDestination(isPresented: $moveToSearchView) {
+            SearchView()
         }
     }
 }

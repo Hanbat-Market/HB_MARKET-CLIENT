@@ -82,7 +82,7 @@ struct SaleView: View {
                         Text("희망 거래 장소")
                             .padding(.leading, 6)
                             .fontWeight(.medium)
-                        AuthInput(placeholder: "만날 장소를 입력해주세요.", textInput: $tradingPlace, keyboardType: .default)
+                        AuthInput(placeholder: "장소를 입력해주세요.", textInput: $tradingPlace, keyboardType: .default)
                         
                     }
                     .padding(.horizontal, 16)
@@ -142,6 +142,7 @@ struct SaleView: View {
                         }.scrollIndicators(.hidden)
                     }
                     .padding(.horizontal, 16)
+                    .padding(.bottom, 30)
                 }
                 .padding(.bottom, keyboardHandler.keyboardHeight)
                 .onTapGesture {

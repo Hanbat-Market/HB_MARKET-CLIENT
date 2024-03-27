@@ -56,6 +56,11 @@
 		F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */; };
 		F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */; };
 		F5ADD0032BAFFADA005C93C0 /* PreemptionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0022BAFFADA005C93C0 /* PreemptionVM.swift */; };
+		F5ADD0132BB2CEF5005C93C0 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = F5ADD0122BB2CEF5005C93C0 /* CachedAsyncImage */; };
+		F5ADD0162BB3F781005C93C0 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0152BB3F781005C93C0 /* SearchView.swift */; };
+		F5ADD0182BB3FBBC005C93C0 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0172BB3FBBC005C93C0 /* SearchRouter.swift */; };
+		F5ADD01A2BB3FCA4005C93C0 /* SearchApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0192BB3FCA4005C93C0 /* SearchApiService.swift */; };
+		F5ADD01C2BB3FD2C005C93C0 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD01B2BB3FD2C005C93C0 /* SearchVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +112,10 @@
 		F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionRouter.swift; sourceTree = "<group>"; };
 		F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionApiService.swift; sourceTree = "<group>"; };
 		F5ADD0022BAFFADA005C93C0 /* PreemptionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionVM.swift; sourceTree = "<group>"; };
+		F5ADD0152BB3F781005C93C0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F5ADD0172BB3FBBC005C93C0 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		F5ADD0192BB3FCA4005C93C0 /* SearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiService.swift; sourceTree = "<group>"; };
+		F5ADD01B2BB3FD2C005C93C0 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5ADD0132BB2CEF5005C93C0 /* CachedAsyncImage in Frameworks */,
 				F58917172BA69782008EC345 /* Alamofire in Frameworks */,
 				F58917192BA69782008EC345 /* AlamofireDynamic in Frameworks */,
 			);
@@ -167,6 +177,7 @@
 		F58916992BA3062D008EC345 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F5ADD0142BB3F774005C93C0 /* Search */,
 				F58917402BA97844008EC345 /* Setting */,
 				F58917352BA89745008EC345 /* Profile */,
 				F58917342BA8973A008EC345 /* Preemption */,
@@ -234,6 +245,7 @@
 				F589172B2BA85B2E008EC345 /* HomeRouter.swift */,
 				F589174D2BAAA551008EC345 /* SaleRouter.swift */,
 				F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */,
+				F5ADD0172BB3FBBC005C93C0 /* SearchRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -253,6 +265,7 @@
 				F589172D2BA85BC1008EC345 /* HomeApiService.swift */,
 				F589174F2BAABB8A008EC345 /* SaleApiService.swift */,
 				F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */,
+				F5ADD0192BB3FCA4005C93C0 /* SearchApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -264,6 +277,7 @@
 				F58917312BA85D6F008EC345 /* HomeVM.swift */,
 				F58917512BAABC4C008EC345 /* SaleVM.swift */,
 				F5ADD0022BAFFADA005C93C0 /* PreemptionVM.swift */,
+				F5ADD01B2BB3FD2C005C93C0 /* SearchVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -328,6 +342,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		F5ADD0142BB3F774005C93C0 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F5ADD0152BB3F781005C93C0 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -347,6 +369,7 @@
 			packageProductDependencies = (
 				F58917162BA69782008EC345 /* Alamofire */,
 				F58917182BA69782008EC345 /* AlamofireDynamic */,
+				F5ADD0122BB2CEF5005C93C0 /* CachedAsyncImage */,
 			);
 			productName = "hanbat-market";
 			productReference = F58916702BA1EABD008EC345 /* hanbat-market.app */;
@@ -378,6 +401,7 @@
 			mainGroup = F58916672BA1EABD008EC345;
 			packageReferences = (
 				F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = F58916712BA1EABD008EC345 /* Products */;
 			projectDirPath = "";
@@ -406,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */,
+				F5ADD0182BB3FBBC005C93C0 /* SearchRouter.swift in Sources */,
 				F58917442BA97875008EC345 /* BackNavigationBar.swift in Sources */,
 				F58917392BA8976F008EC345 /* PreemptionView.swift in Sources */,
 				F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */,
@@ -430,6 +455,7 @@
 				F58917502BAABB8A008EC345 /* SaleApiService.swift in Sources */,
 				F58916A62BA32597008EC345 /* CompletedView.swift in Sources */,
 				F589174E2BAAA551008EC345 /* SaleRouter.swift in Sources */,
+				F5ADD01C2BB3FD2C005C93C0 /* SearchVM.swift in Sources */,
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
 				F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */,
 				F52CC6462BAD392100F591AE /* SaleEditView.swift in Sources */,
@@ -438,9 +464,11 @@
 				F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */,
 				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,
 				F58916A92BA58850008EC345 /* AuthModel.swift in Sources */,
+				F5ADD01A2BB3FCA4005C93C0 /* SearchApiService.swift in Sources */,
 				F58916762BA1EABD008EC345 /* ContentView.swift in Sources */,
 				F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */,
 				F58916C42BA59357008EC345 /* AuthVM.swift in Sources */,
+				F5ADD0162BB3F781005C93C0 /* SearchView.swift in Sources */,
 				F58917302BA85C15008EC345 /* HomeModel.swift in Sources */,
 				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
@@ -673,6 +701,14 @@
 				minimumVersion = 5.9.0;
 			};
 		};
+		F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -685,6 +721,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
+		};
+		F5ADD0122BB2CEF5005C93C0 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

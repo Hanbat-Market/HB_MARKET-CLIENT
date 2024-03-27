@@ -20,6 +20,13 @@ struct CommonStyle {
     static var HEART_COLOR = Color(hex: "FF4F59")
     static var LOGINBG_COLOR = Color(hex: "F0F6FC")
     
+    // Article Color
+    static var SALE_COLOR = Color(hex: "FB8087")
+    static var BTN_BLUE_COLOR = Color(hex: "6AA5DF")
+    
+    // Search Color
+    static var SEARCH_BG_COLOG = Color(hex: "F5F5F5")
+    
 }
 
 // #이 있으면 제거 후 문자열로 RGB 추출
