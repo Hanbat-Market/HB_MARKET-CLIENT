@@ -214,7 +214,7 @@ struct SaleEditView: View {
             }
         }
         .alert(isPresented: $isDeleting, content: {
-            Alert(title: Text("로그아웃"), message: Text("정말 로그아웃 하시겠습니까?"), primaryButton: .destructive(Text("취소"), action: {
+            Alert(title: Text("삭제"), message: Text("정말 삭제 하시겠습니까?"), primaryButton: .destructive(Text("취소"), action: {
                 isDeleting = false
             }), secondaryButton: .cancel(Text("확인"), action: {
                 saleVM.deleteArticle(articleId: articleId)

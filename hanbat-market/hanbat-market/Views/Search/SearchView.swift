@@ -47,30 +47,37 @@ struct SearchView: View {
                             if recentSearches.isEmpty {
                                 Text("최근 검색어가 없습니다.")
                             } else {
-                            
-                            LazyVGrid(columns: [GridItem(.adaptive(minimum: 110))], spacing: 10) {
-                                ForEach(recentSearches, id: \.self) { searchText in
-                                    HStack {
-                                        Text(searchText.count > 3 ? "\(searchText.prefix(3))···" : searchText)
-                                        
-                                        Spacer().frame(width: 10)
-                                        
+                                
+                                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], alignment: .leading, spacing: 4) {
+                                    ForEach(recentSearches, id: \.self) { keyword in
                                         Button(action: {
-                                        }) {
-                                            Image(systemName: "xmark")
-                                        }
+                                            searchVM.fetchSearchData(title: keyword)
+                                        }, label: {
+                                            Text(keyword.count > 3 ? "\(keyword.prefix(3))···" : keyword)
+                                            
+                                            Spacer().frame(width: 10)
+                                            
+                                            Button(action: {
+                                                if let index = recentSearches.firstIndex(of: keyword) {
+                                                    recentSearches.remove(at: index)
+                                                    saveRecentSearches()
+                                                }
+                                            }) {
+                                                Image(systemName: "xmark")
+                                            }
+                                        })
+                                        .font(.system(size: 13))
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 8)
+                                        .cornerRadius(30)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 30)
+                                                .stroke(CommonStyle.MAIN_COLOR, lineWidth: 1)
+                                        )
+                                        
                                     }
-                                    .font(.system(size: 14))
-                                    .padding(.horizontal, 16)
-                                    .padding(.vertical, 8)
-                                    .cornerRadius(30)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 30)
-                                            .stroke(CommonStyle.MAIN_COLOR, lineWidth: 1)
-                                    )
-                                    
-                                }
-                            }}
+                                    .padding(.bottom, 8)
+                                }}
                         }
                         
                         
@@ -220,20 +227,17 @@ struct SearchView: View {
         }
     }
     
-    // Function to save search text to recent searches
     private func saveSearch() {
-        recentSearches.insert(searchText, at: 0) // Insert at the beginning to maintain order
+        recentSearches.insert(searchText, at: 0)
         
         saveRecentSearches()
     }
     
-    // Function to load recent searches from UserDefaults
     private func loadRecentSearches() {
         recentSearches = UserDefaults.standard.stringArray(forKey: "RecentSearches") ?? []
         print("recentSearches: \(recentSearches)")
     }
     
-    // Function to save recent searches to UserDefaults
     private func saveRecentSearches() {
         UserDefaults.standard.set(recentSearches, forKey: "RecentSearches")
     }

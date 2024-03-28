@@ -10,6 +10,10 @@ import SwiftUI
 struct TradeView: View {
     
     var nickname: String = ""
+    var articleId: Int = 0
+    
+    @StateObject var tradeVM = TradeVM()
+    @Environment(\.dismiss) private var dismiss
     
     @State private var selectedDate = Date()
     @State private var isDatePickerPresented = false
@@ -18,7 +22,7 @@ struct TradeView: View {
     @State private var selectedMinute: Int = 0
     @State private var isTimePickerPresented = false
     
-    @State private var tradePlace: String = ""
+    @State private var reservationPlace: String = ""
     
     var body: some View {
         VStack() {
@@ -121,10 +125,12 @@ struct TradeView: View {
                         
                         Spacer()
                         
-                        TextField("거래 장소를 입력해주세요.", text: $tradePlace)
+                        TextField("자세한 거래 장소를 입력해주세요.", text: $reservationPlace)
                             .multilineTextAlignment(.trailing)
-                            .padding(.trailing, 16)
+                            .padding(.horizontal, 16)
                             .padding(.vertical, 16)
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled(true)
                     }
                     
                     Divider()
@@ -138,11 +144,33 @@ struct TradeView: View {
             
             Spacer()
             
+            if tradeVM.isLoadingtradeReservation {
+                VStack{
+                    Spacer().frame(height: 50)
+                    ProgressView()
+                        .controlSize(.large)
+                        .progressViewStyle(CircularProgressViewStyle(tint: CommonStyle.MAIN_COLOR))
+                    Spacer().frame(height: 30)
+                    Text("거래를 확정하는 중이에요!")
+                }.fontWeight(.medium)
+                
+                Spacer()
+            }
+            
             AuthButton(buttonAction: {
-                print(DateUtils.formatDateTime(date: selectedDate, hour: selectedHour, minute: selectedMinute))
+                let dateTime = DateUtils.formatDateTime(date: selectedDate, hour: selectedHour, minute: selectedMinute)
+                
+                tradeVM.postTradeReservation(purchaserNickname: nickname, articleId: articleId, transactionAppointmentDateTime: dateTime, reservationPlace: reservationPlace)
+                
             }, buttonText: "확정하기")
             .padding(.horizontal, 20)
         }
+        .alert(isPresented: $tradeVM.tradeReservationFailed, content: {
+            Alert(title: Text("예약 실패"), message: Text("예약 내용을 다시 확인해주세요."), dismissButton: .default(Text("확인")))
+        })
+        .onReceive(tradeVM.tradeReservationSuccess, perform: {_ in 
+            self.dismiss()
+        })
     }
     
     private var dateFormatter: DateFormatter {
@@ -154,5 +182,5 @@ struct TradeView: View {
 }
 
 #Preview {
-    TradeView(nickname: "고릴라")
+    TradeView(nickname: "고릴라", articleId: 0)
 }

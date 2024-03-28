@@ -32,7 +32,7 @@ struct ProfileView: View {
                     Button(action: {
                         selection = .buy
                     }) {
-                        Text("구매한 상품")
+                        Text("구매 현황")
                     }
                     
                     Spacer()
@@ -41,7 +41,7 @@ struct ProfileView: View {
                     Button(action: {
                         selection = .sell
                     }) {
-                        Text("판매한 상품")
+                        Text("판매 현황")
                     }
                     Spacer()
                 }
@@ -165,6 +165,8 @@ struct ProfileView: View {
                                         NavigationLink {
                                             if item.itemStatus == "COMP" {
                                                 ArticleView(articleId: item.id)
+                                            } else if item.itemStatus == "RESERVATION" {
+                                                ReservationView(articleId: item.id, purchaser: item.purchaser!, reservedDate: item.reservedDate!, reservationPlace: item.reservationPlace!)
                                             }
                                             else {
                                                 SaleEditView(articleId: item.id)
@@ -182,6 +184,17 @@ struct ProfileView: View {
                                                     .frame(width: 90, height: 90)
                                                     .cornerRadius(10)
                                                     
+                                                    if item.itemStatus == "RESERVATION"{
+                                                        
+                                                        Text("예약중")
+                                                            .font(.system(size: 14))
+                                                            .fontWeight(.bold)
+                                                            .foregroundStyle(.white)
+                                                            .frame(width: 90, height: 90)
+                                                            .background(CommonStyle.BLACK_COLOR.opacity(0.3))
+                                                            .cornerRadius(10)
+                                                    }
+                                                    
                                                     if item.itemStatus == "COMP"{
                                                         
                                                         Text("판매 완료")
@@ -189,7 +202,7 @@ struct ProfileView: View {
                                                             .fontWeight(.bold)
                                                             .foregroundStyle(.white)
                                                             .frame(width: 90, height: 90)
-                                                            .background(CommonStyle.BLACK_COLOR.opacity(0.3))
+                                                            .background(CommonStyle.BLACK_COLOR.opacity(0.7))
                                                             .cornerRadius(10)
                                                     }
                                                 }

@@ -45,12 +45,12 @@ struct DateUtils {
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         
-        let formattedDate = dateFormatter.string(from: date)
+        let formattedDate = dateFormatter.string(from: date).prefix(10)
         
         let formattedHour = String(format: "%02d", hour)
         let formattedMinute = String(format: "%02d", minute)
         
-        let combinedDateTimeString = "\(formattedDate)T\(formattedHour):\(formattedMinute):00.000Z"
+        let combinedDateTimeString = "\(formattedDate) \(formattedHour):\(formattedMinute):00"
         
         return combinedDateTimeString
     }

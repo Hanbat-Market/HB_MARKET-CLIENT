@@ -11,11 +11,11 @@ import Combine
 
 enum TradeApiService {
     
-    static func postTradeReservation(memberNickname: String, articleId: Int, transactionAppointmentDateTime: String) -> AnyPublisher<CommonResponseModel, AFError> {
+    static func postTradeReservation(purchaserNickname: String, articleId: Int, transactionAppointmentDateTime: String, reservationPlace: String) -> AnyPublisher<TradeReservationResponse, AFError> {
         return ApiClient.shared.session
-            .request(TradeRouter.postTradeReservation(memberNickname: memberNickname, articleId: articleId, transactionAppointmentDateTime: transactionAppointmentDateTime))
+            .request(TradeRouter.postTradeReservation(purchaserNickname: purchaserNickname, articleId: articleId, transactionAppointmentDateTime: transactionAppointmentDateTime, reservationPlace: reservationPlace))
             .validate(statusCode: 200..<300)
-            .publishDecodable(type: CommonResponseModel.self)
+            .publishDecodable(type: TradeReservationResponse.self)
             .value()
             .eraseToAnyPublisher()
     }

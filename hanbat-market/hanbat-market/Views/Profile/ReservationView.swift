@@ -1,21 +1,23 @@
 //
-//  ArticleView.swift
+//  ReservationView.swift
 //  hanbat-market
 //
-//  Created by dongs on 3/20/24.
+//  Created by dongs on 3/28/24.
 //
 
 import SwiftUI
 import CachedAsyncImage
 
-struct ArticleView: View {
+struct ReservationView: View {
     
     @StateObject var saleVM = SaleVM()
-    @State private var isPreemption: Bool = false
-    
-    @State private var moveToTradeView: Bool = false
     
     let articleId: Int
+    
+    let purchaser: String
+    let reservedDate: String
+    let reservationPlace: String
+    
     
     var body: some View {
         VStack {
@@ -81,7 +83,6 @@ struct ArticleView: View {
                         
                         VStack(alignment: .leading){
                             
-                            
                             HStack(alignment: .center){
                                 Image("profile")
                                     .font(.system(size: 24))
@@ -104,7 +105,7 @@ struct ArticleView: View {
                             
                             Spacer().frame(height: 12)
                             
-                            Text(article.itemStatus == "SALE" ? "판매중": article.itemStatus == "RESERVATION" ? "예약중" : "판매완료")
+                            Text("현재 예약중인 상품")
                                 .font(.system(size: 18))
                                 .fontWeight(.medium)
                                 .foregroundStyle(CommonStyle.SALE_COLOR)
@@ -132,10 +133,26 @@ struct ArticleView: View {
                                 
                                 Spacer().frame(height: 16)
                                 
-                                Text("거래 희망 장소")
+                                Text("구매자")
                                     .font(.system(size: 20))
                                     .fontWeight(.bold)
-                                Text(article.tradingPlace)
+                                Text(purchaser)
+                                    .font(.system(size: 18))
+                                
+                                Spacer().frame(height: 16)
+                                
+                                Text("거래 예약 장소")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                Text(reservationPlace)
+                                    .font(.system(size: 18))
+                                
+                                Spacer().frame(height: 16)
+                                
+                                Text("거래 예약 일시")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                Text(reservedDate)
                                     .font(.system(size: 18))
                                 
                             }
@@ -146,65 +163,18 @@ struct ArticleView: View {
                     
                     if article.itemStatus != "COMP" {
                         VStack(spacing: 0){
-                            Divider()
-                                .background(CommonStyle.DIVIDER_COLOR)
                             
-                            Spacer().frame(height: 16)
-                            
-                            HStack {
+                            AuthButton(buttonAction: {
                                 
-                                Button(action: {
-                                    isPreemption.toggle()
-                                    saleVM.postPreemption(itemId: articleId)
-                                }, label: {
-                                    Image(systemName: isPreemption ? "heart.fill" : "heart")
-                                        .font(.system(size: 24))
-                                        .fontWeight(.medium)
-                                        .foregroundStyle(isPreemption ? CommonStyle.HEART_COLOR : CommonStyle.GRAY_COLOR)
-                                })
-                                .padding(.leading, 26)
-                                Spacer()
-                                Button(action: {
-                                    moveToTradeView.toggle()
-                                }, label: {
-                                    Text("예약하기")
-                                        .padding(.horizontal, 24)
-                                        .padding(.vertical, 12)
-                                        .font(.system(size: 14))
-                                        .fontWeight(.medium)
-                                        .foregroundStyle(CommonStyle.WHITE_COLOR)
-                                        .background(CommonStyle.BTN_BLUE_COLOR)
-                                        .cornerRadius(30)
-                                })
-                                .padding(.trailing, 26)
-                                Spacer()
-                                Button(action: {
-                                    
-                                }, label: {
-                                    Text("1:1 채팅하기")
-                                        .padding(.horizontal, 36)
-                                        .padding(.vertical, 12)
-                                        .font(.system(size: 15))
-                                        .fontWeight(.medium)
-                                        .foregroundStyle(CommonStyle.WHITE_COLOR)
-                                        .background(CommonStyle.BTN_BLUE_COLOR)
-                                        .cornerRadius(30)
-                                })
-                                .padding(.trailing, 26)
-                            }
-                            .padding(.bottom, 30)
-                            .background(CommonStyle.WHITE_COLOR)
+                            }, buttonText: "예약 취소하기")
+                            .padding(.all, 20)
+                            
                         }
+                        .padding(.bottom, 30)
+                        .background(CommonStyle.WHITE_COLOR)
                     }
                 }
                 .ignoresSafeArea(edges: .bottom)
-                .onAppear{
-                    if article.preemptionItemStatus == "PREEMPTION" {
-                        isPreemption = true
-                    } else {
-                        isPreemption = false
-                    }
-                }
             }
             
             else {
@@ -218,12 +188,5 @@ struct ArticleView: View {
         .onDisappear {
             saleVM.subscription.removeAll()
         }
-        .navigationDestination(isPresented: $moveToTradeView) {
-            TradeView(nickname: saleVM.article?.nickname ?? "", articleId: articleId)
-        }
     }
-}
-
-#Preview {
-    ArticleView(articleId: 5)
 }

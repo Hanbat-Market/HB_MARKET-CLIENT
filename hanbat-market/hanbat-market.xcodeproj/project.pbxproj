@@ -64,6 +64,9 @@
 		F5ADD01E2BB56EFC005C93C0 /* TradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD01D2BB56EFB005C93C0 /* TradeView.swift */; };
 		F5ADD0202BB56F63005C93C0 /* TradeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD01F2BB56F63005C93C0 /* TradeRouter.swift */; };
 		F5ADD0222BB57283005C93C0 /* TradeApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0212BB57283005C93C0 /* TradeApiService.swift */; };
+		F5ADD0242BB59CC7005C93C0 /* TradeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0232BB59CC7005C93C0 /* TradeVM.swift */; };
+		F5ADD0262BB59D02005C93C0 /* TradeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0252BB59D02005C93C0 /* TradeModel.swift */; };
+		F5ADD0282BB5B8CF005C93C0 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0272BB5B8CF005C93C0 /* ReservationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +125,9 @@
 		F5ADD01D2BB56EFB005C93C0 /* TradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeView.swift; sourceTree = "<group>"; };
 		F5ADD01F2BB56F63005C93C0 /* TradeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeRouter.swift; sourceTree = "<group>"; };
 		F5ADD0212BB57283005C93C0 /* TradeApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeApiService.swift; sourceTree = "<group>"; };
+		F5ADD0232BB59CC7005C93C0 /* TradeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeVM.swift; sourceTree = "<group>"; };
+		F5ADD0252BB59D02005C93C0 /* TradeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeModel.swift; sourceTree = "<group>"; };
+		F5ADD0272BB5B8CF005C93C0 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +234,7 @@
 				F589174B2BA9C422008EC345 /* SaleModel.swift */,
 				F58917532BAB147E008EC345 /* ArticleModel.swift */,
 				F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */,
+				F5ADD0252BB59D02005C93C0 /* TradeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +293,7 @@
 				F58917512BAABC4C008EC345 /* SaleVM.swift */,
 				F5ADD0022BAFFADA005C93C0 /* PreemptionVM.swift */,
 				F5ADD01B2BB3FD2C005C93C0 /* SearchVM.swift */,
+				F5ADD0232BB59CC7005C93C0 /* TradeVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -330,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				F589173A2BA89779008EC345 /* ProfileView.swift */,
+				F5ADD0272BB5B8CF005C93C0 /* ReservationView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -468,6 +477,7 @@
 				F589174E2BAAA551008EC345 /* SaleRouter.swift in Sources */,
 				F5ADD01C2BB3FD2C005C93C0 /* SearchVM.swift in Sources */,
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
+				F5ADD0242BB59CC7005C93C0 /* TradeVM.swift in Sources */,
 				F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */,
 				F52CC6462BAD392100F591AE /* SaleEditView.swift in Sources */,
 				F52CC6482BAD509D00F591AE /* KeyboardUtils.swift in Sources */,
@@ -483,6 +493,8 @@
 				F5ADD0162BB3F781005C93C0 /* SearchView.swift in Sources */,
 				F58917302BA85C15008EC345 /* HomeModel.swift in Sources */,
 				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
+				F5ADD0262BB59D02005C93C0 /* TradeModel.swift in Sources */,
+				F5ADD0282BB5B8CF005C93C0 /* ReservationView.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */,
 				F58917542BAB147E008EC345 /* ArticleModel.swift in Sources */,

@@ -11,7 +11,7 @@ import Alamofire
 
 enum TradeRouter: URLRequestConvertible {
     
-    case postTradeReservation(memberNickname: String, articleId: Int, transactionAppointmentDateTime: String)
+    case postTradeReservation(purchaserNickname: String, articleId: Int, transactionAppointmentDateTime: String, reservationPlace: String)
     
     var baseURL: URL {
         return URL(string: ApiClient.BASE_URL)!
@@ -31,12 +31,13 @@ enum TradeRouter: URLRequestConvertible {
     
     var parameters: Parameters {
         switch self {
-        case let .postTradeReservation(memberNickname, articleId, transactionAppointmentDateTime):
+        case let .postTradeReservation(purchaserNickname, articleId, transactionAppointmentDateTime, reservationPlace):
             var params = Parameters()
             
-            params["memberNickname"] = memberNickname
+            params["purchaserNickname"] = purchaserNickname
             params["articleId"] = articleId
             params["transactionAppointmentDateTime"] = transactionAppointmentDateTime
+            params["reservationPlace"] = reservationPlace
             
             return params
         }
@@ -45,13 +46,8 @@ enum TradeRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(endPoint)
         
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        var request = URLRequest(url: url)
         
-        urlComponents.queryItems = parameters.map { key, value in
-            URLQueryItem(name: key, value: "\(value)")
-        }
-        
-        var request = URLRequest(url: urlComponents.url!)
         request.method = method
         
         if method == .post {

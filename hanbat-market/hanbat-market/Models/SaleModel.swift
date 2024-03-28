@@ -68,6 +68,8 @@ struct SaleHistory: Codable {
     let reservedDate: String?
     let itemStatus: String?
     let preemptionSize: Int?
+    let preemptionItemStatus: String?
+    let reservationPlace: String?
 }
 
 struct SalesHistory: Codable {
