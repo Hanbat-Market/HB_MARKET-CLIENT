@@ -44,10 +44,14 @@ struct SearchView: View {
                                 .padding(.trailing, 20)
                             }
                             
-                            ScrollView(.horizontal, showsIndicators: false) {
+                            if recentSearches.isEmpty {
+                                Text("최근 검색어가 없습니다.")
+                            } else {
+                            
+                            LazyVGrid(columns: [GridItem(.adaptive(minimum: 110))], spacing: 10) {
                                 ForEach(recentSearches, id: \.self) { searchText in
                                     HStack {
-                                        Text(searchText)
+                                        Text(searchText.count > 3 ? "\(searchText.prefix(3))···" : searchText)
                                         
                                         Spacer().frame(width: 10)
                                         
@@ -56,6 +60,7 @@ struct SearchView: View {
                                             Image(systemName: "xmark")
                                         }
                                     }
+                                    .font(.system(size: 14))
                                     .padding(.horizontal, 16)
                                     .padding(.vertical, 8)
                                     .cornerRadius(30)
@@ -65,7 +70,7 @@ struct SearchView: View {
                                     )
                                     
                                 }
-                            }
+                            }}
                         }
                         
                         

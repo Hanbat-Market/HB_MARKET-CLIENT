@@ -33,5 +33,26 @@ struct DateUtils {
             return "\(daysAgo)일 전"
         }
     }
+    
+    static func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "M월 d일 EEEE"
+        return dateFormatter.string(from: date)
+    }
+    
+    static func formatDateTime(date: Date, hour:Int, minute: Int) -> String {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        let formattedDate = dateFormatter.string(from: date)
+        
+        let formattedHour = String(format: "%02d", hour)
+        let formattedMinute = String(format: "%02d", minute)
+        
+        let combinedDateTimeString = "\(formattedDate)T\(formattedHour):\(formattedMinute):00.000Z"
+        
+        return combinedDateTimeString
+    }
 }
 

@@ -35,119 +35,117 @@ struct SaleView: View {
             
             BackNavigationBar(navTitle: "상품 판매하기", customButtonAction: {
                 print("완료")
-                if !isSuccessUpload {
-                    isLoading = true
-                    saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
-                    isSuccessUpload = true
-                }
+                isLoading = true
+                saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
+                isSuccessUpload = true
             }, customButtonText: "완료")
             if isLoading {
                 ProgressView()
                     .controlSize(.large)
             }
-
-                ScrollView {
+            
+            ScrollView {
+                
+                VStack(alignment:.leading, spacing: 16){
+                    Text("제목")
+                        .padding(.leading, 6)
+                        .fontWeight(.medium)
+                    AuthInput(placeholder: "제목을 입력해주세요.", textInput: $title, keyboardType: .default)
+                }
+                .padding(.horizontal, 16)
+                
+                Spacer().frame(height: 30)
+                
+                VStack(alignment:.leading, spacing: 16){
+                    Text("상품명")
+                        .padding(.leading, 6)
+                        .fontWeight(.medium)
+                    AuthInput(placeholder: "상품명을 입력해주세요.", textInput: $itemName, keyboardType: .default)
+                }
+                .padding(.horizontal, 16)
+                
+                Spacer().frame(height: 30)
+                
+                VStack(alignment:.leading, spacing: 16){
+                    Text("가격 (원)")
+                        .padding(.leading, 6)
+                        .fontWeight(.medium)
+                    AuthInput(placeholder: "가격을 입력해주세요.", textInput: $price, keyboardType: .numberPad)
+                }
+                .padding(.horizontal, 16)
+                
+                Spacer().frame(height: 30)
+                
+                VStack(alignment:.leading, spacing: 16){
+                    Text("희망 거래 장소")
+                        .padding(.leading, 6)
+                        .fontWeight(.medium)
+                    AuthInput(placeholder: "장소를 입력해주세요.", textInput: $tradingPlace, keyboardType: .default)
                     
-                    VStack(alignment:.leading, spacing: 16){
-                        Text("제목")
-                            .padding(.leading, 6)
-                            .fontWeight(.medium)
-                        AuthInput(placeholder: "제목을 입력해주세요.", textInput: $title, keyboardType: .default)
-                    }
-                    .padding(.horizontal, 16)
-                    
-                    Spacer().frame(height: 30)
-                    
-                    VStack(alignment:.leading, spacing: 16){
-                        Text("상품명")
-                            .padding(.leading, 6)
-                            .fontWeight(.medium)
-                        AuthInput(placeholder: "상품명을 입력해주세요.", textInput: $itemName, keyboardType: .default)
-                    }
-                    .padding(.horizontal, 16)
-                    
-                    Spacer().frame(height: 30)
-                    
-                    VStack(alignment:.leading, spacing: 16){
-                        Text("가격 (원)")
-                            .padding(.leading, 6)
-                            .fontWeight(.medium)
-                        AuthInput(placeholder: "가격을 입력해주세요.", textInput: $price, keyboardType: .numberPad)
-                    }
-                    .padding(.horizontal, 16)
-                    
-                    Spacer().frame(height: 30)
-                    
-                    VStack(alignment:.leading, spacing: 16){
-                        Text("희망 거래 장소")
-                            .padding(.leading, 6)
-                            .fontWeight(.medium)
-                        AuthInput(placeholder: "장소를 입력해주세요.", textInput: $tradingPlace, keyboardType: .default)
-                        
-                    }
-                    .padding(.horizontal, 16)
-                    
-                    Spacer().frame(height: 30)
-                    
-                    VStack(alignment:.leading, spacing: 16){
-                        Text("상품 설명")
-                            .padding(.leading, 6)
-                            .fontWeight(.medium)
-                        TextEditor(text: $description)
-                            .padding(.horizontal, 26)
-                            .padding(.vertical, 14)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 30)
-                                    .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
-                            )
-                            .foregroundStyle(self.description == INIT_DESCRIPTION ? CommonStyle.PLACEHOLDER_COLOR : CommonStyle.BLACK_COLOR)
-                            .frame(height: 110)
-                            .onTapGesture {
-                                if self.description == INIT_DESCRIPTION {
-                                    self.description = ""
-                                }
+                }
+                .padding(.horizontal, 16)
+                
+                Spacer().frame(height: 30)
+                
+                VStack(alignment:.leading, spacing: 16){
+                    Text("상품 설명")
+                        .padding(.leading, 6)
+                        .fontWeight(.medium)
+                    TextEditor(text: $description)
+                        .padding(.horizontal, 26)
+                        .padding(.vertical, 14)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
+                        )
+                        .foregroundStyle(self.description == INIT_DESCRIPTION ? CommonStyle.PLACEHOLDER_COLOR : CommonStyle.BLACK_COLOR)
+                        .frame(height: 110)
+                        .onTapGesture {
+                            if self.description == INIT_DESCRIPTION {
+                                self.description = ""
                             }
-                    }
-                    .padding(.horizontal, 16)
+                        }
+                }
+                .padding(.horizontal, 16)
+                
+                Spacer().frame(height: 30)
+                
+                VStack(alignment:.leading, spacing: 16){
+                    Text("사진 등록")
+                        .padding(.leading, 6)
                     
-                    Spacer().frame(height: 30)
-                    
-                    VStack(alignment:.leading, spacing: 16){
-                        Text("사진 등록")
-                            .padding(.leading, 6)
-                        
-                        ScrollView(.horizontal) {
-                            HStack(spacing: 16) {
-                                
-                                PhotosPicker("+", selection: $photosPickerItems, maxSelectionCount: 5, selectionBehavior: .ordered)
-                                    .font(.system(size: 30))
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 16) {
+                            
+                            PhotosPicker("+", selection: $photosPickerItems, maxSelectionCount: 5, selectionBehavior: .ordered)
+                                .font(.system(size: 30))
+                                .frame(width: 100, height: 100)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
+                                )
+                            
+                            ForEach(0..<images.count, id: \.self) { image in
+                                Image(uiImage: images[image])
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
                                     .frame(width: 100, height: 100)
+                                    .cornerRadius(30)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 30)
                                             .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
                                     )
-                                
-                                ForEach(0..<images.count, id: \.self) { image in
-                                    Image(uiImage: images[image])
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 100, height: 100)
-                                        .cornerRadius(30)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 30)
-                                                .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
-                                        )
-                                }
                             }
-                        }.scrollIndicators(.hidden)
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 30)
+                        }
+                    }.scrollIndicators(.hidden)
                 }
-                .padding(.bottom, keyboardHandler.keyboardHeight)
-                .onTapGesture {
-                    keyboardHandler.hideKeyboard()
-                }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 30)
+            }
+            .padding(.bottom, keyboardHandler.keyboardHeight)
+            .onTapGesture {
+                keyboardHandler.hideKeyboard()
+            }
         }
         .ignoresSafeArea(edges: .bottom)
         .alert(isPresented: $saleVM.registerFailed, content: {
@@ -164,6 +162,7 @@ struct SaleView: View {
         }
         .onReceive(saleVM.registraionSuccess, perform: {
             self.dismiss()
+            isLoading = false
             isSuccessUpload = true
         })
         .onReceive(saleVM.authError, perform: {
@@ -184,7 +183,6 @@ struct SaleView: View {
                 }
             }
         }
-        print("images", images)
     }
 }
 

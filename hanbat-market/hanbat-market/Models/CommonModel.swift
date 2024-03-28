@@ -22,3 +22,7 @@ struct CommonModel: Codable {
 struct CommonArticleModel: Codable {
     let data: String
 }
+
+struct CommonResponseModel: Codable {
+    let data: String
+}

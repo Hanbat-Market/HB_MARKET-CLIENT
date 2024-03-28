@@ -15,7 +15,7 @@ struct ArticleModel: Codable {
     let title: String
     let description: String
     let tradingPlace: String
-    let articleStatus: String
+    let itemStatus: String
     let itemName: String
     let price: Int
     let nickname: String

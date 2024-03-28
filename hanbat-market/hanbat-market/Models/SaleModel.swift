@@ -60,7 +60,7 @@ struct SaleHistory: Codable {
     let title: String
     let description: String
     let tradingPlace: String
-    let articleStatus: String
+    let articleStatus: String?
     let itemName: String
     let price: Int
     let thumbnailFilePath: String

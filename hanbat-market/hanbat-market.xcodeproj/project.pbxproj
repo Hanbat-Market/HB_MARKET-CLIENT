@@ -61,6 +61,9 @@
 		F5ADD0182BB3FBBC005C93C0 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0172BB3FBBC005C93C0 /* SearchRouter.swift */; };
 		F5ADD01A2BB3FCA4005C93C0 /* SearchApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0192BB3FCA4005C93C0 /* SearchApiService.swift */; };
 		F5ADD01C2BB3FD2C005C93C0 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD01B2BB3FD2C005C93C0 /* SearchVM.swift */; };
+		F5ADD01E2BB56EFC005C93C0 /* TradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD01D2BB56EFB005C93C0 /* TradeView.swift */; };
+		F5ADD0202BB56F63005C93C0 /* TradeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD01F2BB56F63005C93C0 /* TradeRouter.swift */; };
+		F5ADD0222BB57283005C93C0 /* TradeApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0212BB57283005C93C0 /* TradeApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +119,9 @@
 		F5ADD0172BB3FBBC005C93C0 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		F5ADD0192BB3FCA4005C93C0 /* SearchApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiService.swift; sourceTree = "<group>"; };
 		F5ADD01B2BB3FD2C005C93C0 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
+		F5ADD01D2BB56EFB005C93C0 /* TradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeView.swift; sourceTree = "<group>"; };
+		F5ADD01F2BB56F63005C93C0 /* TradeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeRouter.swift; sourceTree = "<group>"; };
+		F5ADD0212BB57283005C93C0 /* TradeApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +252,7 @@
 				F589174D2BAAA551008EC345 /* SaleRouter.swift */,
 				F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */,
 				F5ADD0172BB3FBBC005C93C0 /* SearchRouter.swift */,
+				F5ADD01F2BB56F63005C93C0 /* TradeRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -266,6 +273,7 @@
 				F589174F2BAABB8A008EC345 /* SaleApiService.swift */,
 				F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */,
 				F5ADD0192BB3FCA4005C93C0 /* SearchApiService.swift */,
+				F5ADD0212BB57283005C93C0 /* TradeApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -305,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				F58917362BA89756008EC345 /* ChatView.swift */,
+				F5ADD01D2BB56EFB005C93C0 /* TradeView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -436,6 +445,7 @@
 				F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */,
 				F58917372BA89756008EC345 /* ChatView.swift in Sources */,
 				F589169B2BA3063F008EC345 /* LoginView.swift in Sources */,
+				F5ADD0222BB57283005C93C0 /* TradeApiService.swift in Sources */,
 				F5ADCFFD2BAFF94E005C93C0 /* PreemptionModel.swift in Sources */,
 				F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */,
 				F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */,
@@ -452,6 +462,7 @@
 				F52CC64A2BAD628B00F591AE /* ImageViewer.swift in Sources */,
 				F589171F2BA81F52008EC345 /* HomeView.swift in Sources */,
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,
+				F5ADD0202BB56F63005C93C0 /* TradeRouter.swift in Sources */,
 				F58917502BAABB8A008EC345 /* SaleApiService.swift in Sources */,
 				F58916A62BA32597008EC345 /* CompletedView.swift in Sources */,
 				F589174E2BAAA551008EC345 /* SaleRouter.swift in Sources */,
@@ -462,6 +473,7 @@
 				F52CC6482BAD509D00F591AE /* KeyboardUtils.swift in Sources */,
 				F58917422BA97851008EC345 /* SettingView.swift in Sources */,
 				F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */,
+				F5ADD01E2BB56EFC005C93C0 /* TradeView.swift in Sources */,
 				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,
 				F58916A92BA58850008EC345 /* AuthModel.swift in Sources */,
 				F5ADD01A2BB3FCA4005C93C0 /* SearchApiService.swift in Sources */,

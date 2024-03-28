@@ -13,6 +13,8 @@ struct ArticleView: View {
     @StateObject var saleVM = SaleVM()
     @State private var isPreemption: Bool = false
     
+    @State private var moveToTradeView: Bool = false
+    
     let articleId: Int
     
     var body: some View {
@@ -42,13 +44,16 @@ struct ArticleView: View {
                                                         
                                                         Image
                                                             .resizable()
-                                                            .scaledToFill()
-                                                            .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+//                                                            .scaledToFit()
+//                                                            .scaledToFill()
+                                                            .aspectRatio(contentMode: .fill)
+//                                                            .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+                                                            
                                                         
                                                     }, placeholder: {
                                                         ProgressView()
-                                                    })
-                                                    .frame(height: 320)
+                                                    }).frame(width: UIScreen.main.bounds.width, height: 320)
+                                                    
                                                 }
                                                 
                                                 
@@ -99,7 +104,7 @@ struct ArticleView: View {
                                 
                                 Spacer().frame(height: 12)
                                 
-                                Text(article.articleStatus == "OPEN" ? "판매중": "판매완료")
+                                Text(article.itemStatus == "SALE" ? "판매중": article.itemStatus == "RESERVATION" ? "예약중" : "판매완료")
                                     .font(.system(size: 18))
                                     .fontWeight(.medium)
                                     .foregroundStyle(CommonStyle.SALE_COLOR)
@@ -160,6 +165,21 @@ struct ArticleView: View {
                             .padding(.leading, 26)
                             Spacer()
                             Button(action: {
+                                moveToTradeView.toggle()
+                            }, label: {
+                                Text("예약하기")
+                                    .padding(.horizontal, 24)
+                                    .padding(.vertical, 12)
+                                    .font(.system(size: 14))
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(CommonStyle.WHITE_COLOR)
+                                    .background(CommonStyle.BTN_BLUE_COLOR)
+                                    .cornerRadius(30)
+                            })
+                            .padding(.trailing, 26)
+                            Spacer()
+                            Button(action: {
+                                
                             }, label: {
                                 Text("1:1 채팅하기")
                                     .padding(.horizontal, 36)
@@ -195,6 +215,9 @@ struct ArticleView: View {
         .toolbar(.hidden, for: .navigationBar)
         .onDisappear {
             saleVM.subscription.removeAll()
+        }
+        .navigationDestination(isPresented: $moveToTradeView) {
+            TradeView(nickname: saleVM.article?.nickname ?? "")
         }
     }
 }
