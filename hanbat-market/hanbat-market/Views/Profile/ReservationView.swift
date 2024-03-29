@@ -11,6 +11,8 @@ import CachedAsyncImage
 struct ReservationView: View {
     
     @StateObject var saleVM = SaleVM()
+    @StateObject var tradeVM = TradeVM()
+    @Environment(\.dismiss) private var dismiss
     
     let articleId: Int
     
@@ -152,7 +154,7 @@ struct ReservationView: View {
                                 Text("거래 예약 일시")
                                     .font(.system(size: 20))
                                     .fontWeight(.bold)
-                                Text(reservedDate)
+                                Text("\(DateUtils.formatFullDateTime(reservedDate)) 예약")
                                     .font(.system(size: 18))
                                 
                             }
@@ -164,13 +166,24 @@ struct ReservationView: View {
                     if article.itemStatus != "COMP" {
                         VStack(spacing: 0){
                             
-                            AuthButton(buttonAction: {
+                            HStack(spacing: 10) {
+                                AuthButton(buttonAction: {
+                                    tradeVM.postTradeCancel(articleId: articleId, purchaserNickname: purchaser, requestMemberNickname: article.nickname)
+                                }, buttonText: "취소하기", backGroundColor: CommonStyle.HEART_COLOR)
+                                .padding(.leading, 16)
                                 
-                            }, buttonText: "예약 취소하기")
-                            .padding(.all, 20)
+                                Spacer()
+                                
+                                
+                                AuthButton(buttonAction: {
+                                    tradeVM.postTradeComplete(articleId: articleId, purchaserNickname: purchaser)
+                                }, buttonText: "완료하기")
+                                .padding(.trailing, 16)
+                            }
                             
                         }
                         .padding(.bottom, 30)
+                        .padding(.top, 20)
                         .background(CommonStyle.WHITE_COLOR)
                     }
                 }
@@ -188,5 +201,21 @@ struct ReservationView: View {
         .onDisappear {
             saleVM.subscription.removeAll()
         }
+        .alert(isPresented: $tradeVM.tradeCompleteFailed, content: {
+            Alert(title: Text("예약 완료 실패"), message: Text("완료하기를 다시 눌러주세요."), dismissButton: .default(Text("확인")))
+        })
+        .alert(isPresented: $tradeVM.tradeCancelFailed, content: {
+            Alert(title: Text("예약 취소 실패"), message: Text("취소하기를 다시 눌러주세요."), dismissButton: .default(Text("확인")))
+        })
+        .onReceive(tradeVM.tradeCompleteSuccess, perform: {_ in
+            self.dismiss()
+        })
+        .onReceive(tradeVM.tradeCancelSuccess, perform: {_ in
+            self.dismiss()
+        })
     }
+}
+
+#Preview {
+    ReservationView(articleId: 1, purchaser: "고릴라", reservedDate: "2024-03-28T23:03:56.057", reservationPlace: "대전 서구 월평동")
 }

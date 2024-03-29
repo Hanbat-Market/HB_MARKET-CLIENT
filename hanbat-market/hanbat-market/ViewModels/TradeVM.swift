@@ -38,6 +38,52 @@ class TradeVM: ObservableObject {
             }
             .store(in: &subscription)
     }
+    
+    @Published var tradeCompleteResponse: CommonResponseModel? = nil
+    @Published var tradeCompleteFailed: Bool = false
+    var tradeCompleteSuccess = PassthroughSubject<(), Never>()
+    
+    func postTradeComplete(articleId: Int, purchaserNickname: String) {
+        TradeApiService.postTradeComplete(articleId: articleId, purchaserNickname: purchaserNickname)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("postTradeComplete request finished")
+                case .failure(let error):
+                    print("postTradeComplete request errorCode \(String(describing: error.responseCode))" )
+                    print("postTradeComplete request errorDes", error.localizedDescription)
+                    self.tradeCompleteFailed = true
+                }
+            } receiveValue: { [weak self] tradeCompleteResponse in
+                print("Received postTradeComplete: \(tradeCompleteResponse)")
+                self?.tradeCompleteResponse = tradeCompleteResponse
+                self?.tradeCompleteSuccess.send()
+            }
+            .store(in: &subscription)
+    }
+    
+    @Published var tradeCancelResponse: CommonResponseModel? = nil
+    @Published var tradeCancelFailed: Bool = false
+    var tradeCancelSuccess = PassthroughSubject<(), Never>()
+    
+    func postTradeCancel(articleId: Int, purchaserNickname: String, requestMemberNickname: String) {
+        TradeApiService.postTradeCancel(articleId: articleId, purchaserNickname: purchaserNickname, requestMemberNickname: requestMemberNickname)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("postTradeCancel request finished")
+                case .failure(let error):
+                    print("postTradeCancel request errorCode \(String(describing: error.responseCode))" )
+                    print("postTradeCancel request errorDes", error.localizedDescription)
+                    self.tradeCancelFailed = true
+                }
+            } receiveValue: { [weak self] tradeCancelResponse in
+                print("Received postTradeCancel: \(tradeCancelResponse)")
+                self?.tradeCancelResponse = tradeCancelResponse
+                self?.tradeCancelSuccess.send()
+            }
+            .store(in: &subscription)
+    }
 }
 
 

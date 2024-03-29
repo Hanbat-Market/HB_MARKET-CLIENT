@@ -54,5 +54,25 @@ struct DateUtils {
         
         return combinedDateTimeString
     }
+    
+    static func formatFullDateTime(_ dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        
+        guard let date = dateFormatter.date(from: dateString) else {
+            return "Invalid Date"
+        }
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        if let year = components.year,
+           let month = components.month,
+           let day = components.day,
+           let hour = components.hour,
+           let minute = components.minute {
+            return "\(year)년 \(month)월 \(day)일 \(hour)시 \(minute)분"
+        }
+        return "2024년 01월 01일 00시 00분"
+    }
 }
 

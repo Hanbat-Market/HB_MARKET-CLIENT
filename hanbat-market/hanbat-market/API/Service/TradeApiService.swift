@@ -19,5 +19,23 @@ enum TradeApiService {
             .value()
             .eraseToAnyPublisher()
     }
+    
+    static func postTradeComplete(articleId: Int, purchaserNickname: String) -> AnyPublisher<CommonResponseModel, AFError> {
+        return ApiClient.shared.session
+            .request(TradeRouter.postTradeComplete(articleId: articleId, purchaserNickname: purchaserNickname))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: CommonResponseModel.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
+    
+    static func postTradeCancel(articleId: Int, purchaserNickname: String, requestMemberNickname: String) -> AnyPublisher<CommonResponseModel, AFError> {
+        return ApiClient.shared.session
+            .request(TradeRouter.postTradeCancel(articleId: articleId, purchaserNickname: purchaserNickname, requestMemberNickname: requestMemberNickname))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: CommonResponseModel.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
 }
 
