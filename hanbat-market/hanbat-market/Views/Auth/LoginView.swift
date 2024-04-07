@@ -22,49 +22,93 @@ struct LoginView: View {
             
             ZStack{
                 
-                VStack(spacing: 16){
-                    Spacer()
+                VStack{
+                    Spacer().frame(height: 150)
                     
-                    Image("hb_logo")
-                        .resizable()
-                        .frame(width: 162, height: 45)
-                    
-                    Spacer().frame(height: 20)
-                    
-                    AuthInput(placeholder: "이메일 주소", textInput: $email, keyboardType: .emailAddress)
-                        .focused($isFocused)
-                    
-                    AuthInput(placeholder: "비밀번호", textInput: $password, isSecureInput: true)
-                        .focused($isFocused)
-                    
-                    AuthButton(buttonAction: {
-                        print("로그인")
-                        isFocused = false
-                        authVM.login(email: email, password: password)
-                    }, buttonText: "로그인", backGroundColor: authManager.isLoggedIn ? CommonStyle.GRAY_COLOR : CommonStyle.MAIN_COLOR)
-                    .onReceive(authVM.loginSuccess, perform: {
-                        authManager.isLoggedIn = true
-                    })
-                    .disabled(authManager.isLoggedIn)
-                    
-                    NavigationLink(destination: RegisterView()) {
-                        HStack{
-                            Text("회원가입")
-                                .font(.system(size: 16))
-                                .foregroundColor(.black)
-                            Image(systemName: "link")
-                                .font(.system(size: 12))
-                        }
+                    VStack{
+                        Text("한밭대학교 학생을 위한 거래 플랫폼")
+                            .font(.system(size: 14))
+                            .foregroundStyle(CommonStyle.LOGIN_GRAY_COLOR)
+                        Image("hb_logo")
+                            .resizable()
+                            .frame(width: 194, height: 54)
                     }
                     
                     Spacer()
                     
+                    VStack(spacing: 16){
+                        
+                        HStack{
+                            VStack{
+                                Divider()
+                                    .background(CommonStyle.MAIN_BLUE_COLOR)
+                            }
+                            Text("소셜 로그인")
+                                .fontWeight(.bold)
+                                .padding(.horizontal, 12)
+                            VStack{
+                                Divider()
+                                    .background(CommonStyle.MAIN_BLUE_COLOR)
+                            }
+                        }
+                        .foregroundStyle(CommonStyle.MAIN_BLUE_COLOR)
+                        
+                        VStack(spacing: 2){
+                            Text("간편하게 로그인하여")
+                            Text("한밭마켓 서비스를 이용해보세요.")
+                        }
+                        .font(.system(size: 14))
+                        .foregroundStyle(CommonStyle.LOGIN_GRAY_COLOR)
+                        .padding(.bottom, 18)
+                    
+                        
+                        Button(action: {
+                        }, label: {
+                            HStack{
+                                Spacer()
+                                Image("google_logo")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .padding(.trailing, 12)
+                                Text("Google로 로그인")
+                                    .font(.system(size: 18))
+                                    .fontWeight(.medium)
+                                Spacer()
+                            }
+                        })
+                            .padding(.horizontal, 30)
+                            .padding(.vertical, 20)
+                            .foregroundColor(CommonStyle.BLACK_COLOR)
+                            .background(CommonStyle.GOOGLE_BG_COLOR)
+                            .cornerRadius(50)
+                        
+                        Button(action: {
+                        }, label: {
+                            HStack{
+                                Spacer()
+                                Image("apple_logo")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .padding(.trailing, 12)
+                                Text("Apple로 로그인")
+                                    .font(.system(size: 18))
+                                    .fontWeight(.medium)
+                                Spacer()
+                            }
+                        })
+                            .padding(.horizontal, 30)
+                            .padding(.vertical, 20)
+                            .foregroundColor(CommonStyle.WHITE_COLOR)
+                            .background(CommonStyle.BLACK_COLOR)
+                            .cornerRadius(50)
+                    }
+                    
+                    Spacer().frame(height: 150)
                 }
                 
                 
                 .padding(.horizontal, 20)
             }
-            .background(CommonStyle.LOGINBG_COLOR)
             .alert(isPresented: $authVM.loginFailed, content: {
                 Alert(title: Text("로그인 실패"), message: Text("아이디 또는 비밀번호를 다시 확인해주세요."), dismissButton: .default(Text("확인")))
             })
@@ -94,5 +138,5 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
 }
 
 #Preview {
-    LoginView()
+    LoginView().environmentObject(AuthVM())
 }

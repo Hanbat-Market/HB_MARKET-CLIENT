@@ -64,7 +64,7 @@ struct ContentView: View {
                 }
             }
         } else {
-            LoginView()
+            LoginView().environmentObject(AuthVM())
         }
     }
 }

@@ -46,6 +46,8 @@ class SessionManager: ObservableObject {
             return nil
         }
         
+        print(savedData)
+        
         let cookieProperties: [HTTPCookiePropertyKey: Any] = [
             .name: sessionCookieData.name,
             .value: sessionCookieData.value,
@@ -56,6 +58,7 @@ class SessionManager: ObservableObject {
         ]
         
         print(sessionCookieData)
+        print("HTTPCookie(properties: cookieProperties)", HTTPCookie(properties: cookieProperties))
         
         return HTTPCookie(properties: cookieProperties)
     }
