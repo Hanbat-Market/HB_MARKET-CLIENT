@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingView: View {
     
-    @EnvironmentObject var authVM: AuthVM
     @State var isLogout = false
     
     var body: some View {
@@ -58,8 +57,8 @@ struct SettingView: View {
         }
         .alert(isPresented: $isLogout, content: {
             Alert(title: Text("로그아웃"), message: Text("정말 로그아웃 하시겠습니까?"), primaryButton: .cancel(Text("확인"), action: {
-                SessionManager.shared.logout()
-                SessionManager.shared.isLoggedIn = false
+                OAuthManager.shared.oauthLogout()
+                OAuthManager.shared.isLoggedIn = false
             }), secondaryButton: .destructive(Text("취소"), action: {
                 isLogout = false
             }))

@@ -29,7 +29,7 @@ class HomeVM: ObservableObject {
                     print("loadHome errorCode: \(String(describing: error.responseCode))")
                     print("loadHome errorDes: \(String(describing: error.localizedDescription))")
                     if let errorCode = error.responseCode {
-                        if errorCode == 401{
+                        if errorCode == 401 || errorCode == 500 {
                             self.responseError.send()
                         }
                     }

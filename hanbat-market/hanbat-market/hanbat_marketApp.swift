@@ -11,12 +11,13 @@ import SwiftUI
 struct hanbat_marketApp: App {    
     
     @StateObject var authManager = SessionManager.shared
+    @StateObject var oauthManager = OAuthManager.shared
     
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(OAuthVM())
                 .onAppear(){
-                    authManager.checkSessionCookie()
+                    oauthManager.checkTokenExpiration()
                 }
         }
     }

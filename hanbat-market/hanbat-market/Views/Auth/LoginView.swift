@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     @EnvironmentObject var oauthVM: OAuthVM
-    @StateObject var authManager = SessionManager.shared
+    @StateObject var oauthManager = OAuthManager.shared
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -121,9 +121,6 @@ struct LoginView: View {
                 
                 .padding(.horizontal, 20)
             }
-            //            .alert(isPresented: $authVM.loginFailed, content: {
-            //                Alert(title: Text("로그인 실패"), message: Text("아이디 또는 비밀번호를 다시 확인해주세요."), dismissButton: .default(Text("확인")))
-            //            })
             .navigationDestination(isPresented: $oauthVM.isLoggedIn) {
                 HomeView()
             }

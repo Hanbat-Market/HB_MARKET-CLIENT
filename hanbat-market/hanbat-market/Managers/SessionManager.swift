@@ -21,11 +21,11 @@ class SessionManager: ObservableObject {
                                                path: cookie.path,
                                                expiresDate: cookie.expiresDate)
         
-        print("sessionCookieData: ", sessionCookieData)
+        print("Authorization: ", sessionCookieData)
         
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(sessionCookieData) {
-            userDefaults.set(encoded, forKey: "sessionCookieData")
+            userDefaults.set(encoded, forKey: "Authorization")
         }
     }
     
@@ -41,7 +41,7 @@ class SessionManager: ObservableObject {
     }
     
     func loadSessionCookie() -> HTTPCookie? {
-        guard let savedData = userDefaults.data(forKey: "sessionCookieData"),
+        guard let savedData = userDefaults.data(forKey: "Authorization"),
               let sessionCookieData = try? JSONDecoder().decode(AuthCookieData.self, from: savedData) else {
             return nil
         }
@@ -64,7 +64,7 @@ class SessionManager: ObservableObject {
     }
     
     func logout() {
-        UserDefaults.standard.removeObject(forKey: "accessToken")
+        UserDefaults.standard.removeObject(forKey: "Authorization")
         
         isLoggedIn = false
     }

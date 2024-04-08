@@ -11,7 +11,7 @@ import CachedAsyncImage
 struct HomeView: View {
     
     @StateObject var homeVM = HomeVM()
-    @StateObject var authManager = SessionManager.shared
+    @StateObject var oauthManager = OAuthManager.shared
     
     @State var isSessionOut: Bool = false
     @State var moveToSaleView: Bool = false
@@ -114,7 +114,7 @@ struct HomeView: View {
         })
         .alert(isPresented: $isSessionOut, content: {
             Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
-                authManager.isLoggedIn = false
+                oauthManager.isLoggedIn = false
             }))
         })
         .navigationDestination(isPresented: $moveToSaleView) {

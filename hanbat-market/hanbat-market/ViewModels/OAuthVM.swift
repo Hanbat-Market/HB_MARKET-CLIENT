@@ -20,5 +20,6 @@ class OAuthVM: ObservableObject {
         UserDefaults.standard.set(accessToken, forKey: "Authorization")
         self.isLoggedIn = true
         self.isWebViewPresented = false
+        OAuthManager.shared.isLoggedIn = true
     }
 }

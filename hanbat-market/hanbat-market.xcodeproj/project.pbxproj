@@ -55,6 +55,7 @@
 		F59363CF2BC28F490023302B /* OAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363CE2BC28F490023302B /* OAuthVM.swift */; };
 		F59363D12BC28F980023302B /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363D02BC28F980023302B /* OAuthApiService.swift */; };
 		F59363D42BC2DC990023302B /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = F59363D32BC2DC990023302B /* JWTDecode */; };
+		F59363D62BC413690023302B /* OAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363D52BC413690023302B /* OAuthManager.swift */; };
 		F5ADCFFD2BAFF94E005C93C0 /* PreemptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */; };
 		F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */; };
 		F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */; };
@@ -119,6 +120,7 @@
 		F58917582BAB30FD008EC345 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		F59363CE2BC28F490023302B /* OAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthVM.swift; sourceTree = "<group>"; };
 		F59363D02BC28F980023302B /* OAuthApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthApiService.swift; sourceTree = "<group>"; };
+		F59363D52BC413690023302B /* OAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
 		F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionModel.swift; sourceTree = "<group>"; };
 		F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionRouter.swift; sourceTree = "<group>"; };
 		F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionApiService.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				F58917262BA82C7B008EC345 /* SessionManager.swift */,
+				F59363D52BC413690023302B /* OAuthManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */,
 				F58916BB2BA58B52008EC345 /* BaseInterceptor.swift in Sources */,
 				F589172E2BA85BC1008EC345 /* HomeApiService.swift in Sources */,
+				F59363D62BC413690023302B /* OAuthManager.swift in Sources */,
 				F52CC64A2BAD628B00F591AE /* ImageViewer.swift in Sources */,
 				F589171F2BA81F52008EC345 /* HomeView.swift in Sources */,
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,

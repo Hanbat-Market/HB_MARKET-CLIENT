@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selection = 0
-    @StateObject var authManager = SessionManager.shared
+    @StateObject var oauthManager = OAuthManager.shared
     
     let image = UIImage.gradientImageWithBounds(
         bounds: CGRect( x: 0, y: 0, width: UIScreen.main.scale, height: 5),
@@ -22,7 +22,7 @@ struct ContentView: View {
     
     
     var body: some View {
-        if authManager.isLoggedIn {
+        if oauthManager.isLoggedIn {
             NavigationStack{
                 TabView(selection: $selection){
                     HomeView()
