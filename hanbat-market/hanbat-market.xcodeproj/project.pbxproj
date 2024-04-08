@@ -52,6 +52,9 @@
 		F58917542BAB147E008EC345 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917532BAB147E008EC345 /* ArticleModel.swift */; };
 		F58917562BAB15A0008EC345 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917552BAB15A0008EC345 /* ArticleView.swift */; };
 		F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917582BAB30FD008EC345 /* DateUtils.swift */; };
+		F59363CF2BC28F490023302B /* OAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363CE2BC28F490023302B /* OAuthVM.swift */; };
+		F59363D12BC28F980023302B /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363D02BC28F980023302B /* OAuthApiService.swift */; };
+		F59363D42BC2DC990023302B /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = F59363D32BC2DC990023302B /* JWTDecode */; };
 		F5ADCFFD2BAFF94E005C93C0 /* PreemptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */; };
 		F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */; };
 		F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */; };
@@ -114,6 +117,8 @@
 		F58917532BAB147E008EC345 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		F58917552BAB15A0008EC345 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		F58917582BAB30FD008EC345 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		F59363CE2BC28F490023302B /* OAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthVM.swift; sourceTree = "<group>"; };
+		F59363D02BC28F980023302B /* OAuthApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthApiService.swift; sourceTree = "<group>"; };
 		F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionModel.swift; sourceTree = "<group>"; };
 		F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionRouter.swift; sourceTree = "<group>"; };
 		F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionApiService.swift; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 			files = (
 				F5ADD0132BB2CEF5005C93C0 /* CachedAsyncImage in Frameworks */,
 				F58917172BA69782008EC345 /* Alamofire in Frameworks */,
+				F59363D42BC2DC990023302B /* JWTDecode in Frameworks */,
 				F58917192BA69782008EC345 /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				F58916BC2BA58B71008EC345 /* AuthApiService.swift */,
+				F59363D02BC28F980023302B /* OAuthApiService.swift */,
 				F589172D2BA85BC1008EC345 /* HomeApiService.swift */,
 				F589174F2BAABB8A008EC345 /* SaleApiService.swift */,
 				F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */,
@@ -294,6 +301,7 @@
 				F5ADD0022BAFFADA005C93C0 /* PreemptionVM.swift */,
 				F5ADD01B2BB3FD2C005C93C0 /* SearchVM.swift */,
 				F5ADD0232BB59CC7005C93C0 /* TradeVM.swift */,
+				F59363CE2BC28F490023302B /* OAuthVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -388,6 +396,7 @@
 				F58917162BA69782008EC345 /* Alamofire */,
 				F58917182BA69782008EC345 /* AlamofireDynamic */,
 				F5ADD0122BB2CEF5005C93C0 /* CachedAsyncImage */,
+				F59363D32BC2DC990023302B /* JWTDecode */,
 			);
 			productName = "hanbat-market";
 			productReference = F58916702BA1EABD008EC345 /* hanbat-market.app */;
@@ -420,6 +429,7 @@
 			packageReferences = (
 				F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				F59363D22BC2DC990023302B /* XCRemoteSwiftPackageReference "JWTDecode" */,
 			);
 			productRefGroup = F58916712BA1EABD008EC345 /* Products */;
 			projectDirPath = "";
@@ -491,12 +501,14 @@
 				F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */,
 				F58916C42BA59357008EC345 /* AuthVM.swift in Sources */,
 				F5ADD0162BB3F781005C93C0 /* SearchView.swift in Sources */,
+				F59363CF2BC28F490023302B /* OAuthVM.swift in Sources */,
 				F58917302BA85C15008EC345 /* HomeModel.swift in Sources */,
 				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
 				F5ADD0262BB59D02005C93C0 /* TradeModel.swift in Sources */,
 				F5ADD0282BB5B8CF005C93C0 /* ReservationView.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */,
+				F59363D12BC28F980023302B /* OAuthApiService.swift in Sources */,
 				F58917542BAB147E008EC345 /* ArticleModel.swift in Sources */,
 				F5ADD0032BAFFADA005C93C0 /* PreemptionVM.swift in Sources */,
 				F58917522BAABC4C008EC345 /* SaleVM.swift in Sources */,
@@ -725,6 +737,14 @@
 				minimumVersion = 5.9.0;
 			};
 		};
+		F59363D22BC2DC990023302B /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
@@ -745,6 +765,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
+		};
+		F59363D32BC2DC990023302B /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F59363D22BC2DC990023302B /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
 		};
 		F5ADD0122BB2CEF5005C93C0 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;

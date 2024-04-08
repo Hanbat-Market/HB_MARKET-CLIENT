@@ -14,7 +14,7 @@ struct hanbat_marketApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(AuthVM())
+            ContentView().environmentObject(OAuthVM())
                 .onAppear(){
                     authManager.checkSessionCookie()
                 }

@@ -10,12 +10,15 @@ import Alamofire
 
 class BaseInterceptor : RequestInterceptor {
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, any Error>) -> Void) {
-        
         var request = urlRequest
         
-        // 헤더 부분 삽입
+        if let accessToken = UserDefaults.standard.string(forKey: "Authorization"){
+            var cookie = "Authorization=\(accessToken); "
+            request.setValue(cookie, forHTTPHeaderField: "Cookie")
+        }
+        
+        // 헤더 삽입
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Accpet")
         
         completion(.success(request))
     }

@@ -58,13 +58,13 @@ class SessionManager: ObservableObject {
         ]
         
         print(sessionCookieData)
-        print("HTTPCookie(properties: cookieProperties)", HTTPCookie(properties: cookieProperties))
+//        print("HTTPCookie(properties: cookieProperties)", HTTPCookie(properties: cookieProperties))
         
         return HTTPCookie(properties: cookieProperties)
     }
     
     func logout() {
-        UserDefaults.standard.removeObject(forKey: "sessionCookieData")
+        UserDefaults.standard.removeObject(forKey: "accessToken")
         
         isLoggedIn = false
     }

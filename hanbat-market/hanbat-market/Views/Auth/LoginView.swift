@@ -9,13 +9,15 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @EnvironmentObject var authVM: AuthVM
+    @EnvironmentObject var oauthVM: OAuthVM
     @StateObject var authManager = SessionManager.shared
     
     @State private var email: String = ""
     @State private var password: String = ""
     
     @FocusState private var isFocused: Bool
+    
+    @State var showGoogleWV = false
     
     var body: some View {
         NavigationStack{
@@ -60,9 +62,10 @@ struct LoginView: View {
                         .font(.system(size: 14))
                         .foregroundStyle(CommonStyle.LOGIN_GRAY_COLOR)
                         .padding(.bottom, 18)
-                    
+                        
                         
                         Button(action: {
+                            showGoogleWV.toggle()
                         }, label: {
                             HStack{
                                 Spacer()
@@ -76,11 +79,20 @@ struct LoginView: View {
                                 Spacer()
                             }
                         })
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 20)
-                            .foregroundColor(CommonStyle.BLACK_COLOR)
-                            .background(CommonStyle.GOOGLE_BG_COLOR)
-                            .cornerRadius(50)
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 20)
+                        .foregroundColor(CommonStyle.BLACK_COLOR)
+                        .background(CommonStyle.GOOGLE_BG_COLOR)
+                        .cornerRadius(50)
+                        .sheet(isPresented: $showGoogleWV, content: {
+                            
+                            OAuthApiService(url: URL(string: "\(ApiClient.BASE_URL)/oauth2/authorization/google")!, onRedirect: { googleAccessToken in
+                                
+                                oauthVM.saveAccessTokenCookie(accessToken: googleAccessToken)
+                                
+                                showGoogleWV = false
+                            })
+                        })
                         
                         Button(action: {
                         }, label: {
@@ -96,11 +108,11 @@ struct LoginView: View {
                                 Spacer()
                             }
                         })
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 20)
-                            .foregroundColor(CommonStyle.WHITE_COLOR)
-                            .background(CommonStyle.BLACK_COLOR)
-                            .cornerRadius(50)
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 20)
+                        .foregroundColor(CommonStyle.WHITE_COLOR)
+                        .background(CommonStyle.BLACK_COLOR)
+                        .cornerRadius(50)
                     }
                     
                     Spacer().frame(height: 150)
@@ -109,9 +121,12 @@ struct LoginView: View {
                 
                 .padding(.horizontal, 20)
             }
-            .alert(isPresented: $authVM.loginFailed, content: {
-                Alert(title: Text("로그인 실패"), message: Text("아이디 또는 비밀번호를 다시 확인해주세요."), dismissButton: .default(Text("확인")))
-            })
+            //            .alert(isPresented: $authVM.loginFailed, content: {
+            //                Alert(title: Text("로그인 실패"), message: Text("아이디 또는 비밀번호를 다시 확인해주세요."), dismissButton: .default(Text("확인")))
+            //            })
+            .navigationDestination(isPresented: $oauthVM.isLoggedIn) {
+                HomeView()
+            }
             .toolbar(.hidden, for: .navigationBar)
             .ignoresSafeArea(.all)
         }
@@ -138,5 +153,5 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
 }
 
 #Preview {
-    LoginView().environmentObject(AuthVM())
+    LoginView().environmentObject(OAuthVM())
 }

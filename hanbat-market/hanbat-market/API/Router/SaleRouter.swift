@@ -66,7 +66,7 @@ enum SaleRouter: URLRequestConvertible {
             return params
             
         case .fetchArticle: return [:]
-        case let .editArticle(articleId, title, price, itemName, description, tradingPlace, selectedImages):
+        case let .editArticle(_, title, price, itemName, description, tradingPlace, selectedImages):
             var params = Parameters()
             
             // 이미지를 Base64 문자열로 변환하여 파라미터에 추가
