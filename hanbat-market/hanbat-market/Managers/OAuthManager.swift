@@ -59,6 +59,11 @@ class OAuthManager: ObservableObject {
         return false
     }
     
+    func getAccessToken() -> String {
+        let accessToken = UserDefaults.standard.string(forKey: "Authorization") ?? ""
+        return accessToken
+    }
+    
     func oauthLogout() {
         UserDefaults.standard.removeObject(forKey: "Authorization")
         

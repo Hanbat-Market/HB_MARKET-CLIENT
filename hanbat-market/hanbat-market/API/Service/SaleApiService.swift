@@ -40,7 +40,8 @@ enum SaleApiService {
             }
             
             print(multipartFormData)
-        }, to: url, method: .post, headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"])
+        }, to: url, method: .post, headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"], interceptor:
+                    BaseInterceptor())
         .validate(statusCode: 200..<300)
         .response { response in
             // 응답 처리
@@ -123,12 +124,10 @@ enum SaleApiService {
             } catch {
                 print("Error serializing articleCreateRequestDto: \(error)")
             }
-            
-            print(multipartFormData)
-        }, to: url, method: .post, headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"])
+        }, to: url, method: .post, headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"], interceptor:
+                    BaseInterceptor())
         .validate(statusCode: 200..<300)
         .response { response in
-            // 응답 처리
             switch response.result {
             case .success:
                 print("File upload success")

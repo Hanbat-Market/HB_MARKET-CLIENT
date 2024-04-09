@@ -121,6 +121,7 @@
 		F59363CE2BC28F490023302B /* OAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthVM.swift; sourceTree = "<group>"; };
 		F59363D02BC28F980023302B /* OAuthApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthApiService.swift; sourceTree = "<group>"; };
 		F59363D52BC413690023302B /* OAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
+		F59363D72BC43BCD0023302B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionModel.swift; sourceTree = "<group>"; };
 		F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionRouter.swift; sourceTree = "<group>"; };
 		F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionApiService.swift; sourceTree = "<group>"; };
@@ -171,6 +172,7 @@
 		F58916722BA1EABD008EC345 /* hanbat-market */ = {
 			isa = PBXGroup;
 			children = (
+				F59363D72BC43BCD0023302B /* Info.plist */,
 				F58917572BAB30EE008EC345 /* Utils */,
 				F58917252BA82C6B008EC345 /* Managers */,
 				F58916B12BA58AFA008EC345 /* API */,
@@ -654,6 +656,7 @@
 				DEVELOPMENT_TEAM = LBF339CHR8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "hanbat-market/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 위치 권한이 필요해요.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한이 필요해요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -687,6 +690,7 @@
 				DEVELOPMENT_TEAM = LBF339CHR8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "hanbat-market/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 위치 권한이 필요해요.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한이 필요해요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

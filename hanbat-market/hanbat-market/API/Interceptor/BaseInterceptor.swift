@@ -13,7 +13,7 @@ class BaseInterceptor : RequestInterceptor {
         var request = urlRequest
         
         if let accessToken = UserDefaults.standard.string(forKey: "Authorization"){
-            var cookie = "Authorization=\(accessToken); "
+            let cookie = "Authorization=\(accessToken); "
             request.setValue(cookie, forHTTPHeaderField: "Cookie")
         }
         
@@ -23,3 +23,17 @@ class BaseInterceptor : RequestInterceptor {
         completion(.success(request))
     }
 }
+
+class UploadInterceptor : RequestInterceptor {
+    func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, any Error>) -> Void) {
+        var request = urlRequest
+        
+        if let accessToken = UserDefaults.standard.string(forKey: "Authorization"){
+            let cookie = "Authorization=\(accessToken); "
+            request.setValue(cookie, forHTTPHeaderField: "Cookie")
+        }
+        
+        completion(.success(request))
+    }
+}
+

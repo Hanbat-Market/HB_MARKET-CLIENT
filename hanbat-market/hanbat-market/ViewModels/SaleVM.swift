@@ -44,7 +44,8 @@ class SaleVM: ObservableObject {
             }
             
             print(multipartFormData)
-        }, to: url, method: .post, headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"])
+        }, to: url, method: .post, headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"], interceptor:
+                    UploadInterceptor())
         .validate(statusCode: 200..<300)
         .response { response in
             // 응답 처리
@@ -200,7 +201,8 @@ class SaleVM: ObservableObject {
             }
             
             print(multipartFormData)
-        }, to: url, method: .put, headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"])
+        }, to: url, method: .put,  headers: ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"],interceptor:
+                    UploadInterceptor())
         .validate(statusCode: 200..<300)
         .response { response in
             // 응답 처리
