@@ -20,8 +20,6 @@ struct HomeView: View {
         
         VStack(spacing: 0){
             
-            NavigationBar(navTitle: "홈")
-            
             ZStack(alignment:.bottomTrailing){
                 
                 ScrollView{
@@ -79,7 +77,7 @@ struct HomeView: View {
                                     Spacer()
                                 }.frame(width:100, height: 180)
                             }
-
+                            
                             
                         }
                         
@@ -88,9 +86,9 @@ struct HomeView: View {
                     .padding(.horizontal, 12)
                 }
                 
-                Button(action: {
-                    moveToSaleView.toggle()
-                }, label: {
+                NavigationLink {
+                    SaleView()
+                } label: {
                     Text("판매하기")
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
@@ -100,7 +98,7 @@ struct HomeView: View {
                         .background(CommonStyle.MAIN_COLOR)
                         .cornerRadius(30)
                         .shadow(radius: 2)
-                })
+                }
                 .padding(.bottom, 12)
                 .padding(.trailing, 12)
             }
@@ -118,9 +116,7 @@ struct HomeView: View {
                 oauthManager.oauthLogout()
             }))
         })
-        .navigationDestination(isPresented: $moveToSaleView) {
-            SaleView()
-        }
+        
     }
 }
 

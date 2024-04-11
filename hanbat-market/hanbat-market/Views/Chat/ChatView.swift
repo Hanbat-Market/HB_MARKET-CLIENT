@@ -10,7 +10,6 @@ import SwiftUI
 struct ChatView: View {
     var body: some View {
         VStack(spacing: 0){
-            NavigationBar(navTitle: "채팅")
             
             ScrollView{
                 Text("채팅 화면 입니다.")

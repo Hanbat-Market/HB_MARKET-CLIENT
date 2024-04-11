@@ -37,24 +37,23 @@ struct ArticleView: View {
                                         ZStack(alignment: .bottom){
                                             
                                             
-                                            NavigationLink {
-                                                ImageViewer(imageUrl: article.filePaths[index])
-                                            } label: {
+//                                            NavigationLink {
+//                                                ImageViewer(imageUrl: article.filePaths[index])
+//                                            } label: {
                                                 CachedAsyncImage(url: URL(string: article.filePaths[index]), content: { Image in
                                                     
                                                     Image
                                                         .resizable()
-                                                    //                                                            .scaledToFit()
-                                                    //                                                            .scaledToFill()
                                                         .aspectRatio(contentMode: .fill)
-                                                    //                                                            .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+                                                        .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+                                                        .clipped()
                                                     
                                                     
                                                 }, placeholder: {
                                                     ProgressView()
                                                 }).frame(width: UIScreen.main.bounds.width, height: 320)
                                                 
-                                            }
+//                                            }
                                             
                                             
                                             

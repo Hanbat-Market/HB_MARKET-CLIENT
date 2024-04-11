@@ -13,7 +13,7 @@ struct ImageViewer: View {
     var body: some View {
         VStack{
             
-            BackNavigationBar(navTitle: "")
+            BackNavigationBar(navTitle: "크게보기")
             
             ScrollView{
                 AsyncImage(url: URL(string: imageUrl)) { image in

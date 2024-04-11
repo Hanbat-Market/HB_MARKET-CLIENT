@@ -11,9 +11,11 @@ struct BackNavigationBar: View {
     
     @Environment(\.dismiss) var dismiss
     
+
     var navTitle: String = ""
     var customButtonAction: () -> Void = {}
     var customButtonText: String = ""
+    var isDisabled = false
     
     var body: some View {
         HStack(spacing: 0){
@@ -39,6 +41,7 @@ struct BackNavigationBar: View {
                         Text(customButtonText)
                     }
                 }
+                .disabled(isDisabled)
                 .foregroundStyle(CommonStyle.MAIN_COLOR)
                 .padding(.trailing, 20)
             }

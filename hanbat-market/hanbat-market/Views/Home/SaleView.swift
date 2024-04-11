@@ -36,9 +36,10 @@ struct SaleView: View {
             BackNavigationBar(navTitle: "상품 판매하기", customButtonAction: {
                 print("완료")
                 isLoading = true
+                
                 saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
                 isSuccessUpload = true
-            }, customButtonText: "완료")
+            }, customButtonText: "완료", isDisabled: isLoading)
             if isLoading {
                 ProgressView()
                     .controlSize(.large)

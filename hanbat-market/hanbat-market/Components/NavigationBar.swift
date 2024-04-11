@@ -7,43 +7,45 @@
 
 import SwiftUI
 
-struct NavigationBar: View {
+struct NavigationBarModifier: ViewModifier {
+    var title: String
+    var onSearchAction: () -> Void
+    var onSettingsAction: () -> Void
     
-    var navTitle: String
-    
-    @State private var moveToSettingView: Bool = false
-    @State private var moveToSearchView: Bool = false
-    
-    var body: some View {
-        HStack{
-            Text(navTitle)
-
-            Spacer()
-            Button(action: {
-                moveToSearchView.toggle()
-            }) {
-                Image(systemName: "magnifyingglass")
+    func body(content: Content) -> some View {
+        VStack {
+            HStack {
+                Text(title)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                
+                Spacer()
+                
+                Button(action: onSearchAction) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.white)
+                }
+                
+                Spacer().frame(width: 16)
+                
+                Button(action: onSettingsAction) {
+                    Image(systemName: "gearshape")
+                        .foregroundColor(.white)
+                }
             }
-            
-            Spacer().frame(width: 16)
-            
-            Button(action: {
-                moveToSettingView.toggle()
-            }, label: {
-                Image(systemName: "gearshape")
-            })
+            .font(.system(size: 20))
+            .fontWeight(.bold)
+            .padding(.vertical, 14)
+            .padding(.horizontal, 24)
+            .foregroundStyle(CommonStyle.WHITE_COLOR)
+            .background(CommonStyle.MAIN_COLOR)
+            content
         }
-        .font(.system(size: 20))
-        .fontWeight(.bold)
-        .padding(.vertical, 14)
-        .padding(.horizontal, 24)
-        .foregroundStyle(CommonStyle.WHITE_COLOR)
-        .background(CommonStyle.MAIN_COLOR)
-        .navigationDestination(isPresented: $moveToSettingView) {
-            SettingView()
-        }
-        .navigationDestination(isPresented: $moveToSearchView) {
-            SearchView()
-        }
+    }
+}
+
+extension View {
+    func commonHeader(title: String, onSearchAction: @escaping () -> Void, onSettingsAction: @escaping () -> Void) -> some View {
+        self.modifier(NavigationBarModifier(title: title, onSearchAction: onSearchAction, onSettingsAction: onSettingsAction))
     }
 }

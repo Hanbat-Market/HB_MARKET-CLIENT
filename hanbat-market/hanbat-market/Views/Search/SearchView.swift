@@ -201,16 +201,6 @@ struct SearchView: View {
         )
     }
     
-    private func viewHeightReader(_ binding: Binding<CGFloat>) -> some View {
-        return GeometryReader { geometry -> Color in
-            let rect = geometry.frame(in: .local)
-            DispatchQueue.main.async {
-                binding.wrappedValue = rect.size.height
-            }
-            return .clear
-        }
-    }
-    
     var searchHeader: some View {
         HStack(spacing: 0){
             Button{

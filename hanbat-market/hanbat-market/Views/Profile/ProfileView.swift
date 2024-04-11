@@ -23,7 +23,6 @@ struct ProfileView: View {
     
     var body: some View {
         VStack(spacing: 0){
-            NavigationBar(navTitle: "나의 마켓")
             
             VStack(){
                 Spacer().frame(height: 8)
@@ -236,9 +235,9 @@ struct ProfileView: View {
                         
                         HStack{
                             Spacer()
-                            Button(action: {
-                                moveToSaleView.toggle()
-                            }, label: {
+                            NavigationLink {
+                                SaleView()
+                            } label: {
                                 Text("판매하기")
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 12)
@@ -248,7 +247,7 @@ struct ProfileView: View {
                                     .background(CommonStyle.MAIN_COLOR)
                                     .cornerRadius(30)
                                     .shadow(radius: 2)
-                            })
+                            }
                             .zIndex(100)
                             .padding(.bottom, 12)
                             .padding(.trailing, 12)
@@ -263,9 +262,6 @@ struct ProfileView: View {
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }
         .animation(.default, value: selection)
-        .navigationDestination(isPresented: $moveToSaleView) {
-            SaleView()
-        }
         .onReceive(saleVM.authError, perform: {
             isSessionOut = true
         })

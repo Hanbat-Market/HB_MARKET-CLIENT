@@ -12,6 +12,9 @@ struct ContentView: View {
     @State private var selection = 0
     @StateObject var oauthManager = OAuthManager.shared
     
+    @State private var moveToSettingView: Bool = false
+    @State private var moveToSearchView: Bool = false
+    
     let image = UIImage.gradientImageWithBounds(
         bounds: CGRect( x: 0, y: 0, width: UIScreen.main.scale, height: 5),
         colors: [
@@ -26,6 +29,11 @@ struct ContentView: View {
             NavigationStack{
                 TabView(selection: $selection){
                     HomeView()
+                        .commonHeader(title: "홈", onSearchAction: {
+                            moveToSearchView.toggle()
+                        }, onSettingsAction: {
+                            moveToSettingView.toggle()
+                        })
                         .tabItem {
                             Image(systemName: "house.fill")
                             Text("홈")
@@ -33,6 +41,11 @@ struct ContentView: View {
                         .tag(0)
                     
                     ChatView()
+                        .commonHeader(title: "채팅", onSearchAction: {
+                            moveToSearchView.toggle()
+                        }, onSettingsAction: {
+                            moveToSettingView.toggle()
+                        })
                         .tabItem {
                             Image(systemName: "ellipsis.bubble")
                             Text("채팅")
@@ -40,6 +53,11 @@ struct ContentView: View {
                         .tag(1)
                     
                     PreemptionView()
+                        .commonHeader(title: "찜", onSearchAction: {
+                            moveToSearchView.toggle()
+                        }, onSettingsAction: {
+                            moveToSettingView.toggle()
+                        })
                         .tabItem {
                             Image(systemName: "heart")
                             Text("찜")
@@ -47,11 +65,22 @@ struct ContentView: View {
                         .tag(2)
                     
                     ProfileView()
+                        .commonHeader(title: "나의마켓", onSearchAction: {
+                            moveToSearchView.toggle()
+                        }, onSettingsAction: {
+                            moveToSettingView.toggle()
+                        })
                         .tabItem {
                             Image(systemName: "person.crop.circle")
                             Text("나의마켓")
                         }
                         .tag(3)
+                }
+                .navigationDestination(isPresented: $moveToSettingView) {
+                    SettingView()
+                }
+                .navigationDestination(isPresented: $moveToSearchView) {
+                    SearchView()
                 }
                 .padding(.bottom, 8)
                 .accentColor(CommonStyle.MAIN_COLOR)

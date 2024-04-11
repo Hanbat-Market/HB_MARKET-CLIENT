@@ -17,9 +17,6 @@ struct PreemptionView: View {
         
         VStack(spacing: 0){
             
-            NavigationBar(navTitle: "찜")
-            
-            
             ScrollView{
                 
                 if preemptionVM.preemptionItems?.preemptionItemDtos == nil {
