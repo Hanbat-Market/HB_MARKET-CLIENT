@@ -173,6 +173,9 @@ struct SaleView: View {
                 SessionManager.shared.isLoggedIn = false
             }))
         })
+        .onAppear {
+            UITextField.appearance().clearButtonMode = .whileEditing
+        }
     }
     
     private func addPhotoItems() async {

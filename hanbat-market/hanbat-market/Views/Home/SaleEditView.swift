@@ -227,6 +227,9 @@ struct SaleEditView: View {
         .onReceive(saleVM.successDeletingArticle, perform: { _ in
             self.dismiss()
         })
+        .onAppear {
+            UITextField.appearance().clearButtonMode = .whileEditing
+        }
     }
     
     

@@ -17,18 +17,16 @@ struct SearchView: View {
     @State private var isEmptySearchText: Bool = false
     @State private var articleData: [HomeArticleModel] = []
     @State private var recentSearches: [String] = []
+    @State private var totalHeight = CGFloat.zero
     
     var body: some View {
         VStack(spacing: 0) {
             searchHeader
             
             if searchVM.searchResponse == nil {
-                
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 30){
-                        
+                GeometryReader { geometry in
+                    ScrollView {
                         VStack(alignment: .leading, spacing: 18){
-                            
                             HStack{
                                 Text("최근 검색어")
                                     .fontWeight(.bold)
@@ -48,48 +46,50 @@ struct SearchView: View {
                                 Text("최근 검색어가 없습니다.")
                             } else {
                                 
-                                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], alignment: .leading, spacing: 4) {
+                                
+                                var width = CGFloat.zero
+                                var height = CGFloat.zero
+                                
+                                
+                                ZStack(alignment: .topLeading) {
                                     ForEach(recentSearches, id: \.self) { keyword in
-                                        Button(action: {
-                                            searchVM.fetchSearchData(title: keyword)
-                                        }, label: {
-                                            Text(keyword.count > 3 ? "\(keyword.prefix(3))···" : keyword)
-                                            
-                                            Spacer().frame(width: 10)
-                                            
-                                            Button(action: {
-                                                if let index = recentSearches.firstIndex(of: keyword) {
-                                                    recentSearches.remove(at: index)
-                                                    saveRecentSearches()
+                                        recentSearchKeyword(for: keyword)
+                                            .padding(.all, 4)
+                                            .alignmentGuide(.leading, computeValue: { d in
+                                                if (abs(width - d.width) > geometry.size.width)
+                                                {
+                                                    width = 0
+                                                    height -= d.height
                                                 }
-                                            }) {
-                                                Image(systemName: "xmark")
-                                            }
-                                        })
-                                        .font(.system(size: 13))
-                                        .padding(.horizontal, 16)
-                                        .padding(.vertical, 8)
-                                        .cornerRadius(30)
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 30)
-                                                .stroke(CommonStyle.MAIN_COLOR, lineWidth: 1)
-                                        )
-                                        
+                                                let result = width
+                                                if keyword == self.recentSearches.last! {
+                                                    width = 0 //last item
+                                                } else {
+                                                    width -= d.width
+                                                }
+                                                return result
+                                            })
+                                            .alignmentGuide(.top, computeValue: {d in
+                                                let result = height
+                                                if keyword == self.recentSearches.last! {
+                                                    height = 0 // last item
+                                                }
+                                                return result
+                                            })
                                     }
-                                    .padding(.bottom, 8)
-                                }}
+                                }
+                            }
                         }
                         
-                        
+                        Spacer().frame(height: 18)
                         
                         VStack (alignment: .leading, spacing: 18){
                             Text("인기 검색어")
                                 .fontWeight(.bold)
                             Text("기프티콘")
                             
-                        }
+                        }.frame(maxWidth: geometry.size.width, alignment: .leading)
                     }
-                    
                 }
                 .padding(.vertical, 16)
                 .padding(.horizontal, 20)
@@ -166,11 +166,49 @@ struct SearchView: View {
         }
         .onAppear {
             loadRecentSearches()
+            UITextField.appearance().clearButtonMode = .whileEditing
         }
         .onReceive(searchVM.fetchingSearchData, perform: { _ in
             fillContent(with: searchVM.searchResponse!.data.articles)
         })
         .toolbar(.hidden, for: .navigationBar)
+    }
+    
+    func recentSearchKeyword(for keyword: String) -> some View {
+        Button(action: {
+            searchVM.fetchSearchData(title: keyword)
+        }, label: {
+            Text(keyword.count > 15 ? "\(keyword.prefix(15))···" : keyword)
+            
+            Spacer().frame(width: 10)
+            
+            Button(action: {
+                if let index = recentSearches.firstIndex(of: keyword) {
+                    recentSearches.remove(at: index)
+                    saveRecentSearches()
+                }
+            }) {
+                Image(systemName: "xmark")
+            }
+        })
+        .font(.system(size: 13))
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .cornerRadius(30)
+        .background(
+            RoundedRectangle(cornerRadius: 30)
+                .stroke(CommonStyle.MAIN_COLOR, lineWidth: 1)
+        )
+    }
+    
+    private func viewHeightReader(_ binding: Binding<CGFloat>) -> some View {
+        return GeometryReader { geometry -> Color in
+            let rect = geometry.frame(in: .local)
+            DispatchQueue.main.async {
+                binding.wrappedValue = rect.size.height
+            }
+            return .clear
+        }
     }
     
     var searchHeader: some View {
@@ -228,7 +266,9 @@ struct SearchView: View {
     }
     
     private func saveSearch() {
-        recentSearches.insert(searchText, at: 0)
+        if !recentSearches.contains(searchText){
+            recentSearches.insert(searchText, at: 0)
+        }
         
         saveRecentSearches()
     }
