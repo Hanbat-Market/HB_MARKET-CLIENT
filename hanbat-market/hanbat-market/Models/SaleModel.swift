@@ -52,6 +52,7 @@ struct PurchaseHistoryModel: Codable {
 }
 
 struct SaleHistory: Codable {
+    let sellerUUID: String
     let id: Int
     let tradeId: Int?
     let transactionAppointmentDateTiem: String?

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
+import Kingfisher
 
 struct PreemptionView: View {
     @StateObject var preemptionVM = PreemptionVM()
@@ -46,14 +46,15 @@ struct PreemptionView: View {
                             ArticleView(articleId: item.id)
                         } label: {
                             VStack(alignment:.leading, spacing: 8){
-                                CachedAsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
-                                    Image.resizable()
-                                        .scaledToFill()
-                                }, placeholder: {
-                                    ProgressView()
-                                })
-                                .frame(width: 90, height: 90)
-                                .cornerRadius(10)
+                                KFImage(URL(string: item.thumbnailFilePath))
+                                    .placeholder {
+                                        ProgressView()
+                                    }
+                                    .retry(maxCount: 3, interval: .seconds(5))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 90, height: 90)
+                                    .cornerRadius(10)
                                 
                                 VStack(alignment:.leading, spacing: 2){
                                     

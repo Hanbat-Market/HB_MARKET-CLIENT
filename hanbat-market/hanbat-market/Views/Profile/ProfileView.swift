@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
+import Kingfisher
 
 enum ProfileTab {
     case buy
@@ -90,13 +90,15 @@ struct ProfileView: View {
                                     ArticleView(articleId: item.id)
                                 } label: {
                                     VStack(alignment:.leading, spacing: 8){
-                                        CachedAsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
-                                            Image.resizable()
-                                        }, placeholder: {
-                                            ProgressView()
-                                        })
-                                        .frame(width: 90, height: 90)
-                                        .cornerRadius(10)
+                                        KFImage(URL(string: item.thumbnailFilePath))
+                                            .placeholder {
+                                                ProgressView()
+                                            }
+                                            .retry(maxCount: 3, interval: .seconds(5))
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 90, height: 90)
+                                            .cornerRadius(10)
                                         
                                         VStack(alignment:.leading, spacing: 2){
                                             
@@ -175,13 +177,15 @@ struct ProfileView: View {
                                                 
                                                 ZStack{
                                                     
-                                                    CachedAsyncImage(url: URL(string: item.thumbnailFilePath), content: { Image in
-                                                        Image.resizable()
-                                                    }, placeholder: {
-                                                        ProgressView()
-                                                    })
-                                                    .frame(width: 90, height: 90)
-                                                    .cornerRadius(10)
+                                                    KFImage(URL(string: item.thumbnailFilePath))
+                                                        .placeholder {
+                                                            ProgressView()
+                                                        }
+                                                        .retry(maxCount: 3, interval: .seconds(5))
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                        .frame(width: 90, height: 90)
+                                                        .cornerRadius(10)
                                                     
                                                     if item.itemStatus == "RESERVATION"{
                                                         

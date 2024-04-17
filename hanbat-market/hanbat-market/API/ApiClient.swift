@@ -12,7 +12,7 @@ import Alamofire
 final class ApiClient {
     static let shared = ApiClient()
     
-    static let BASE_URL = "https://hanbatmarket.loca.lt" // 주소 변경 예정
+    static let BASE_URL = "https://9285-39-119-25-167.ngrok-free.app" // 주소 변경 예정
     
     let interceptors = Interceptor(interceptors: [
         BaseInterceptor() // application/json

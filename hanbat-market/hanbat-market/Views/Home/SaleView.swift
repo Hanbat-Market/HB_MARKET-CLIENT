@@ -39,113 +39,119 @@ struct SaleView: View {
                 
                 saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)
                 isSuccessUpload = true
-            }, customButtonText: "완료", isDisabled: isLoading)
-            if isLoading {
-                ProgressView()
-                    .controlSize(.large)
-            }
+            }, customButtonText: "완료", isDisabled: saleVM.registerIsLoading)
             
-            ScrollView {
-                
-                VStack(alignment:.leading, spacing: 16){
-                    Text("제목")
-                        .padding(.leading, 6)
-                        .fontWeight(.medium)
-                    AuthInput(placeholder: "제목을 입력해주세요.", textInput: $title, keyboardType: .default)
+            ZStack{
+                if saleVM.registerIsLoading {
+                    CustomProgressView(controlSize: .large)
                 }
-                .padding(.horizontal, 16)
-                
-                Spacer().frame(height: 30)
-                
-                VStack(alignment:.leading, spacing: 16){
-                    Text("상품명")
-                        .padding(.leading, 6)
-                        .fontWeight(.medium)
-                    AuthInput(placeholder: "상품명을 입력해주세요.", textInput: $itemName, keyboardType: .default)
-                }
-                .padding(.horizontal, 16)
-                
-                Spacer().frame(height: 30)
-                
-                VStack(alignment:.leading, spacing: 16){
-                    Text("가격 (원)")
-                        .padding(.leading, 6)
-                        .fontWeight(.medium)
-                    AuthInput(placeholder: "가격을 입력해주세요.", textInput: $price, keyboardType: .numberPad)
-                }
-                .padding(.horizontal, 16)
-                
-                Spacer().frame(height: 30)
-                
-                VStack(alignment:.leading, spacing: 16){
-                    Text("희망 거래 장소")
-                        .padding(.leading, 6)
-                        .fontWeight(.medium)
-                    AuthInput(placeholder: "장소를 입력해주세요.", textInput: $tradingPlace, keyboardType: .default)
+                ScrollView {
                     
-                }
-                .padding(.horizontal, 16)
-                
-                Spacer().frame(height: 30)
-                
-                VStack(alignment:.leading, spacing: 16){
-                    Text("상품 설명")
-                        .padding(.leading, 6)
-                        .fontWeight(.medium)
-                    TextEditor(text: $description)
-                        .padding(.horizontal, 26)
-                        .padding(.vertical, 14)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
-                        )
-                        .foregroundStyle(self.description == INIT_DESCRIPTION ? CommonStyle.PLACEHOLDER_COLOR : CommonStyle.BLACK_COLOR)
-                        .frame(height: 110)
-                        .onTapGesture {
-                            if self.description == INIT_DESCRIPTION {
-                                self.description = ""
+                    VStack(alignment:.leading, spacing: 16){
+                        Text("제목")
+                            .padding(.leading, 6)
+                            .fontWeight(.medium)
+                        AuthInput(placeholder: "제목을 입력해주세요.", textInput: $title, keyboardType: .default)
+                    }
+                    .padding(.horizontal, 16)
+                    
+                    Spacer().frame(height: 30)
+                    
+                    VStack(alignment:.leading, spacing: 16){
+                        Text("상품명")
+                            .padding(.leading, 6)
+                            .fontWeight(.medium)
+                        AuthInput(placeholder: "상품명을 입력해주세요.", textInput: $itemName, keyboardType: .default)
+                    }
+                    .padding(.horizontal, 16)
+                    
+                    Spacer().frame(height: 30)
+                    
+                    VStack(alignment:.leading, spacing: 16){
+                        Text("가격 (원)")
+                            .padding(.leading, 6)
+                            .fontWeight(.medium)
+                        AuthInput(placeholder: "가격을 입력해주세요.", textInput: $price, keyboardType: .numberPad)
+                    }
+                    .padding(.horizontal, 16)
+                    
+                    Spacer().frame(height: 30)
+                    
+                    VStack(alignment:.leading, spacing: 16){
+                        Text("희망 거래 장소")
+                            .padding(.leading, 6)
+                            .fontWeight(.medium)
+                        AuthInput(placeholder: "장소를 입력해주세요.", textInput: $tradingPlace, keyboardType: .default)
+                        
+                    }
+                    .padding(.horizontal, 16)
+                    
+                    Spacer().frame(height: 30)
+                    
+                    VStack(alignment:.leading, spacing: 16){
+                        Text("상품 설명")
+                            .padding(.leading, 6)
+                            .fontWeight(.medium)
+                        TextEditor(text: $description)
+                            .padding(.horizontal, 26)
+                            .padding(.vertical, 14)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
+                            )
+                            .foregroundStyle(self.description == INIT_DESCRIPTION ? CommonStyle.PLACEHOLDER_COLOR : CommonStyle.BLACK_COLOR)
+                            .frame(height: 110)
+                            .onTapGesture {
+                                if self.description == INIT_DESCRIPTION {
+                                    self.description = ""
+                                }
                             }
-                        }
-                }
-                .padding(.horizontal, 16)
-                
-                Spacer().frame(height: 30)
-                
-                VStack(alignment:.leading, spacing: 16){
-                    Text("사진 등록")
-                        .padding(.leading, 6)
+                    }
+                    .padding(.horizontal, 16)
                     
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 16) {
+                    Spacer().frame(height: 30)
+                    
+                    VStack(alignment:.leading, spacing: 16){
+                        
+                        HStack{
+                            Text("사진 등록")
+                                .padding(.vertical, 6)
                             
-                            PhotosPicker("+", selection: $photosPickerItems, maxSelectionCount: 5, selectionBehavior: .ordered)
-                                .font(.system(size: 30))
-                                .frame(width: 100, height: 100)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
-                                )
-                            
-                            ForEach(0..<images.count, id: \.self) { image in
-                                Image(uiImage: images[image])
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
+                            Text("\(photosPickerItems.count)/5")
+                        }
+                        
+                        ScrollView(.horizontal) {
+                            HStack(spacing: 16) {
+                                
+                                PhotosPicker("+", selection: $photosPickerItems, maxSelectionCount: 5, selectionBehavior: .ordered)
+                                    .font(.system(size: 30))
                                     .frame(width: 100, height: 100)
-                                    .cornerRadius(30)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 30)
                                             .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
                                     )
+                                
+                                ForEach(0..<images.count, id: \.self) { image in
+                                    Image(uiImage: images[image])
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 100, height: 100)
+                                        .cornerRadius(30)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 30)
+                                                .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
+                                        )
+                                }
                             }
-                        }
-                    }.scrollIndicators(.hidden)
+                        }.scrollIndicators(.hidden)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 30)
                 }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 30)
-            }
-            .padding(.bottom, keyboardHandler.keyboardHeight)
-            .onTapGesture {
-                keyboardHandler.hideKeyboard()
+                .padding(.bottom, keyboardHandler.keyboardHeight)
+                .onTapGesture {
+                    keyboardHandler.hideKeyboard()
+                }
             }
         }
         .ignoresSafeArea(edges: .bottom)

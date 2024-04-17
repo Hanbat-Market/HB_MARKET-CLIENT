@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
+import Kingfisher
 
 struct ArticleView: View {
     
@@ -36,25 +36,15 @@ struct ArticleView: View {
                                         
                                         ZStack(alignment: .bottom){
                                             
-                                            
-//                                            NavigationLink {
-//                                                ImageViewer(imageUrl: article.filePaths[index])
-//                                            } label: {
-                                                CachedAsyncImage(url: URL(string: article.filePaths[index]), content: { Image in
-                                                    
-                                                    Image
-                                                        .resizable()
-                                                        .aspectRatio(contentMode: .fill)
-                                                        .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
-                                                        .clipped()
-                                                    
-                                                    
-                                                }, placeholder: {
+                                            KFImage(URL(string: article.filePaths[index]))
+                                                .placeholder {
                                                     ProgressView()
-                                                }).frame(width: UIScreen.main.bounds.width, height: 320)
-                                                
-//                                            }
-                                            
+                                                }
+                                                .retry(maxCount: 3, interval: .seconds(5))
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+                                                .frame(width: UIScreen.main.bounds.width, height: 320)
                                             
                                             
                                             HStack {

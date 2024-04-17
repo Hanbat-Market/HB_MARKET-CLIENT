@@ -30,7 +30,12 @@ struct CommonStyle {
     static var BTN_BLUE_COLOR = Color(hex: "6AA5DF")
     
     // Search Color
-    static var SEARCH_BG_COLOG = Color(hex: "F5F5F5")
+    static var SEARCH_BG_COLOR = Color(hex: "F5F5F5")
+    static var KEYWORD_STROKE_COLOR = Color(hex: "BAD6F0")
+    
+    // Chat Color
+    static var SENDER_BG_COLOR = Color(hex: "D1E3F5")
+    static var RECEIVER_BG_COLOR = Color(hex: "88B7E5")
     
 }
 

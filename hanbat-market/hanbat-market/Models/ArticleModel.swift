@@ -12,6 +12,7 @@ struct ArticleResponse: Codable {
 }
 
 struct ArticleModel: Codable {
+    let uuid: String?
     let title: String
     let description: String
     let tradingPlace: String

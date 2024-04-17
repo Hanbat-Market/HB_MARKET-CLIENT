@@ -61,7 +61,7 @@ struct SaleEditView: View {
                                 .foregroundStyle(CommonStyle.MAIN_COLOR)
                                 .padding(.trailing, 16)
                             
-                        }
+                        }.disabled(saleVM.editArticleIsLoading)
                     
                     Button(action: {
                         isDeleting.toggle()
@@ -89,6 +89,10 @@ struct SaleEditView: View {
                     
                 }
             } else{
+                ZStack{
+                    if saleVM.editArticleIsLoading {
+                        CustomProgressView(controlSize: .large)
+                    }
                 ScrollView {
                     
                     VStack(alignment:.leading, spacing: 16){
@@ -156,8 +160,12 @@ struct SaleEditView: View {
                     Spacer().frame(height: 30)
                     
                     VStack(alignment:.leading, spacing: 16){
-                        Text("사진 등록")
-                            .padding(.leading, 6)
+                        HStack{
+                            Text("사진 등록")
+                                .padding(.vertical, 6)
+                            
+                            Text("\(photosPickerItems.count)/5")
+                        }
                         
                         ScrollView(.horizontal) {
                             HStack(spacing: 16) {
@@ -190,7 +198,7 @@ struct SaleEditView: View {
                 .padding(.bottom, keyboardHandler.keyboardHeight)
                 .onTapGesture {
                     keyboardHandler.hideKeyboard()
-                }
+                }}
             }
         }
         .onAppear{

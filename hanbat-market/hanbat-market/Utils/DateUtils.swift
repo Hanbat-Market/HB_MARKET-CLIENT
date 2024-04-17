@@ -74,5 +74,25 @@ struct DateUtils {
         }
         return "2024년 01월 01일 00시 00분"
     }
+    
+    static func formatChatTime(_ dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        
+        guard let date = dateFormatter.date(from: dateString) else {
+            return "Invalid Date"
+        }
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: date)
+        if let hour = components.hour,
+           let minute = components.minute {
+            let krTime = hour > 12 ? "오후" : "오전"
+            let formattedHour = String(format: "%02d", hour % 12)
+            let formattedMinute = String(format: "%02d", minute)
+            return "\(krTime) \(formattedHour):\(formattedMinute)"
+        }
+        return "2024년 01월 01일 00시 00분"
+    }
 }
 

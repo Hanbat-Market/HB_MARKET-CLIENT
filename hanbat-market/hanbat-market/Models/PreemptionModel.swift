@@ -17,6 +17,7 @@ struct PreemptionModel: Codable {
 }
 
 struct PreemptionItemModel: Codable, Identifiable {
+    let uuid: String
     let id: Int
     let seller: String
     let title: String

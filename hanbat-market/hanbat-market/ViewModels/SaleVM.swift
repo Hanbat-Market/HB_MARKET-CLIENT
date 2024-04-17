@@ -13,6 +13,7 @@ class SaleVM: ObservableObject {
     var subscription = Set<AnyCancellable>()
     
     @Published var registerFailed: Bool = false
+    @Published var registerIsLoading: Bool = false
     var registraionSuccess = PassthroughSubject<(), Never>()
     
     func register(title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage]){
@@ -22,6 +23,8 @@ class SaleVM: ObservableObject {
         // 파일 업로드 및 요청 생성
         AF.upload(multipartFormData: { multipartFormData in
             // 이미지 파일 추가
+            self.registerIsLoading = true
+            
             for (index, image) in selectedImages.enumerated() {
                 if let imageData = image.jpegData(compressionQuality: 0.5) {
                     multipartFormData.append(imageData, withName: "imageFiles", fileName: "image\(index).png", mimeType: "image/png")
@@ -53,10 +56,12 @@ class SaleVM: ObservableObject {
             case .success:
                 print("File upload success")
                 self.registraionSuccess.send()
+                self.registerIsLoading = false
             case .failure(let error):
                 print("File upload errorCode \(String(describing: error.responseCode))" )
                 print("File upload errorDes", error.localizedDescription)
                 self.registerFailed = true
+                self.registerIsLoading = false
             }
         }
     }
@@ -172,6 +177,7 @@ class SaleVM: ObservableObject {
     }
     
     @Published var editArticleFailed: Bool = false
+    @Published var editArticleIsLoading: Bool = false
     var editSuccess = PassthroughSubject<(), Never>()
     
     func editArticle(articleId: Int, title: String, price: Int, itemName: String, description: String, tradingPlace: String, selectedImages: [UIImage]){
@@ -179,6 +185,9 @@ class SaleVM: ObservableObject {
         let url = "\(ApiClient.BASE_URL)/api/articles/edit/\(articleId)"
         
         AF.upload(multipartFormData: { multipartFormData in
+            
+            self.editArticleIsLoading = true
+            
             for (index, image) in selectedImages.enumerated() {
                 if let imageData = image.jpegData(compressionQuality: 0.5) {
                     multipartFormData.append(imageData, withName: "imageFiles", fileName: "image\(index).png", mimeType: "image/png")
@@ -210,10 +219,12 @@ class SaleVM: ObservableObject {
             case .success:
                 print("File upload success")
                 self.editSuccess.send()
+                self.editArticleIsLoading = false
             case .failure(let error):
                 print("File upload errorCode \(String(describing: error.responseCode))" )
                 print("File upload errorDes", error.localizedDescription)
                 self.editArticleFailed = true
+                self.editArticleIsLoading = false
             }
         }
     }

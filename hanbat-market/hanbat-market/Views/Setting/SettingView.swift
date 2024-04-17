@@ -23,7 +23,6 @@ struct SettingView: View {
                         Text("개인 정보")
                             .fontWeight(.bold)
                         Text("프로필 보기")
-                        Text("아이디 / 비밀번호")
                         
                         Divider()
                             .background(CommonStyle.DIVIDER_COLOR)
@@ -34,8 +33,22 @@ struct SettingView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         Text("기타")
                             .fontWeight(.bold)
-                        Text("서비스 공지사항")
-                        Text("이용약관")
+                        
+                        NavigationLink {
+                            PrivacyPolicy()
+                        } label: {
+                            Text("개인정보 처리방침")
+                                .foregroundStyle(CommonStyle.BLACK_COLOR)
+                        }
+                        
+                        NavigationLink {
+                            TermOfUseView()
+                        } label: {
+                            Text("이용약관")
+                                .foregroundStyle(CommonStyle.BLACK_COLOR)
+                        }
+
+                        
                     }
                     
                     Spacer().frame(height: 30)

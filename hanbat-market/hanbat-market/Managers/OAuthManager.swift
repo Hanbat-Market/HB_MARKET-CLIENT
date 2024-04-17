@@ -29,6 +29,8 @@ class OAuthManager: ObservableObject {
                 userId = "\(String(describing: accessJwt.body["mail"]))"
                 
                 print("OAuthManager - JWT token body: \(accessJwt.body)")
+                
+                UserDefaults.standard.set(accessJwt.body["UUID"], forKey: "uuid")
             } catch {
                 print("JWT Token Expired Error - \(error)")
                 isLoggedIn = false
@@ -38,6 +40,8 @@ class OAuthManager: ObservableObject {
         }
         
         print("login - \(isLoggedIn)")
+        print(self.getAccessToken())
+        print(self.getUUID())
     }
     
     func isTokenExpired(_ token: String) -> Bool {
@@ -62,6 +66,11 @@ class OAuthManager: ObservableObject {
     func getAccessToken() -> String {
         let accessToken = UserDefaults.standard.string(forKey: "Authorization") ?? ""
         return accessToken
+    }
+    
+    func getUUID() -> String {
+        let uuid = UserDefaults.standard.string(forKey: "uuid") ?? ""
+        return uuid
     }
     
     func oauthLogout() {

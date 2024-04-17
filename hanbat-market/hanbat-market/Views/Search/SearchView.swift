@@ -78,17 +78,18 @@ struct SearchView: View {
                                             })
                                     }
                                 }
+                                
                             }
                         }
                         
                         Spacer().frame(height: 18)
                         
-                        VStack (alignment: .leading, spacing: 18){
-                            Text("인기 검색어")
-                                .fontWeight(.bold)
-                            Text("기프티콘")
-                            
-                        }.frame(maxWidth: geometry.size.width, alignment: .leading)
+//                        VStack (alignment: .leading, spacing: 18){
+//                            Text("인기 검색어")
+//                                .fontWeight(.bold)
+//                            Text("기프티콘")
+//                            
+//                        }.frame(maxWidth: geometry.size.width, alignment: .leading)
                     }
                 }
                 .padding(.vertical, 16)
@@ -177,6 +178,7 @@ struct SearchView: View {
     func recentSearchKeyword(for keyword: String) -> some View {
         Button(action: {
             searchVM.fetchSearchData(title: keyword)
+            searchText = keyword
         }, label: {
             Text(keyword.count > 15 ? "\(keyword.prefix(15))···" : keyword)
             
@@ -197,8 +199,9 @@ struct SearchView: View {
         .cornerRadius(30)
         .background(
             RoundedRectangle(cornerRadius: 30)
-                .stroke(CommonStyle.MAIN_COLOR, lineWidth: 1)
+                .stroke(CommonStyle.KEYWORD_STROKE_COLOR, lineWidth: 1)
         )
+        .foregroundStyle(CommonStyle.BLACK_COLOR)
     }
     
     var searchHeader: some View {
@@ -217,7 +220,7 @@ struct SearchView: View {
                 .font(.system(size: 16))
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
-                .background(CommonStyle.SEARCH_BG_COLOG)
+                .background(CommonStyle.SEARCH_BG_COLOR)
                 .cornerRadius(30)
                 .autocapitalization(.none)
                 .autocorrectionDisabled(true)

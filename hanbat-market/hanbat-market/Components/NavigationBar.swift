@@ -13,10 +13,10 @@ struct NavigationBarModifier: ViewModifier {
     var onSettingsAction: () -> Void
     
     func body(content: Content) -> some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack {
                 Text(title)
-                    .font(.headline)
+                    .font(.system(size: 20))
                     .foregroundColor(.white)
                 
                 Spacer()

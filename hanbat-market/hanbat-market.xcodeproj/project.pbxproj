@@ -56,6 +56,17 @@
 		F59363D12BC28F980023302B /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363D02BC28F980023302B /* OAuthApiService.swift */; };
 		F59363D42BC2DC990023302B /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = F59363D32BC2DC990023302B /* JWTDecode */; };
 		F59363D62BC413690023302B /* OAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363D52BC413690023302B /* OAuthManager.swift */; };
+		F59363D92BC7F6ED0023302B /* TermOfUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363D82BC7F6ED0023302B /* TermOfUseView.swift */; };
+		F59363DB2BC7F8F70023302B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363DA2BC7F8F70023302B /* WebView.swift */; };
+		F59363DD2BC7FBD50023302B /* PrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363DC2BC7FBD50023302B /* PrivacyPolicy.swift */; };
+		F59363DF2BC80B570023302B /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363DE2BC80B570023302B /* CustomProgressView.swift */; };
+		F59363E12BCC23E70023302B /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363E02BCC23E70023302B /* ChatRouter.swift */; };
+		F59363E32BCC248D0023302B /* ChatApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363E22BCC248D0023302B /* ChatApiService.swift */; };
+		F59363E52BCC260F0023302B /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363E42BCC260F0023302B /* ChatModel.swift */; };
+		F59363E72BCC26700023302B /* ChatVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363E62BCC26700023302B /* ChatVM.swift */; };
+		F59363E92BCC2C9D0023302B /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59363E82BCC2C9D0023302B /* RoomView.swift */; };
+		F59363EC2BCC30010023302B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F59363EB2BCC30010023302B /* Kingfisher */; };
+		F59363F02BCC3DE20023302B /* LDSwiftEventSource in Frameworks */ = {isa = PBXBuildFile; productRef = F59363EF2BCC3DE20023302B /* LDSwiftEventSource */; };
 		F5ADCFFD2BAFF94E005C93C0 /* PreemptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */; };
 		F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */; };
 		F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */; };
@@ -122,6 +133,15 @@
 		F59363D02BC28F980023302B /* OAuthApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthApiService.swift; sourceTree = "<group>"; };
 		F59363D52BC413690023302B /* OAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
 		F59363D72BC43BCD0023302B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F59363D82BC7F6ED0023302B /* TermOfUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermOfUseView.swift; sourceTree = "<group>"; };
+		F59363DA2BC7F8F70023302B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		F59363DC2BC7FBD50023302B /* PrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicy.swift; sourceTree = "<group>"; };
+		F59363DE2BC80B570023302B /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
+		F59363E02BCC23E70023302B /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		F59363E22BCC248D0023302B /* ChatApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatApiService.swift; sourceTree = "<group>"; };
+		F59363E42BCC260F0023302B /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		F59363E62BCC26700023302B /* ChatVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVM.swift; sourceTree = "<group>"; };
+		F59363E82BCC2C9D0023302B /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
 		F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionModel.swift; sourceTree = "<group>"; };
 		F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionRouter.swift; sourceTree = "<group>"; };
 		F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreemptionApiService.swift; sourceTree = "<group>"; };
@@ -147,6 +167,8 @@
 				F58917172BA69782008EC345 /* Alamofire in Frameworks */,
 				F59363D42BC2DC990023302B /* JWTDecode in Frameworks */,
 				F58917192BA69782008EC345 /* AlamofireDynamic in Frameworks */,
+				F59363F02BCC3DE20023302B /* LDSwiftEventSource in Frameworks */,
+				F59363EC2BCC30010023302B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,8 +197,8 @@
 				F59363D72BC43BCD0023302B /* Info.plist */,
 				F58917572BAB30EE008EC345 /* Utils */,
 				F58917252BA82C6B008EC345 /* Managers */,
-				F58916B12BA58AFA008EC345 /* API */,
 				F58916A72BA587A6008EC345 /* Models */,
+				F58916B12BA58AFA008EC345 /* API */,
 				F58916A02BA313E4008EC345 /* Components */,
 				F58916992BA3062D008EC345 /* Views */,
 				F58916C22BA59346008EC345 /* ViewModels */,
@@ -231,6 +253,7 @@
 				F58917432BA97875008EC345 /* BackNavigationBar.swift */,
 				F52CC6432BAC7AF400F591AE /* BackNavigationIconBar.swift */,
 				F52CC6492BAD628B00F591AE /* ImageViewer.swift */,
+				F59363DE2BC80B570023302B /* CustomProgressView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -245,6 +268,7 @@
 				F58917532BAB147E008EC345 /* ArticleModel.swift */,
 				F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */,
 				F5ADD0252BB59D02005C93C0 /* TradeModel.swift */,
+				F59363E42BCC260F0023302B /* ChatModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +294,7 @@
 				F5ADCFFE2BAFFA2A005C93C0 /* PreemptionRouter.swift */,
 				F5ADD0172BB3FBBC005C93C0 /* SearchRouter.swift */,
 				F5ADD01F2BB56F63005C93C0 /* TradeRouter.swift */,
+				F59363E02BCC23E70023302B /* ChatRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -292,6 +317,7 @@
 				F5ADD0002BAFFAAF005C93C0 /* PreemptionApiService.swift */,
 				F5ADD0192BB3FCA4005C93C0 /* SearchApiService.swift */,
 				F5ADD0212BB57283005C93C0 /* TradeApiService.swift */,
+				F59363E22BCC248D0023302B /* ChatApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -306,6 +332,7 @@
 				F5ADD01B2BB3FD2C005C93C0 /* SearchVM.swift */,
 				F5ADD0232BB59CC7005C93C0 /* TradeVM.swift */,
 				F59363CE2BC28F490023302B /* OAuthVM.swift */,
+				F59363E62BCC26700023302B /* ChatVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -335,6 +362,7 @@
 			children = (
 				F58917362BA89756008EC345 /* ChatView.swift */,
 				F5ADD01D2BB56EFB005C93C0 /* TradeView.swift */,
+				F59363E82BCC2C9D0023302B /* RoomView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -360,6 +388,8 @@
 			isa = PBXGroup;
 			children = (
 				F58917412BA97851008EC345 /* SettingView.swift */,
+				F59363D82BC7F6ED0023302B /* TermOfUseView.swift */,
+				F59363DC2BC7FBD50023302B /* PrivacyPolicy.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -369,6 +399,7 @@
 			children = (
 				F58917582BAB30FD008EC345 /* DateUtils.swift */,
 				F52CC6472BAD509D00F591AE /* KeyboardUtils.swift */,
+				F59363DA2BC7F8F70023302B /* WebView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -402,6 +433,8 @@
 				F58917182BA69782008EC345 /* AlamofireDynamic */,
 				F5ADD0122BB2CEF5005C93C0 /* CachedAsyncImage */,
 				F59363D32BC2DC990023302B /* JWTDecode */,
+				F59363EB2BCC30010023302B /* Kingfisher */,
+				F59363EF2BCC3DE20023302B /* LDSwiftEventSource */,
 			);
 			productName = "hanbat-market";
 			productReference = F58916702BA1EABD008EC345 /* hanbat-market.app */;
@@ -435,6 +468,8 @@
 				F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				F59363D22BC2DC990023302B /* XCRemoteSwiftPackageReference "JWTDecode" */,
+				F59363EA2BCC30010023302B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				F59363EE2BCC3C730023302B /* XCRemoteSwiftPackageReference "swift-eventsource" */,
 			);
 			productRefGroup = F58916712BA1EABD008EC345 /* Products */;
 			projectDirPath = "";
@@ -465,6 +500,7 @@
 				F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */,
 				F5ADD0182BB3FBBC005C93C0 /* SearchRouter.swift in Sources */,
 				F58917442BA97875008EC345 /* BackNavigationBar.swift in Sources */,
+				F59363D92BC7F6ED0023302B /* TermOfUseView.swift in Sources */,
 				F58917392BA8976F008EC345 /* PreemptionView.swift in Sources */,
 				F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */,
 				F58917372BA89756008EC345 /* ChatView.swift in Sources */,
@@ -472,6 +508,7 @@
 				F5ADD0222BB57283005C93C0 /* TradeApiService.swift in Sources */,
 				F5ADCFFD2BAFF94E005C93C0 /* PreemptionModel.swift in Sources */,
 				F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */,
+				F59363DF2BC80B570023302B /* CustomProgressView.swift in Sources */,
 				F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */,
 				F58917562BAB15A0008EC345 /* ArticleView.swift in Sources */,
 				F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */,
@@ -482,10 +519,13 @@
 				F52CC6442BAC7AF400F591AE /* BackNavigationIconBar.swift in Sources */,
 				F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */,
 				F58916BB2BA58B52008EC345 /* BaseInterceptor.swift in Sources */,
+				F59363DB2BC7F8F70023302B /* WebView.swift in Sources */,
 				F589172E2BA85BC1008EC345 /* HomeApiService.swift in Sources */,
 				F59363D62BC413690023302B /* OAuthManager.swift in Sources */,
 				F52CC64A2BAD628B00F591AE /* ImageViewer.swift in Sources */,
+				F59363E32BCC248D0023302B /* ChatApiService.swift in Sources */,
 				F589171F2BA81F52008EC345 /* HomeView.swift in Sources */,
+				F59363E12BCC23E70023302B /* ChatRouter.swift in Sources */,
 				F58916AB2BA589B0008EC345 /* CommonModel.swift in Sources */,
 				F5ADD0202BB56F63005C93C0 /* TradeRouter.swift in Sources */,
 				F58917502BAABB8A008EC345 /* SaleApiService.swift in Sources */,
@@ -496,8 +536,10 @@
 				F5ADD0242BB59CC7005C93C0 /* TradeVM.swift in Sources */,
 				F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */,
 				F52CC6462BAD392100F591AE /* SaleEditView.swift in Sources */,
+				F59363DD2BC7FBD50023302B /* PrivacyPolicy.swift in Sources */,
 				F52CC6482BAD509D00F591AE /* KeyboardUtils.swift in Sources */,
 				F58917422BA97851008EC345 /* SettingView.swift in Sources */,
+				F59363E72BCC26700023302B /* ChatVM.swift in Sources */,
 				F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */,
 				F5ADD01E2BB56EFC005C93C0 /* TradeView.swift in Sources */,
 				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,
@@ -506,12 +548,14 @@
 				F58916762BA1EABD008EC345 /* ContentView.swift in Sources */,
 				F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */,
 				F58916C42BA59357008EC345 /* AuthVM.swift in Sources */,
+				F59363E52BCC260F0023302B /* ChatModel.swift in Sources */,
 				F5ADD0162BB3F781005C93C0 /* SearchView.swift in Sources */,
 				F59363CF2BC28F490023302B /* OAuthVM.swift in Sources */,
 				F58917302BA85C15008EC345 /* HomeModel.swift in Sources */,
 				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
 				F5ADD0262BB59D02005C93C0 /* TradeModel.swift in Sources */,
 				F5ADD0282BB5B8CF005C93C0 /* ReservationView.swift in Sources */,
+				F59363E92BCC2C9D0023302B /* RoomView.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,
 				F589174A2BA9B59E008EC345 /* SaleView.swift in Sources */,
 				F59363D12BC28F980023302B /* OAuthApiService.swift in Sources */,
@@ -753,6 +797,22 @@
 				minimumVersion = 3.1.0;
 			};
 		};
+		F59363EA2BCC30010023302B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		F59363EE2BCC3C730023302B /* XCRemoteSwiftPackageReference "swift-eventsource" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LaunchDarkly/swift-eventsource.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
 		F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
@@ -778,6 +838,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F59363D22BC2DC990023302B /* XCRemoteSwiftPackageReference "JWTDecode" */;
 			productName = JWTDecode;
+		};
+		F59363EB2BCC30010023302B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F59363EA2BCC30010023302B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		F59363EF2BCC3DE20023302B /* LDSwiftEventSource */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F59363EE2BCC3C730023302B /* XCRemoteSwiftPackageReference "swift-eventsource" */;
+			productName = LDSwiftEventSource;
 		};
 		F5ADD0122BB2CEF5005C93C0 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
