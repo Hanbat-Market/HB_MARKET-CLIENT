@@ -40,7 +40,6 @@ struct ReservationView: View {
                                         
                                         ZStack(alignment: .bottom){
                                             
-                                            
                                             KFImage(URL(string: article.filePaths[index]))
                                                 .placeholder {
                                                     ProgressView()
@@ -49,8 +48,8 @@ struct ReservationView: View {
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
                                                 .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+                                                .clipped()
                                                 .frame(width: UIScreen.main.bounds.width, height: 320)
-                                            
                                             
                                             
                                             HStack {

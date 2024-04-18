@@ -1,13 +1,13 @@
 //
-//  RoomView.swift
+//  EmptyRoomView.swift
 //  hanbat-market
 //
-//  Created by dongs on 4/15/24.
+//  Created by dongs on 4/18/24.
 //
 
 import SwiftUI
 
-struct RoomView: View {
+struct EmptyRoomView: View {
     
     @StateObject var chatVM = ChatVM()
     @StateObject private var keyboardHandler = KeyboardUtils()
@@ -17,7 +17,6 @@ struct RoomView: View {
     var receiverNickname: String = ""
     var roomNum: String = ""
     var receiverUuid: String = ""
-    var senderUuid: String = ""
     
     var body: some View {
         VStack{
@@ -28,7 +27,7 @@ struct RoomView: View {
                 ScrollView {
                     ForEach(chatVM.chatResponses, id: \.id) { (chatResponse: ChatResponse) in
                         VStack() {
-                            if OAuthManager.shared.getUUID() == chatResponse.sender {
+                            if chatResponse.sender != receiverUuid {
                                 HStack{
                                     VStack{
                                         Spacer()
@@ -72,7 +71,7 @@ struct RoomView: View {
                                 }
                                 .padding(.leading, 8)
                                 .frame(width: geometry.size.width, alignment: .leading)
-                                
+                                    
                             }
                         }.padding([.horizontal, .top], 2)
                     }
@@ -104,7 +103,11 @@ struct RoomView: View {
                 
                 Button(action: {
                     if !chatVM.newMessage.isEmpty{
-                        chatVM.postChat(msg: chatVM.newMessage, sender: OAuthManager.shared.getUUID(), receiver: senderUuid, roomNum: roomNum)
+                        chatVM.postChat(msg: chatVM.newMessage, sender: OAuthManager.shared.getUUID(), receiver: receiverUuid, roomNum: roomNum)
+                        
+                        if chatVM.chatResponses.isEmpty {
+                            chatVM.startSSE(roomNum: roomNum)
+                        }
                     }
                 }) {
                     Image(systemName: "paperplane.fill")
@@ -117,11 +120,6 @@ struct RoomView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
         .toolbar(.hidden, for: .tabBar)
-        .onAppear {
-            print(receiverUuid)
-            print(senderUuid)
-            chatVM.startSSE(roomNum: roomNum)
-        }
         .onDisappear{
             chatVM.stopSSE()
         }
@@ -135,3 +133,4 @@ struct RoomView: View {
         }
     }
 }
+

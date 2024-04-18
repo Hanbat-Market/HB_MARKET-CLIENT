@@ -11,6 +11,7 @@
 		F52CC6462BAD392100F591AE /* SaleEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6452BAD392100F591AE /* SaleEditView.swift */; };
 		F52CC6482BAD509D00F591AE /* KeyboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6472BAD509D00F591AE /* KeyboardUtils.swift */; };
 		F52CC64A2BAD628B00F591AE /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6492BAD628B00F591AE /* ImageViewer.swift */; };
+		F57DDF902BD0FF8F0024A12B /* EmptyRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DDF8F2BD0FF8F0024A12B /* EmptyRoomView.swift */; };
 		F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916732BA1EABD008EC345 /* hanbat_marketApp.swift */; };
 		F58916762BA1EABD008EC345 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916752BA1EABD008EC345 /* ContentView.swift */; };
 		F58916782BA1EABF008EC345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58916772BA1EABF008EC345 /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		F52CC6452BAD392100F591AE /* SaleEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleEditView.swift; sourceTree = "<group>"; };
 		F52CC6472BAD509D00F591AE /* KeyboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardUtils.swift; sourceTree = "<group>"; };
 		F52CC6492BAD628B00F591AE /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
+		F57DDF8F2BD0FF8F0024A12B /* EmptyRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRoomView.swift; sourceTree = "<group>"; };
 		F58916702BA1EABD008EC345 /* hanbat-market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hanbat-market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58916732BA1EABD008EC345 /* hanbat_marketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hanbat_marketApp.swift; sourceTree = "<group>"; };
 		F58916752BA1EABD008EC345 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				F58917362BA89756008EC345 /* ChatView.swift */,
 				F5ADD01D2BB56EFB005C93C0 /* TradeView.swift */,
 				F59363E82BCC2C9D0023302B /* RoomView.swift */,
+				F57DDF8F2BD0FF8F0024A12B /* EmptyRoomView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				F5ADD0012BAFFAAF005C93C0 /* PreemptionApiService.swift in Sources */,
 				F59363DF2BC80B570023302B /* CustomProgressView.swift in Sources */,
 				F589173D2BA8A0BD008EC345 /* CustomTabView.swift in Sources */,
+				F57DDF902BD0FF8F0024A12B /* EmptyRoomView.swift in Sources */,
 				F58917562BAB15A0008EC345 /* ArticleView.swift in Sources */,
 				F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */,
 				F58916A42BA3164B008EC345 /* AuthButton.swift in Sources */,

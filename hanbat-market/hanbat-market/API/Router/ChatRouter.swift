@@ -10,7 +10,7 @@ import Alamofire
 
 enum ChatRouter: URLRequestConvertible {
     
-    case postChat(msg: String, sender: String, receiver: String, roomNum: Int)
+    case postChat(msg: String, sender: String, receiver: String, roomNum: String)
     case fetchChatRooms(senderId: String)
     
     var baseURL: URL {

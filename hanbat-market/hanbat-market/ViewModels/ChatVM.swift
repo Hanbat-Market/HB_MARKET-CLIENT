@@ -21,7 +21,7 @@ class ChatVM: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     // SSE 스트림을 시작하는 메서드
-    func startSSE(roomNum: Int) {
+    func startSSE(roomNum: String) {
         let url = "\(ApiClient.BASE_URL)/chat/roomNum/\(roomNum)"
         
         // SSE 이벤트 처리기를 사용한 구성 생성
@@ -64,7 +64,7 @@ class ChatVM: ObservableObject {
     
     @Published var chatResponse: ChatResponse? = nil
     
-    func postChat(msg: String, sender: String, receiver: String, roomNum: Int){
+    func postChat(msg: String, sender: String, receiver: String, roomNum: String){
         print("ChatVM: postChat() called")
         DispatchQueue.global(qos: .background).async{
             ChatApiService.postChat(msg: msg, sender: sender, receiver: receiver, roomNum: roomNum)

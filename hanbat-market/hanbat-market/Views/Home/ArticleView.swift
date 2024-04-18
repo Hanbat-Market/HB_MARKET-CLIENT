@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 import Kingfisher
 
 struct ArticleView: View {
     
     @StateObject var saleVM = SaleVM()
-    @State private var isPreemption: Bool = false
+    @StateObject var chatVM = ChatVM()
     
-    @State private var moveToTradeView: Bool = false
+    @State private var isPreemption: Bool = false
+    @State private var moveToChatRoom: Bool = false
     
     let articleId: Int
     
@@ -44,6 +46,7 @@ struct ArticleView: View {
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
                                                 .containerRelativeFrame(.horizontal, count: article.filePaths.count, span: article.filePaths.count, spacing: 0)
+                                                .clipped()
                                                 .frame(width: UIScreen.main.bounds.width, height: 320)
                                             
                                             
@@ -152,34 +155,24 @@ struct ArticleView: View {
                                         .foregroundStyle(isPreemption ? CommonStyle.HEART_COLOR : CommonStyle.GRAY_COLOR)
                                 })
                                 .padding(.leading, 26)
+                                
                                 Spacer()
-                                Button(action: {
-                                    moveToTradeView.toggle()
-                                }, label: {
-                                    Text("예약하기")
-                                        .padding(.horizontal, 24)
-                                        .padding(.vertical, 12)
-                                        .font(.system(size: 14))
-                                        .fontWeight(.medium)
-                                        .foregroundStyle(CommonStyle.WHITE_COLOR)
-                                        .background(CommonStyle.BTN_BLUE_COLOR)
-                                        .cornerRadius(30)
-                                })
-                                .padding(.trailing, 26)
-                                Spacer()
-                                Button(action: {
-                                    
-                                }, label: {
-                                    Text("1:1 채팅하기")
-                                        .padding(.horizontal, 36)
-                                        .padding(.vertical, 12)
-                                        .font(.system(size: 15))
-                                        .fontWeight(.medium)
-                                        .foregroundStyle(CommonStyle.WHITE_COLOR)
-                                        .background(CommonStyle.BTN_BLUE_COLOR)
-                                        .cornerRadius(30)
-                                })
-                                .padding(.trailing, 26)
+                                
+                                if article.uuid != OAuthManager.shared.getUUID(){
+                                    Button(action: {
+                                        moveToChatRoom.toggle()
+                                    }, label: {
+                                        Text("1:1 채팅하기")
+                                            .padding(.horizontal, 36)
+                                            .padding(.vertical, 12)
+                                            .font(.system(size: 15))
+                                            .fontWeight(.medium)
+                                            .foregroundStyle(CommonStyle.WHITE_COLOR)
+                                            .background(CommonStyle.BTN_BLUE_COLOR)
+                                            .cornerRadius(30)
+                                    })
+                                    .padding(.trailing, 26)
+                                }
                             }
                             .padding(.bottom, 30)
                             .background(CommonStyle.WHITE_COLOR)
@@ -204,11 +197,24 @@ struct ArticleView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .onAppear{
+            chatVM.fetchChatRooms()
+        }
         .onDisappear {
             saleVM.subscription.removeAll()
         }
-        .navigationDestination(isPresented: $moveToTradeView) {
-            TradeView(nickname: saleVM.article?.nickname ?? "", articleId: articleId)
+        .navigationDestination(isPresented: $moveToChatRoom) {
+            if chatVM.chatRoomsResponse != nil  {
+                if let chatRoomsResponse = chatVM.chatRoomsResponse {
+                    let uuid = OAuthManager.shared.getUUID()
+                    if chatRoomsResponse.first(where: { $0.roomNum == "\(articleId) \(uuid)" }) != nil {
+                        RoomView(receiverNickname: saleVM.article?.nickname ?? "", roomNum: "\(articleId) \(uuid)", receiverUuid: saleVM.article?.uuid ?? "")
+                    } else {
+                        EmptyRoomView(receiverNickname: saleVM.article?.nickname ?? "", roomNum: "\(articleId) \(uuid)", receiverUuid: saleVM.article?.uuid ?? "")
+                    }
+                }
+            }
+            
         }
     }
 }

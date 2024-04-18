@@ -12,7 +12,7 @@ import LDSwiftEventSource
 
 enum ChatApiService {
     
-    static func postChat(msg: String, sender: String, receiver: String, roomNum: Int) -> AnyPublisher<ChatResponse, AFError> {
+    static func postChat(msg: String, sender: String, receiver: String, roomNum: String) -> AnyPublisher<ChatResponse, AFError> {
         print("ChatApiService - postChat() called")
         
         return ApiClient.shared.session

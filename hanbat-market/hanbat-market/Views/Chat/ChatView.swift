@@ -37,9 +37,12 @@ struct ChatView: View {
                     }.fontWeight(.medium)
                 }   else {
                     if let chatRoomsResponse = chatVM.chatRoomsResponse{
+                        
+                        Spacer().frame(height: 8)
+                        
                         ForEach(chatRoomsResponse, id: \.roomNum) { room in
                             NavigationLink {
-                                RoomView(receiverNickname: OAuthManager.shared.getUUID() == room.senderUuid ? room.receiverNickname : room.senderNickname, roomNum: room.roomNum, receiverUuid: OAuthManager.shared.getUUID() == room.senderUuid ? room.receiverUuid : room.senderUuid)
+                                RoomView(receiverNickname: OAuthManager.shared.getUUID() == room.senderUuid ? room.receiverNickname : room.senderNickname, roomNum: room.roomNum, receiverUuid: OAuthManager.shared.getUUID() == room.senderUuid ? room.receiverUuid : room.senderUuid, senderUuid: room.senderUuid)
                             } label: {
                                 VStack(alignment:.leading, spacing: 12) {
                                     HStack {
@@ -48,18 +51,19 @@ struct ChatView: View {
                                         Text(DateUtils.relativeTimeString(from: room.createdAt))
                                     }
                                     Text(room.lastChat)
+                                        .lineLimit(1)
                                     
                                     Divider()
                                 }
                                 .foregroundStyle(CommonStyle.BLACK_COLOR)
                             }
                         }
+                        .padding(.top, 10)
+                        .padding(.horizontal, 18)
                     }
                     
                 }
-                
             }
-            .padding(.horizontal, 24)
         }
         .onAppear {
             chatVM.fetchChatRooms()

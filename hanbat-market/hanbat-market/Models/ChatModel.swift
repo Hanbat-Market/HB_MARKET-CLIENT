@@ -14,7 +14,7 @@ struct ChatResponse: Codable {
     let senderNickName: String
     let receiver: String
     let receiverNickName: String
-    let roomNum: Int
+    let roomNum: String
     let createdAt: String
 }
 
@@ -24,6 +24,6 @@ struct ChatRoomsResponse: Codable {
     let senderNickname: String
     let receiverNickname: String
     let lastChat: String
-    let roomNum: Int
+    let roomNum: String
     let createdAt: String
 }
