@@ -25,21 +25,25 @@ class ChatVM: ObservableObject {
         let url = "\(ApiClient.BASE_URL)/chat/roomNum/\(roomNum)"
         
         // SSE 이벤트 처리기를 사용한 구성 생성
-        var config = EventSource.Config(handler: SseEventHandler(chatVM: self), url: URL(string: url)!)
+        if let sseUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
         
-        // 권한 토큰이 있는 경우 헤더 추가
-        if let accessToken = UserDefaults.standard.string(forKey: "Authorization") {
-            config.headers = ["Authorization": "Bearer \(accessToken)"]
+            var config = EventSource.Config(handler: SseEventHandler(chatVM: self), url: URL(string: sseUrl)!)
+            print("sseUrl",sseUrl)
+            
+            // 권한 토큰이 있는 경우 헤더 추가
+            if let accessToken = UserDefaults.standard.string(forKey: "Authorization") {
+                config.headers = ["Authorization": "Bearer \(accessToken)"]
+            }
+            
+            // 연결 유지 시간 설정
+            config.idleTimeout = 500.0
+            
+            // EventSource 인스턴스 생성
+            eventSource = EventSource(config: config)
+            
+            // SSE 스트림 시작
+            eventSource?.start()
         }
-        
-        // 연결 유지 시간 설정
-        config.idleTimeout = 500.0
-        
-        // EventSource 인스턴스 생성
-        eventSource = EventSource(config: config)
-        
-        // SSE 스트림 시작
-        eventSource?.start()
     }
     
     // SSE 스트림을 종료하는 메서드

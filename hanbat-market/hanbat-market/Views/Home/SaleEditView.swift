@@ -189,6 +189,14 @@ struct SaleEditView: View {
                                                 .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
                                         )
                                 }
+                                .onChange(of: photosPickerItems, perform: { value in
+                                    Task {
+                                        if !images.isEmpty {
+                                            images.removeAll()
+                                        }
+                                        await addPhotoItems()
+                                    }
+                                })
                             }
                         }.scrollIndicators(.hidden)
                     }
@@ -213,14 +221,14 @@ struct SaleEditView: View {
             Alert(title: Text("업로드 실패"), message: Text("작성 내용을 확인해주세요."), dismissButton: .default(Text("확인")))
         })
         .toolbar(.hidden, for: .navigationBar)
-        .onChange(of: photosPickerItems) { _, _ in
-            Task {
-                if !images.isEmpty {
-                    images.removeAll()
-                }
-                await addPhotoItems()
-            }
-        }
+//        .onChange(of: photosPickerItems) { _, _ in
+//            Task {
+//                if !images.isEmpty {
+//                    images.removeAll()
+//                }
+//                await addPhotoItems()
+//            }
+//        }
         .alert(isPresented: $isDeleting, content: {
             Alert(title: Text("삭제"), message: Text("정말 삭제 하시겠습니까?"), primaryButton: .destructive(Text("취소"), action: {
                 isDeleting = false

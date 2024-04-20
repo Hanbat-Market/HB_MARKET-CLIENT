@@ -42,7 +42,7 @@ struct ChatView: View {
                         
                         ForEach(chatRoomsResponse, id: \.roomNum) { room in
                             NavigationLink {
-                                RoomView(receiverNickname: OAuthManager.shared.getUUID() == room.senderUuid ? room.receiverNickname : room.senderNickname, roomNum: room.roomNum, receiverUuid: OAuthManager.shared.getUUID() == room.senderUuid ? room.receiverUuid : room.senderUuid, senderUuid: room.senderUuid)
+                                RoomView(receiverNickname: OAuthManager.shared.getUUID() == room.senderUuid ? room.receiverNickname : room.senderNickname, roomNum: room.roomNum, receiverUuid: room.receiverUuid, senderUuid: room.senderUuid)
                             } label: {
                                 VStack(alignment:.leading, spacing: 12) {
                                     HStack {

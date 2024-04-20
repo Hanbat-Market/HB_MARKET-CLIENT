@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
+import Kingfisher
 
 struct SearchView: View {
     
@@ -127,18 +127,19 @@ struct SearchView: View {
                         ForEach(articleData, id: \.id) { item in
                             NavigationLink(destination: ArticleView(articleId: item.id)) {
                                 HStack(spacing: 12) {
-                                    CachedAsyncImage(url: URL(string: item.thumbnailFilePath)) { image in
-                                        image
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 90, height: 90)
-                                            .cornerRadius(10)
-                                    } placeholder: {
-                                        ProgressView()
-                                            .frame(width: 90, height: 90)
-                                            .background(Color.gray.opacity(0.3))
-                                            .cornerRadius(10)
-                                    }
+                                    
+                                    KFImage(URL(string: item.thumbnailFilePath))
+                                        .placeholder {
+                                            ProgressView()
+                                                .frame(width: 90, height: 90)
+                                                .background(Color.gray.opacity(0.3))
+                                                .cornerRadius(10)
+                                        }
+                                        .retry(maxCount: 3, interval: .seconds(5))
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 90, height: 90)
+                                        .cornerRadius(10)
                                     
                                     VStack(alignment:.leading, spacing: 8) {
                                         Text(item.memberNickname)

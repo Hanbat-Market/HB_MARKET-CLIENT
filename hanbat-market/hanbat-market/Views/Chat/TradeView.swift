@@ -164,6 +164,7 @@ struct TradeView: View {
                 
             }, buttonText: "확정하기")
             .padding(.horizontal, 20)
+            .padding(.bottom, 12)
         }
         .alert(isPresented: $tradeVM.tradeReservationFailed, content: {
             Alert(title: Text("예약 실패"), message: Text("예약 내용을 다시 확인해주세요."), dismissButton: .default(Text("확인")))

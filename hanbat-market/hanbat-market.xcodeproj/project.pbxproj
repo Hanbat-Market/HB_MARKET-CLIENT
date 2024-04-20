@@ -12,6 +12,7 @@
 		F52CC6482BAD509D00F591AE /* KeyboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6472BAD509D00F591AE /* KeyboardUtils.swift */; };
 		F52CC64A2BAD628B00F591AE /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CC6492BAD628B00F591AE /* ImageViewer.swift */; };
 		F57DDF902BD0FF8F0024A12B /* EmptyRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DDF8F2BD0FF8F0024A12B /* EmptyRoomView.swift */; };
+		F57DDF982BD132180024A12B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F57DDF972BD132180024A12B /* Alamofire */; };
 		F58916742BA1EABD008EC345 /* hanbat_marketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916732BA1EABD008EC345 /* hanbat_marketApp.swift */; };
 		F58916762BA1EABD008EC345 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916752BA1EABD008EC345 /* ContentView.swift */; };
 		F58916782BA1EABF008EC345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58916772BA1EABF008EC345 /* Assets.xcassets */; };
@@ -30,8 +31,6 @@
 		F58916BF2BA58B7B008EC345 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916BE2BA58B7B008EC345 /* AuthRouter.swift */; };
 		F58916C12BA58E19008EC345 /* CommonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916C02BA58E19008EC345 /* CommonStyle.swift */; };
 		F58916C42BA59357008EC345 /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58916C32BA59357008EC345 /* AuthVM.swift */; };
-		F58917172BA69782008EC345 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F58917162BA69782008EC345 /* Alamofire */; };
-		F58917192BA69782008EC345 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F58917182BA69782008EC345 /* AlamofireDynamic */; };
 		F589171F2BA81F52008EC345 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589171E2BA81F51008EC345 /* HomeView.swift */; };
 		F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58917262BA82C7B008EC345 /* SessionManager.swift */; };
 		F589172C2BA85B2E008EC345 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589172B2BA85B2E008EC345 /* HomeRouter.swift */; };
@@ -165,10 +164,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F57DDF982BD132180024A12B /* Alamofire in Frameworks */,
 				F5ADD0132BB2CEF5005C93C0 /* CachedAsyncImage in Frameworks */,
-				F58917172BA69782008EC345 /* Alamofire in Frameworks */,
 				F59363D42BC2DC990023302B /* JWTDecode in Frameworks */,
-				F58917192BA69782008EC345 /* AlamofireDynamic in Frameworks */,
 				F59363F02BCC3DE20023302B /* LDSwiftEventSource in Frameworks */,
 				F59363EC2BCC30010023302B /* Kingfisher in Frameworks */,
 			);
@@ -432,12 +430,11 @@
 			);
 			name = "hanbat-market";
 			packageProductDependencies = (
-				F58917162BA69782008EC345 /* Alamofire */,
-				F58917182BA69782008EC345 /* AlamofireDynamic */,
 				F5ADD0122BB2CEF5005C93C0 /* CachedAsyncImage */,
 				F59363D32BC2DC990023302B /* JWTDecode */,
 				F59363EB2BCC30010023302B /* Kingfisher */,
 				F59363EF2BCC3DE20023302B /* LDSwiftEventSource */,
+				F57DDF972BD132180024A12B /* Alamofire */,
 			);
 			productName = "hanbat-market";
 			productReference = F58916702BA1EABD008EC345 /* hanbat-market.app */;
@@ -468,11 +465,11 @@
 			);
 			mainGroup = F58916672BA1EABD008EC345;
 			packageReferences = (
-				F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				F59363D22BC2DC990023302B /* XCRemoteSwiftPackageReference "JWTDecode" */,
 				F59363EA2BCC30010023302B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F59363EE2BCC3C730023302B /* XCRemoteSwiftPackageReference "swift-eventsource" */,
+				F57DDF962BD132180024A12B /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = F58916712BA1EABD008EC345 /* Products */;
 			projectDirPath = "";
@@ -705,6 +702,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "hanbat-market/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "한밭마켓";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 위치 권한이 필요해요.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한이 필요해요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -713,7 +712,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -721,9 +720,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.donggyujin.hanbat-market";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -739,6 +742,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "hanbat-market/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "한밭마켓";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 위치 권한이 필요해요.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "한밭마켓에 게시글을 올리기 위해서는 앨범 권한이 필요해요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -747,7 +752,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -755,9 +760,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.donggyujin.hanbat-market";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -785,12 +794,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		F57DDF962BD132180024A12B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.0;
+				minimumVersion = 5.9.1;
 			};
 		};
 		F59363D22BC2DC990023302B /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
@@ -828,15 +837,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F58917162BA69782008EC345 /* Alamofire */ = {
+		F57DDF972BD132180024A12B /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = F57DDF962BD132180024A12B /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		F58917182BA69782008EC345 /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F58917152BA69782008EC345 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
 		};
 		F59363D32BC2DC990023302B /* JWTDecode */ = {
 			isa = XCSwiftPackageProductDependency;

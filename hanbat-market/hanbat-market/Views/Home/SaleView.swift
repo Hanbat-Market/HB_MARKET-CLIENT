@@ -131,6 +131,7 @@ struct SaleView: View {
                                             .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
                                     )
                                 
+                                
                                 ForEach(0..<images.count, id: \.self) { image in
                                     Image(uiImage: images[image])
                                         .resizable()
@@ -142,11 +143,28 @@ struct SaleView: View {
                                                 .stroke(CommonStyle.MAIN_COLOR, lineWidth: 2)
                                         )
                                 }
+                                .onChange(of: photosPickerItems, perform: { value in
+                                    Task {
+                                        if !images.isEmpty {
+                                            images.removeAll()
+                                        }
+                                        await addPhotoItems()
+                                    }
+                                })
                             }
+                            
                         }.scrollIndicators(.hidden)
                     }
+                    
                     .padding(.horizontal, 16)
                     .padding(.bottom, 30)
+                    .task {
+                        if !images.isEmpty {
+                            images.removeAll()
+                        }
+                        await addPhotoItems()
+                        
+                    }
                 }
                 .padding(.bottom, keyboardHandler.keyboardHeight)
                 .onTapGesture {
@@ -159,14 +177,14 @@ struct SaleView: View {
             Alert(title: Text("업로드 실패"), message: Text("작성 내용을 확인해주세요."), dismissButton: .default(Text("확인")))
         })
         .toolbar(.hidden, for: .navigationBar)
-        .onChange(of: photosPickerItems) { _, _ in
-            Task {
-                if !images.isEmpty {
-                    images.removeAll()
-                }
-                await addPhotoItems()
-            }
-        }
+        //        .onChange(of: photosPickerItems.count, {
+        //            Task {
+        //                if !images.isEmpty {
+        //                    images.removeAll()
+        //                }
+        //                await addPhotoItems()
+        //            }
+        //        })
         .onReceive(saleVM.registraionSuccess, perform: {
             self.dismiss()
             isLoading = false
