@@ -40,16 +40,16 @@ enum AuthApiService {
             .eraseToAnyPublisher()
     }
     
-    static func logout() -> AnyPublisher<String, AFError> {
+    static func logout(uuid: String) -> AnyPublisher<String, AFError> {
         print("AuthApiService - logout() called")
         
         return ApiClient.shared.session
-            .request(AuthRouter.logout)
+            .request(AuthRouter.logout(uuid: uuid))
             .validate(statusCode: 200..<300)
-            .publishDecodable(type: String.self)
+            .publishDecodable(type: CommonResponseModel.self)
             .value()
             .map{ receivedValue in
-                receivedValue
+                receivedValue.data
             }
             .eraseToAnyPublisher()
     }

@@ -67,9 +67,9 @@ class AuthVM: ObservableObject {
             }.store(in: &subscription)
     }
     
-    func logout(){
+    func logout(uuid: String){
         print("AuthVM: logout() called")
-        AuthApiService.logout()
+        AuthApiService.logout(uuid: uuid)
             .sink { (completion: Subscribers.Completion<AFError>) in
                 switch completion {
                 case .finished:
@@ -77,14 +77,9 @@ class AuthVM: ObservableObject {
                 case .failure(let error):
                     print("logout errorCode: \(String(describing: error.responseCode))")
                     print("logout errorDes: \(String(describing: error.localizedDescription))")
-                    self.loginFailed = true
                 }
             } receiveValue: { receivedUser in
                 print("logout receivedUser: \(receivedUser)")
-                
-                if receivedUser == "ok"{
-                    SessionManager.shared.logout()
-                }
             }.store(in: &subscription)
     }
 }

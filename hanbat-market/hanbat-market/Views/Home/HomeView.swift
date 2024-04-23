@@ -114,7 +114,7 @@ struct HomeView: View {
         .alert(isPresented: $isSessionOut, content: {
             Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
                 oauthManager.isLoggedIn = false
-                oauthManager.oauthLogout()
+                oauthManager.oauthLogout(uuid: OAuthManager.shared.getUUID())
             }))
         })
         

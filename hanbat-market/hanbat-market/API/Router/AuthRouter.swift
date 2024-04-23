@@ -14,7 +14,7 @@ enum AuthRouter: URLRequestConvertible {
     
     case register(email: String, password: String, nickname: String)
     case login(email: String, password: String)
-    case logout
+    case logout(uuid: String)
     case saveFcmToken(targetMemberUuid: String, fcmToken: String)
     
     var baseURL: URL {
@@ -54,8 +54,10 @@ enum AuthRouter: URLRequestConvertible {
             params["nickname"] = nickname
             return params
             
-        case .logout:
-            return Parameters()
+        case let .logout(uuid):
+            var params = Parameters()
+            params["uuid"] = uuid
+            return params
             
         case let .saveFcmToken(targetMemberUuid, fcmToken):
             var params = Parameters()

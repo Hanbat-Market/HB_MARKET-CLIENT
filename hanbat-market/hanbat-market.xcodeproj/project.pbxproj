@@ -85,7 +85,7 @@
 		F5CD42A92BD6B67C00583CB6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F5CD42A82BD6B67C00583CB6 /* FirebaseAnalytics */; };
 		F5CD42AB2BD6B67C00583CB6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = F5CD42AA2BD6B67C00583CB6 /* FirebaseMessaging */; };
 		F5CD42AE2BD6B6FC00583CB6 /* FCMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42AD2BD6B6FC00583CB6 /* FCMManager.swift */; };
-		F5CD42B22BD6C15900583CB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5CD42B12BD6C15900583CB6 /* GoogleService-Info.plist */; };
+		F5CD42B42BD7C54600583CB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5CD42B32BD7C54600583CB6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,7 +163,7 @@
 		F5ADD0272BB5B8CF005C93C0 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 		F5CD42AC2BD6B69D00583CB6 /* hanbat-market.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "hanbat-market.entitlements"; sourceTree = "<group>"; };
 		F5CD42AD2BD6B6FC00583CB6 /* FCMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMManager.swift; sourceTree = "<group>"; };
-		F5CD42B12BD6C15900583CB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F5CD42B32BD7C54600583CB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F5CD42AC2BD6B69D00583CB6 /* hanbat-market.entitlements */,
-				F5CD42B12BD6C15900583CB6 /* GoogleService-Info.plist */,
+				F5CD42B32BD7C54600583CB6 /* GoogleService-Info.plist */,
 				F59363D72BC43BCD0023302B /* Info.plist */,
 				F58917572BAB30EE008EC345 /* Utils */,
 				F58917252BA82C6B008EC345 /* Managers */,
@@ -502,7 +502,7 @@
 			files = (
 				F589167B2BA1EABF008EC345 /* Preview Assets.xcassets in Resources */,
 				F58916782BA1EABF008EC345 /* Assets.xcassets in Resources */,
-				F5CD42B22BD6C15900583CB6 /* GoogleService-Info.plist in Resources */,
+				F5CD42B42BD7C54600583CB6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

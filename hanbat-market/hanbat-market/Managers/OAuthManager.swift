@@ -17,6 +17,8 @@ class OAuthManager: ObservableObject {
     @Published var isLoggedIn = true
     @Published var userId = ""
     
+    var subscription = Set<AnyCancellable>()
+    
     func checkTokenExpiration() {
         let accessToken = UserDefaults.standard.string(forKey: "Authorization")
         
@@ -73,10 +75,23 @@ class OAuthManager: ObservableObject {
         return uuid
     }
     
-    func oauthLogout() {
-        UserDefaults.standard.removeObject(forKey: "Authorization")
-        
-        isLoggedIn = false
+    func oauthLogout(uuid: String) {
+        AuthApiService.logout(uuid: uuid)
+            .sink { (completion: Subscribers.Completion<AFError>) in
+                switch completion {
+                case .finished:
+                    print("logout request finished: \(completion)")
+                    self.isLoggedIn = false
+                    UserDefaults.standard.removeObject(forKey: "Authorization")
+                    UserDefaults.standard.removeObject(forKey: "uuid")
+                case .failure(let error):
+                    print("logout errorCode: \(String(describing: error.responseCode))")
+                    print("logout errorDes: \(String(describing: error.localizedDescription))")
+                }
+            } receiveValue: { receivedUser in
+                print("logout receivedUser: \(receivedUser)")
+                
+            }.store(in: &subscription)
     }
     
     func resetUserDefaults() {
