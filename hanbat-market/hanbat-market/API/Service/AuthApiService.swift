@@ -53,4 +53,18 @@ enum AuthApiService {
             }
             .eraseToAnyPublisher()
     }
+    
+    static func saveFcmToken(targetMemberUuid: String, fcmToken: String) -> AnyPublisher<String, AFError> {
+        print("AuthApiService - saveFcmToken() called")
+        
+        return ApiClient.shared.session
+            .request(AuthRouter.saveFcmToken(targetMemberUuid: targetMemberUuid, fcmToken: fcmToken))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: CommonResponseModel.self)
+            .value()
+            .map{ receivedValue in
+                receivedValue.data
+            }
+            .eraseToAnyPublisher()
+    }
 }

@@ -10,7 +10,6 @@ import SwiftUI
 struct BackNavigationBar: View {
     
     @Environment(\.dismiss) var dismiss
-    
 
     var navTitle: String = ""
     var customButtonAction: () -> Void = {}

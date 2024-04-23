@@ -15,6 +15,7 @@ enum AuthRouter: URLRequestConvertible {
     case register(email: String, password: String, nickname: String)
     case login(email: String, password: String)
     case logout
+    case saveFcmToken(targetMemberUuid: String, fcmToken: String)
     
     var baseURL: URL {
         return URL(string: ApiClient.BASE_URL)!
@@ -25,6 +26,7 @@ enum AuthRouter: URLRequestConvertible {
         case .register: return "/api/members/new"
         case .login: return "/api/members/login"
         case .logout: return "/api/members/logout"
+        case .saveFcmToken: return "/api/fcm/save"
         }
     }
     
@@ -33,6 +35,7 @@ enum AuthRouter: URLRequestConvertible {
         case .register: return .post
         case .login: return .post
         case .logout: return .post
+        case .saveFcmToken: return .post
         }
     }
     
@@ -53,6 +56,12 @@ enum AuthRouter: URLRequestConvertible {
             
         case .logout:
             return Parameters()
+            
+        case let .saveFcmToken(targetMemberUuid, fcmToken):
+            var params = Parameters()
+            params["targetMemberUuid"] = targetMemberUuid
+            params["fcmToken"] = fcmToken
+            return params
         }
     }
     

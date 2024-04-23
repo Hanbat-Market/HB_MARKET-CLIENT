@@ -82,6 +82,10 @@
 		F5ADD0242BB59CC7005C93C0 /* TradeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0232BB59CC7005C93C0 /* TradeVM.swift */; };
 		F5ADD0262BB59D02005C93C0 /* TradeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0252BB59D02005C93C0 /* TradeModel.swift */; };
 		F5ADD0282BB5B8CF005C93C0 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADD0272BB5B8CF005C93C0 /* ReservationView.swift */; };
+		F5CD42A92BD6B67C00583CB6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F5CD42A82BD6B67C00583CB6 /* FirebaseAnalytics */; };
+		F5CD42AB2BD6B67C00583CB6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = F5CD42AA2BD6B67C00583CB6 /* FirebaseMessaging */; };
+		F5CD42AE2BD6B6FC00583CB6 /* FCMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42AD2BD6B6FC00583CB6 /* FCMManager.swift */; };
+		F5CD42B22BD6C15900583CB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5CD42B12BD6C15900583CB6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,6 +161,9 @@
 		F5ADD0232BB59CC7005C93C0 /* TradeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeVM.swift; sourceTree = "<group>"; };
 		F5ADD0252BB59D02005C93C0 /* TradeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeModel.swift; sourceTree = "<group>"; };
 		F5ADD0272BB5B8CF005C93C0 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
+		F5CD42AC2BD6B69D00583CB6 /* hanbat-market.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "hanbat-market.entitlements"; sourceTree = "<group>"; };
+		F5CD42AD2BD6B6FC00583CB6 /* FCMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMManager.swift; sourceTree = "<group>"; };
+		F5CD42B12BD6C15900583CB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +173,8 @@
 			files = (
 				F57DDF982BD132180024A12B /* Alamofire in Frameworks */,
 				F5ADD0132BB2CEF5005C93C0 /* CachedAsyncImage in Frameworks */,
+				F5CD42AB2BD6B67C00583CB6 /* FirebaseMessaging in Frameworks */,
+				F5CD42A92BD6B67C00583CB6 /* FirebaseAnalytics in Frameworks */,
 				F59363D42BC2DC990023302B /* JWTDecode in Frameworks */,
 				F59363F02BCC3DE20023302B /* LDSwiftEventSource in Frameworks */,
 				F59363EC2BCC30010023302B /* Kingfisher in Frameworks */,
@@ -194,6 +203,8 @@
 		F58916722BA1EABD008EC345 /* hanbat-market */ = {
 			isa = PBXGroup;
 			children = (
+				F5CD42AC2BD6B69D00583CB6 /* hanbat-market.entitlements */,
+				F5CD42B12BD6C15900583CB6 /* GoogleService-Info.plist */,
 				F59363D72BC43BCD0023302B /* Info.plist */,
 				F58917572BAB30EE008EC345 /* Utils */,
 				F58917252BA82C6B008EC345 /* Managers */,
@@ -353,6 +364,7 @@
 			children = (
 				F58917262BA82C7B008EC345 /* SessionManager.swift */,
 				F59363D52BC413690023302B /* OAuthManager.swift */,
+				F5CD42AD2BD6B6FC00583CB6 /* FCMManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -435,6 +447,8 @@
 				F59363EB2BCC30010023302B /* Kingfisher */,
 				F59363EF2BCC3DE20023302B /* LDSwiftEventSource */,
 				F57DDF972BD132180024A12B /* Alamofire */,
+				F5CD42A82BD6B67C00583CB6 /* FirebaseAnalytics */,
+				F5CD42AA2BD6B67C00583CB6 /* FirebaseMessaging */,
 			);
 			productName = "hanbat-market";
 			productReference = F58916702BA1EABD008EC345 /* hanbat-market.app */;
@@ -470,6 +484,7 @@
 				F59363EA2BCC30010023302B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F59363EE2BCC3C730023302B /* XCRemoteSwiftPackageReference "swift-eventsource" */,
 				F57DDF962BD132180024A12B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F5CD42A72BD6B67C00583CB6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = F58916712BA1EABD008EC345 /* Products */;
 			projectDirPath = "";
@@ -487,6 +502,7 @@
 			files = (
 				F589167B2BA1EABF008EC345 /* Preview Assets.xcassets in Resources */,
 				F58916782BA1EABF008EC345 /* Assets.xcassets in Resources */,
+				F5CD42B22BD6C15900583CB6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +532,7 @@
 				F58916A42BA3164B008EC345 /* AuthButton.swift in Sources */,
 				F589173B2BA89779008EC345 /* ProfileView.swift in Sources */,
 				F589172C2BA85B2E008EC345 /* HomeRouter.swift in Sources */,
+				F5CD42AE2BD6B6FC00583CB6 /* FCMManager.swift in Sources */,
 				F58916C12BA58E19008EC345 /* CommonStyle.swift in Sources */,
 				F52CC6442BAC7AF400F591AE /* BackNavigationIconBar.swift in Sources */,
 				F5ADCFFF2BAFFA2A005C93C0 /* PreemptionRouter.swift in Sources */,
@@ -695,6 +712,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "hanbat-market/hanbat-market.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"hanbat-market/Preview Content\"";
@@ -735,6 +753,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "hanbat-market/hanbat-market.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"hanbat-market/Preview Content\"";
@@ -834,6 +853,14 @@
 				minimumVersion = 2.1.1;
 			};
 		};
+		F5CD42A72BD6B67C00583CB6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.24.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -861,6 +888,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F5ADD0112BB2CEF5005C93C0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
+		};
+		F5CD42A82BD6B67C00583CB6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5CD42A72BD6B67C00583CB6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F5CD42AA2BD6B67C00583CB6 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5CD42A72BD6B67C00583CB6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

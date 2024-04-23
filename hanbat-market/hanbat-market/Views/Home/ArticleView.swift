@@ -204,6 +204,7 @@ struct ArticleView: View {
                                 if article.uuid != OAuthManager.shared.getUUID(){
                                     Button(action: {
                                         moveToChatRoom.toggle()
+                                        
                                     }, label: {
                                         Text("1:1 채팅하기")
                                             .padding(.horizontal, 36)

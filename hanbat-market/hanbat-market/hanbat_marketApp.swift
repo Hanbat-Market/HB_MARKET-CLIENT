@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct hanbat_marketApp: App {    
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @StateObject var authManager = SessionManager.shared
     @StateObject var oauthManager = OAuthManager.shared
     
