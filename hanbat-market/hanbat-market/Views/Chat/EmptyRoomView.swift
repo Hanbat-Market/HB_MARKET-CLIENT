@@ -13,6 +13,7 @@ struct EmptyRoomView: View {
     @StateObject private var keyboardHandler = KeyboardUtils()
     
     @State private var moveToTradeView: Bool = false
+    @State private var newMessage: String = ""
     
     var receiverNickname: String = ""
     var roomNum: String = ""
@@ -91,7 +92,7 @@ struct EmptyRoomView: View {
                     }
                 }
                 
-                TextField("메세지를 입력하세요", text: $chatVM.newMessage, axis: .vertical)
+                TextField("메세지를 입력하세요", text: $newMessage, axis: .vertical)
                     .font(.system(size: 16))
                     .padding(.horizontal, 20)
                     .padding(.vertical, 10)
@@ -102,12 +103,14 @@ struct EmptyRoomView: View {
                     .lineLimit(1...3)
                 
                 Button(action: {
-                    if !chatVM.newMessage.isEmpty{
-                        chatVM.postChat(msg: chatVM.newMessage, sender: OAuthManager.shared.getUUID(), receiver: receiverUuid, roomNum: roomNum)
+                    if !newMessage.isEmpty{
+                        chatVM.postChat(msg: newMessage, sender: OAuthManager.shared.getUUID(), receiver: receiverUuid, roomNum: roomNum)
                         
                         if chatVM.chatResponses.isEmpty {
                             chatVM.startSSE(roomNum: roomNum)
                         }
+                        
+                        newMessage = ""
                     }
                 }) {
                     Image(systemName: "paperplane.fill")

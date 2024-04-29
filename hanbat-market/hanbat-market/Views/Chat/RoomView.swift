@@ -20,6 +20,8 @@ struct RoomView: View {
     var receiverUuid: String = ""
     var senderUuid: String = ""
     
+    @State private var newMessage: String = ""
+    
     var body: some View {
         VStack{
             ScrollViewReader{ scrollView in
@@ -108,7 +110,7 @@ struct RoomView: View {
                             }
                         }
                         
-                        TextField("메세지를 입력하세요", text: $chatVM.newMessage, axis: .vertical)
+                        TextField("메세지를 입력하세요", text: $newMessage, axis: .vertical)
                             .focused($isTextFieldFocused)
                             .font(.system(size: 16))
                             .padding(.horizontal, 20)
@@ -120,8 +122,10 @@ struct RoomView: View {
                             .lineLimit(1...3)
                         
                         Button(action: {
-                            if !chatVM.newMessage.isEmpty{
-                                chatVM.postChat(msg: chatVM.newMessage, sender: OAuthManager.shared.getUUID(), receiver: OAuthManager.shared.getUUID() == senderUuid ? receiverUuid : senderUuid, roomNum: roomNum)
+                            if !newMessage.isEmpty{
+                                chatVM.postChat(msg: newMessage, sender: OAuthManager.shared.getUUID(), receiver: OAuthManager.shared.getUUID() == senderUuid ? receiverUuid : senderUuid, roomNum: roomNum)
+                                
+                                newMessage = ""
                             }
                             DispatchQueue.main.async {
                                 isTextFieldFocused = true
@@ -148,7 +152,7 @@ struct RoomView: View {
                             }
                         }
                         
-                        TextField("메세지를 입력하세요", text: $chatVM.newMessage, axis: .vertical)
+                        TextField("메세지를 입력하세요", text: $newMessage, axis: .vertical)
                             .focused($isTextFieldFocused)
                             .font(.system(size: 16))
                             .padding(.horizontal, 20)
@@ -160,8 +164,10 @@ struct RoomView: View {
                             .lineLimit(1...3)
                         
                         Button(action: {
-                            if !chatVM.newMessage.isEmpty{
-                                chatVM.postChat(msg: chatVM.newMessage, sender: OAuthManager.shared.getUUID(), receiver: OAuthManager.shared.getUUID() == senderUuid ? receiverUuid : senderUuid, roomNum: roomNum)
+                            if !newMessage.isEmpty{
+                                chatVM.postChat(msg: newMessage, sender: OAuthManager.shared.getUUID(), receiver: OAuthManager.shared.getUUID() == senderUuid ? receiverUuid : senderUuid, roomNum: roomNum)
+                                
+                                newMessage = ""
                             }
                             DispatchQueue.main.async {
                                 isTextFieldFocused = true
@@ -185,8 +191,6 @@ struct RoomView: View {
         .toolbar(.hidden, for: .navigationBar)
         .toolbar(.hidden, for: .tabBar)
         .onAppear {
-            print(senderUuid)
-            print(receiverUuid)
             chatVM.startSSE(roomNum: roomNum)
         }
         .onDisappear{

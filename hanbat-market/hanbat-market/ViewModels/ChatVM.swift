@@ -15,7 +15,6 @@ class ChatVM: ObservableObject {
     
     @Published var chatResponses: [ChatResponse] = [] // 채팅 메시지 목록을 보관
     @Published var lastError: Error?
-    @Published var newMessage: String = ""
     
     private var eventSource: EventSource?
     private var cancellables = Set<AnyCancellable>()
@@ -26,7 +25,7 @@ class ChatVM: ObservableObject {
         
         // SSE 이벤트 처리기를 사용한 구성 생성
         if let sseUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
-        
+            
             var config = EventSource.Config(handler: SseEventHandler(chatVM: self), url: URL(string: sseUrl)!)
             print("sseUrl",sseUrl)
             
@@ -76,6 +75,7 @@ class ChatVM: ObservableObject {
                     switch completion {
                     case .finished:
                         print("postChat request finished")
+                        
                     case .failure(let error):
                         print("postChat errorCode: \(String(describing: error.responseCode))")
                         
@@ -88,8 +88,6 @@ class ChatVM: ObservableObject {
                 } receiveValue: { [weak self] receivedData in
                     print("ChatVM fetchSearchData: \(receivedData)")
                     self?.chatResponse = receivedData
-                    // 새로운 메시지를 전송 후 입력 필드를 비워줌
-                    self?.newMessage = ""
                 }.store(in: &self.subscription)
         }
     }
