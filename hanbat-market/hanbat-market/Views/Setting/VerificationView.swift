@@ -47,7 +47,7 @@ struct VerificationView: View {
                         .font(.system(size: 16))
                         .padding(.horizontal, 20)
                         .padding(.vertical, 10)
-                        .background(CommonStyle.SEARCH_BG_COLOR)
+                        .background(verifyStudentSuccess ? CommonStyle.GRAY_COLOR : CommonStyle.SEARCH_BG_COLOR)
                         .cornerRadius(10)
                         .autocapitalization(.none)
                         .autocorrectionDisabled(true)
@@ -99,7 +99,7 @@ struct VerificationView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 12)
                 .alert(isPresented: $authVM.matchStudentFailed, content: {
-                    Alert(title: Text("인증 번호가 올바르지 않습니다."), dismissButton: .default(Text("확인")))
+                    Alert(title: Text("인증 번호가 올바르지 않거나, 잘못된 접근입니다."), dismissButton: .default(Text("확인")))
                 })
             } else {
                 AuthButton(buttonAction: {

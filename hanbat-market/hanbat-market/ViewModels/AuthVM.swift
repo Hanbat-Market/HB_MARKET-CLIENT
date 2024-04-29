@@ -123,6 +123,7 @@ class AuthVM: ObservableObject {
                 case .failure(let error):
                     print("matchStudent errorCode: \(String(describing: error.responseCode))")
                     print("matchStudent errorDes: \(String(describing: error.localizedDescription))")
+                    
                     self.matchStudentFailed = true
                 }
             } receiveValue: { [weak self] receivedUser in
