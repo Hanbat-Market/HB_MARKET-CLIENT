@@ -247,7 +247,6 @@ struct SearchView: View {
         .alert(isPresented: $isEmptySearchText, content: {
             Alert(title: Text("검색 실패"), message: Text("검색어를 입력하세요."), dismissButton: .default(Text("확인")))
         })
-        
         .padding(.top, 20)
         .padding(.bottom, 12)
     }

@@ -67,4 +67,37 @@ enum AuthApiService {
             }
             .eraseToAnyPublisher()
     }
+    
+    static func verifyStudent(mail: String, memberUuid: String) -> AnyPublisher<CommonResponseModel, AFError> {
+        print("AuthApiService - verifyStudent() called")
+        
+        return ApiClient.shared.session
+            .request(AuthRouter.verifyStudent(mail: mail, memberUuid: memberUuid))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: CommonResponseModel.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
+    
+    static func matchStudent(memberUuid: String, number: String) -> AnyPublisher<CommonResponseModel, AFError> {
+        print("AuthApiService - matchStudent() called")
+        
+        return ApiClient.shared.session
+            .request(AuthRouter.matchStudent(memberUuid: memberUuid, number: number))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: CommonResponseModel.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
+    
+    static func confirmStudent(memberUuid: String) -> AnyPublisher<CommonResponseModel, AFError> {
+        print("AuthApiService - confirmStudent() called")
+        
+        return ApiClient.shared.session
+            .request(AuthRouter.confirmStudent(memberUuid: memberUuid))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type: CommonResponseModel.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
 }

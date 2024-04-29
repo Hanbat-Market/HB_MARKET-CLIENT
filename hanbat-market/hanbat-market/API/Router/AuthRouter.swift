@@ -16,6 +16,9 @@ enum AuthRouter: URLRequestConvertible {
     case login(email: String, password: String)
     case logout(uuid: String)
     case saveFcmToken(targetMemberUuid: String, fcmToken: String)
+    case verifyStudent(mail: String, memberUuid: String)
+    case matchStudent(memberUuid: String, number: String)
+    case confirmStudent(memberUuid: String)
     
     var baseURL: URL {
         return URL(string: ApiClient.BASE_URL)!
@@ -27,6 +30,9 @@ enum AuthRouter: URLRequestConvertible {
         case .login: return "/api/members/login"
         case .logout: return "/api/members/logout"
         case .saveFcmToken: return "/api/fcm/save"
+        case .verifyStudent: return "/api/verification"
+        case .matchStudent: return "/api/verification/match"
+        case .confirmStudent: return "/api/verification/confirm"
         }
     }
     
@@ -36,6 +42,9 @@ enum AuthRouter: URLRequestConvertible {
         case .login: return .post
         case .logout: return .post
         case .saveFcmToken: return .post
+        case .verifyStudent: return .post
+        case .matchStudent: return .post
+        case .confirmStudent: return .post
         }
     }
     
@@ -63,6 +72,23 @@ enum AuthRouter: URLRequestConvertible {
             var params = Parameters()
             params["targetMemberUuid"] = targetMemberUuid
             params["fcmToken"] = fcmToken
+            return params
+            
+        case let .verifyStudent(mail, memberUuid):
+            var params = Parameters()
+            params["mail"] = mail
+            params["memberUuid"] = memberUuid
+            return params
+            
+        case let .matchStudent(memberUuid, number):
+            var params = Parameters()
+            params["memberUuid"] = memberUuid
+            params["number"] = number
+            return params
+            
+        case let .confirmStudent(memberUuid):
+            var params = Parameters()
+            params["memberUuid"] = memberUuid
             return params
         }
     }

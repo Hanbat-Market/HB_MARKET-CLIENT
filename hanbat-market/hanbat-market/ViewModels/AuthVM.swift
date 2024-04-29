@@ -82,4 +82,77 @@ class AuthVM: ObservableObject {
                 print("logout receivedUser: \(receivedUser)")
             }.store(in: &subscription)
     }
+    
+    @Published var verifyStudentResponse: CommonResponseModel? = nil
+    var verifyStudentSuccess = PassthroughSubject<(), Never>()
+    @Published var verifyStudentFailed: Bool = false
+    
+    func verifyStudent(mail: String, memberUuid: String){
+        print("AuthVM: verifyStudent() called")
+        AuthApiService.verifyStudent(mail: mail, memberUuid: memberUuid)
+            .receive(on: DispatchQueue.main)
+            .sink { (completion: Subscribers.Completion<AFError>) in
+                switch completion {
+                case .finished:
+                    print("verifyStudent request finished: \(completion)")
+                case .failure(let error):
+                    print("verifyStudent errorCode: \(String(describing: error.responseCode))")
+                    print("verifyStudent errorDes: \(String(describing: error.localizedDescription))")
+                    self.verifyStudentFailed = true
+                }
+            } receiveValue: { [weak self] receivedUser in
+                print("verifyStudent receivedUser: \(receivedUser)")
+                self?.verifyStudentResponse = receivedUser
+                self?.verifyStudentSuccess.send()
+            }.store(in: &subscription)
+    }
+    
+    @Published var matchStudentResponse: CommonResponseModel? = nil
+    @Published var matchStudentSuccess: Bool = false
+    @Published var matchStudentFailed: Bool = false
+    
+    func matchStudent(memberUuid: String, number: String){
+        print("AuthVM: matchStudent() called")
+        AuthApiService.matchStudent(memberUuid: memberUuid, number: number)
+            .receive(on: DispatchQueue.main)
+            .sink { (completion: Subscribers.Completion<AFError>) in
+                switch completion {
+                case .finished:
+                    print("matchStudent request finished: \(completion)")
+                    self.matchStudentSuccess = true
+                case .failure(let error):
+                    print("matchStudent errorCode: \(String(describing: error.responseCode))")
+                    print("matchStudent errorDes: \(String(describing: error.localizedDescription))")
+                    self.matchStudentFailed = true
+                }
+            } receiveValue: { [weak self] receivedUser in
+                print("matchStudent receivedUser: \(receivedUser)")
+                self?.matchStudentResponse = receivedUser
+                
+            }.store(in: &subscription)
+    }
+    
+    @Published var confirmStudentResponse: CommonResponseModel? = nil
+    @Published var confirmStudentSuccess: Bool = false
+    @Published var confirmStudentFailed: Bool = false
+    
+    func confirmStudent(memberUuid: String){
+        print("AuthVM: confirmStudent() called")
+        AuthApiService.confirmStudent(memberUuid: memberUuid)
+            .receive(on: DispatchQueue.main)
+            .sink { (completion: Subscribers.Completion<AFError>) in
+                switch completion {
+                case .finished:
+                    print("confirmStudent request finished: \(completion)")
+                    self.confirmStudentSuccess = true
+                case .failure(let error):
+                    print("confirmStudent errorCode: \(String(describing: error.responseCode))")
+                    print("confirmStudent errorDes: \(String(describing: error.localizedDescription))")
+                    self.confirmStudentFailed = true
+                }
+            } receiveValue: { [weak self] receivedUser in
+                print("confirmStudent receivedUser: \(receivedUser)")
+                self?.confirmStudentResponse = receivedUser
+            }.store(in: &subscription)
+    }
 }
