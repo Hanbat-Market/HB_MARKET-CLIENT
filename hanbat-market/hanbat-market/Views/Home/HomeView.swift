@@ -11,10 +11,12 @@ import Kingfisher
 struct HomeView: View {
     
     @StateObject var homeVM = HomeVM()
+    @StateObject var authVM = AuthVM()
     @StateObject var oauthManager = OAuthManager.shared
     
     @State var isSessionOut: Bool = false
     @State var moveToSaleView: Bool = false
+    @State var alert: Bool = false
     
     var body: some View {
         
@@ -86,22 +88,50 @@ struct HomeView: View {
                     .padding(.vertical, 16)
                     .padding(.horizontal, 12)
                 }
+                .alert(isPresented: $isSessionOut, content: {
+                    Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
+                        oauthManager.isLoggedIn = false
+                        oauthManager.oauthLogout(uuid: OAuthManager.shared.getUUID())
+                    }))
+                })
                 
-                NavigationLink {
-                    SaleView()
-                } label: {
-                    Text("판매하기")
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .font(.system(size: 15))
-                        .fontWeight(.medium)
-                        .foregroundStyle(CommonStyle.WHITE_COLOR)
-                        .background(CommonStyle.MAIN_COLOR)
-                        .cornerRadius(30)
-                        .shadow(radius: 2)
-                }
+                Button(action: {
+                    authVM.confirmStudent(memberUuid: OAuthManager.shared.getUUID())
+                    
+                }, label: {
+                    if authVM.confirmStudentSuccess {
+                            NavigationLink {
+                                SaleView()
+                            } label: {
+                                Text("판매하기")
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 12)
+                                    .font(.system(size: 15))
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(CommonStyle.WHITE_COLOR)
+                                    .background(CommonStyle.MAIN_COLOR)
+                                    .cornerRadius(30)
+                                    .shadow(radius: 2)
+                            }
+                    } else {
+                        Text("판매하기")
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 12)
+                            .font(.system(size: 15))
+                            .fontWeight(.medium)
+                            .foregroundStyle(CommonStyle.WHITE_COLOR)
+                            .background(CommonStyle.MAIN_COLOR)
+                            .cornerRadius(30)
+                            .shadow(radius: 2)
+                            .alert(isPresented: $authVM.confirmStudentFailed, content: {
+                                Alert(title: Text("설정 > 재학생 인증이 필요합니다."), dismissButton: .default(Text("확인")))
+                            })
+                    }
+                    
+                })
                 .padding(.bottom, 12)
                 .padding(.trailing, 12)
+                
             }
         }
         .toolbar(.hidden, for: .navigationBar)
@@ -111,13 +141,6 @@ struct HomeView: View {
         .onReceive(homeVM.responseError, perform: {
             isSessionOut = true
         })
-        .alert(isPresented: $isSessionOut, content: {
-            Alert(title: Text("세션이 만료되었습니다."), dismissButton: .default(Text("확인"), action: {
-                oauthManager.isLoggedIn = false
-                oauthManager.oauthLogout(uuid: OAuthManager.shared.getUUID())
-            }))
-        })
-        
     }
 }
 

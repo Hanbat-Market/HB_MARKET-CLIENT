@@ -136,6 +136,7 @@ class AuthVM: ObservableObject {
     @Published var confirmStudentResponse: CommonResponseModel? = nil
     @Published var confirmStudentSuccess: Bool = false
     @Published var confirmStudentFailed: Bool = false
+    var confirmStudentSuccessPS = PassthroughSubject<(), Never>()
     
     func confirmStudent(memberUuid: String){
         print("AuthVM: confirmStudent() called")
@@ -154,6 +155,7 @@ class AuthVM: ObservableObject {
             } receiveValue: { [weak self] receivedUser in
                 print("confirmStudent receivedUser: \(receivedUser)")
                 self?.confirmStudentResponse = receivedUser
+                self?.confirmStudentSuccessPS.send()
             }.store(in: &subscription)
     }
 }

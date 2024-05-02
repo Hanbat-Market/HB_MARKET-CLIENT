@@ -16,6 +16,7 @@ enum ProfileTab {
 struct ProfileView: View {
     
     @StateObject var saleVM = SaleVM()
+    @StateObject var authVM = AuthVM()
     
     @State private var selection: ProfileTab = .buy
     @State private var moveToSaleView: Bool = false
@@ -239,22 +240,44 @@ struct ProfileView: View {
                         
                         HStack{
                             Spacer()
-                            NavigationLink {
-                                SaleView()
-                            } label: {
-                                Text("판매하기")
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 12)
-                                    .font(.system(size: 15))
-                                    .fontWeight(.medium)
-                                    .foregroundStyle(CommonStyle.WHITE_COLOR)
-                                    .background(CommonStyle.MAIN_COLOR)
-                                    .cornerRadius(30)
-                                    .shadow(radius: 2)
-                            }
+                            Button(action: {
+                                authVM.confirmStudent(memberUuid: OAuthManager.shared.getUUID())
+                                
+                            }, label: {
+                                if authVM.confirmStudentSuccess {
+                                        NavigationLink {
+                                            SaleView()
+                                        } label: {
+                                            Text("판매하기")
+                                                .padding(.horizontal, 20)
+                                                .padding(.vertical, 12)
+                                                .font(.system(size: 15))
+                                                .fontWeight(.medium)
+                                                .foregroundStyle(CommonStyle.WHITE_COLOR)
+                                                .background(CommonStyle.MAIN_COLOR)
+                                                .cornerRadius(30)
+                                                .shadow(radius: 2)
+                                        }
+                                } else {
+                                    Text("판매하기")
+                                        .padding(.horizontal, 20)
+                                        .padding(.vertical, 12)
+                                        .font(.system(size: 15))
+                                        .fontWeight(.medium)
+                                        .foregroundStyle(CommonStyle.WHITE_COLOR)
+                                        .background(CommonStyle.MAIN_COLOR)
+                                        .cornerRadius(30)
+                                        .shadow(radius: 2)
+                                        .alert(isPresented: $authVM.confirmStudentFailed, content: {
+                                            Alert(title: Text("설정 > 재학생 인증이 필요합니다."), dismissButton: .default(Text("확인")))
+                                        })
+                                }
+                                
+                            })
                             .zIndex(100)
                             .padding(.bottom, 12)
                             .padding(.trailing, 12)
+                            
                         }
                     }
                 }

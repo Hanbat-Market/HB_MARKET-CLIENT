@@ -23,7 +23,14 @@ struct SettingView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         Text("개인 정보")
                             .fontWeight(.bold)
-                        Text("프로필 보기")
+                        
+                        NavigationLink {
+                            ProfileSettingView()
+                        } label: {
+                            Text("프로필 보기")
+                                .foregroundStyle(CommonStyle.BLACK_COLOR)
+                        }
+                        
                         
                         Button(action: {
                             authVM.confirmStudent(memberUuid: OAuthManager.shared.getUUID())

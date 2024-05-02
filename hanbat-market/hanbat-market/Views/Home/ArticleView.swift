@@ -13,6 +13,7 @@ struct ArticleView: View {
     
     @StateObject var saleVM = SaleVM()
     @StateObject var chatVM = ChatVM()
+    @StateObject var authVM = AuthVM()
     
     @State private var isPreemption: Bool = false
     @State private var moveToChatRoom: Bool = false
@@ -203,8 +204,7 @@ struct ArticleView: View {
                                 
                                 if article.uuid != OAuthManager.shared.getUUID(){
                                     Button(action: {
-                                        moveToChatRoom.toggle()
-                                        
+                                        authVM.confirmStudent(memberUuid: OAuthManager.shared.getUUID())
                                     }, label: {
                                         Text("1:1 채팅하기")
                                             .padding(.horizontal, 36)
@@ -214,6 +214,12 @@ struct ArticleView: View {
                                             .foregroundStyle(CommonStyle.WHITE_COLOR)
                                             .background(CommonStyle.BTN_BLUE_COLOR)
                                             .cornerRadius(30)
+                                            .onReceive(authVM.confirmStudentSuccessPS, perform: { _ in
+                                                moveToChatRoom.toggle()
+                                            })
+                                            .alert(isPresented: $authVM.confirmStudentFailed, content: {
+                                                Alert(title: Text("설정 > 재학생 인증이 필요합니다."), dismissButton: .default(Text("확인")))
+                                            })
                                     })
                                     .padding(.trailing, 26)
                                 }

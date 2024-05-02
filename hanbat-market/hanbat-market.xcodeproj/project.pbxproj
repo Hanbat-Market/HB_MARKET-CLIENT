@@ -88,6 +88,13 @@
 		F5CD42B42BD7C54600583CB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5CD42B32BD7C54600583CB6 /* GoogleService-Info.plist */; };
 		F5CD42B62BDFBE0D00583CB6 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42B52BDFBE0D00583CB6 /* VerificationView.swift */; };
 		F5CD42B82BDFC76E00583CB6 /* RegexUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42B72BDFC76E00583CB6 /* RegexUtils.swift */; };
+		F5CD42BC2BE0DE4200583CB6 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42BB2BE0DE4200583CB6 /* ProfileRouter.swift */; };
+		F5CD42BE2BE0E0C300583CB6 /* ProfileApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42BD2BE0E0C300583CB6 /* ProfileApiService.swift */; };
+		F5CD42C02BE0E2BA00583CB6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42BF2BE0E2BA00583CB6 /* ProfileModel.swift */; };
+		F5CD42C22BE0E6DA00583CB6 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42C12BE0E6DA00583CB6 /* ProfileSettingView.swift */; };
+		F5CD42C42BE0E75E00583CB6 /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42C32BE0E75E00583CB6 /* ProfileVM.swift */; };
+		F5CD42C62BE0EF1600583CB6 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42C52BE0EF1600583CB6 /* NicknameView.swift */; };
+		F5CD42C82BE39E1F00583CB6 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD42C72BE39E1F00583CB6 /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +175,13 @@
 		F5CD42B32BD7C54600583CB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5CD42B52BDFBE0D00583CB6 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		F5CD42B72BDFC76E00583CB6 /* RegexUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexUtils.swift; sourceTree = "<group>"; };
+		F5CD42BB2BE0DE4200583CB6 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		F5CD42BD2BE0E0C300583CB6 /* ProfileApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApiService.swift; sourceTree = "<group>"; };
+		F5CD42BF2BE0E2BA00583CB6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		F5CD42C12BE0E6DA00583CB6 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		F5CD42C32BE0E75E00583CB6 /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
+		F5CD42C52BE0EF1600583CB6 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		F5CD42C72BE39E1F00583CB6 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +283,7 @@
 				F52CC6432BAC7AF400F591AE /* BackNavigationIconBar.swift */,
 				F52CC6492BAD628B00F591AE /* ImageViewer.swift */,
 				F59363DE2BC80B570023302B /* CustomProgressView.swift */,
+				F5CD42C72BE39E1F00583CB6 /* SplashView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -284,6 +299,7 @@
 				F5ADCFFC2BAFF94E005C93C0 /* PreemptionModel.swift */,
 				F5ADD0252BB59D02005C93C0 /* TradeModel.swift */,
 				F59363E42BCC260F0023302B /* ChatModel.swift */,
+				F5CD42BF2BE0E2BA00583CB6 /* ProfileModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,6 +326,7 @@
 				F5ADD0172BB3FBBC005C93C0 /* SearchRouter.swift */,
 				F5ADD01F2BB56F63005C93C0 /* TradeRouter.swift */,
 				F59363E02BCC23E70023302B /* ChatRouter.swift */,
+				F5CD42BB2BE0DE4200583CB6 /* ProfileRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -333,6 +350,7 @@
 				F5ADD0192BB3FCA4005C93C0 /* SearchApiService.swift */,
 				F5ADD0212BB57283005C93C0 /* TradeApiService.swift */,
 				F59363E22BCC248D0023302B /* ChatApiService.swift */,
+				F5CD42BD2BE0E0C300583CB6 /* ProfileApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -348,6 +366,7 @@
 				F5ADD0232BB59CC7005C93C0 /* TradeVM.swift */,
 				F59363CE2BC28F490023302B /* OAuthVM.swift */,
 				F59363E62BCC26700023302B /* ChatVM.swift */,
+				F5CD42C32BE0E75E00583CB6 /* ProfileVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -408,6 +427,8 @@
 				F59363D82BC7F6ED0023302B /* TermOfUseView.swift */,
 				F59363DC2BC7FBD50023302B /* PrivacyPolicy.swift */,
 				F5CD42B52BDFBE0D00583CB6 /* VerificationView.swift */,
+				F5CD42C12BE0E6DA00583CB6 /* ProfileSettingView.swift */,
+				F5CD42C52BE0EF1600583CB6 /* NicknameView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -526,6 +547,7 @@
 				F58917392BA8976F008EC345 /* PreemptionView.swift in Sources */,
 				F58917322BA85D6F008EC345 /* HomeVM.swift in Sources */,
 				F58917372BA89756008EC345 /* ChatView.swift in Sources */,
+				F5CD42C22BE0E6DA00583CB6 /* ProfileSettingView.swift in Sources */,
 				F589169B2BA3063F008EC345 /* LoginView.swift in Sources */,
 				F5ADD0222BB57283005C93C0 /* TradeApiService.swift in Sources */,
 				F5ADCFFD2BAFF94E005C93C0 /* PreemptionModel.swift in Sources */,
@@ -536,6 +558,7 @@
 				F57DDF902BD0FF8F0024A12B /* EmptyRoomView.swift in Sources */,
 				F58917562BAB15A0008EC345 /* ArticleView.swift in Sources */,
 				F58917272BA82C7B008EC345 /* SessionManager.swift in Sources */,
+				F5CD42C42BE0E75E00583CB6 /* ProfileVM.swift in Sources */,
 				F58916A42BA3164B008EC345 /* AuthButton.swift in Sources */,
 				F589173B2BA89779008EC345 /* ProfileView.swift in Sources */,
 				F589172C2BA85B2E008EC345 /* HomeRouter.swift in Sources */,
@@ -558,15 +581,19 @@
 				F589174E2BAAA551008EC345 /* SaleRouter.swift in Sources */,
 				F5ADD01C2BB3FD2C005C93C0 /* SearchVM.swift in Sources */,
 				F58916A22BA3140D008EC345 /* AuthInput.swift in Sources */,
+				F5CD42C62BE0EF1600583CB6 /* NicknameView.swift in Sources */,
 				F5ADD0242BB59CC7005C93C0 /* TradeVM.swift in Sources */,
 				F589174C2BA9C422008EC345 /* SaleModel.swift in Sources */,
 				F52CC6462BAD392100F591AE /* SaleEditView.swift in Sources */,
 				F59363DD2BC7FBD50023302B /* PrivacyPolicy.swift in Sources */,
 				F52CC6482BAD509D00F591AE /* KeyboardUtils.swift in Sources */,
+				F5CD42C82BE39E1F00583CB6 /* SplashView.swift in Sources */,
 				F58917422BA97851008EC345 /* SettingView.swift in Sources */,
 				F59363E72BCC26700023302B /* ChatVM.swift in Sources */,
 				F58917592BAB30FD008EC345 /* DateUtils.swift in Sources */,
 				F5ADD01E2BB56EFC005C93C0 /* TradeView.swift in Sources */,
+				F5CD42BC2BE0DE4200583CB6 /* ProfileRouter.swift in Sources */,
+				F5CD42BE2BE0E0C300583CB6 /* ProfileApiService.swift in Sources */,
 				F589169E2BA3124A008EC345 /* RegisterView.swift in Sources */,
 				F58916A92BA58850008EC345 /* AuthModel.swift in Sources */,
 				F5ADD01A2BB3FCA4005C93C0 /* SearchApiService.swift in Sources */,
@@ -580,6 +607,7 @@
 				F58917302BA85C15008EC345 /* HomeModel.swift in Sources */,
 				F589173F2BA97730008EC345 /* NavigationBar.swift in Sources */,
 				F5ADD0262BB59D02005C93C0 /* TradeModel.swift in Sources */,
+				F5CD42C02BE0E2BA00583CB6 /* ProfileModel.swift in Sources */,
 				F5ADD0282BB5B8CF005C93C0 /* ReservationView.swift in Sources */,
 				F59363E92BCC2C9D0023302B /* RoomView.swift in Sources */,
 				F58916BD2BA58B71008EC345 /* AuthApiService.swift in Sources */,

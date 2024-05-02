@@ -34,7 +34,6 @@ struct SaleView: View {
         VStack {
             
             BackNavigationBar(navTitle: "상품 판매하기", customButtonAction: {
-                print("완료")
                 isLoading = true
                 
                 saleVM.register(title: title, price: Int(price) ?? 0, itemName: itemName, description: description, tradingPlace: tradingPlace, selectedImages: images)

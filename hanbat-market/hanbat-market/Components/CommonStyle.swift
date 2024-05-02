@@ -37,6 +37,9 @@ struct CommonStyle {
     static var SENDER_BG_COLOR = Color(hex: "D1E3F5")
     static var RECEIVER_BG_COLOR = Color(hex: "88B7E5")
     
+    // Profile Color
+    static var CIRCLE_BORDER_COLOR = Color(hex: "4B759E")
+    
 }
 
 // #이 있으면 제거 후 문자열로 RGB 추출
